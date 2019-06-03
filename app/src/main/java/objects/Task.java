@@ -16,30 +16,26 @@ public class Task{
 //constructors
     public Task(){
     this.deadline = new Date();
-
+    this.name = "";
+    this.completed = false;
     }
     public Task(String name){
-        this.deadline = new Date();
 
         this.name = name; this.completed = false;
     }
     public Task(String name, Date deadline){
-        this.deadline = new Date();
-        this.name = name; this.deadline = deadline; this.completed = false;
-
+=        this.name = name; this.deadline = deadline; this.completed = false;
     }
     public Task(String name, Date deadline, boolean completed){
-        this.deadline = new Date();
-
         this.name = name; this. deadline = deadline; this. completed = completed;
     }
 //methods
     /** 
     getCompleted
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: Returns the boolean completed value
+    Parameters: none
+    Returns: boolean
     */
     public boolean getCompleted(){
             return completed;
@@ -47,9 +43,9 @@ public class Task{
     /** 
     setCompleted()
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: sets the completed value
+    Parameters: boolean taskCompleted
+    Returns: void
     */
     public void setCompleted(boolean taskCompleted){
         this.completed = taskCompleted;
@@ -58,9 +54,9 @@ public class Task{
     /** 
     getName
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: gets the name of the task
+    Parameters: none
+    Returns: String
     */
     public String getName(){
         return this.name;
@@ -68,9 +64,9 @@ public class Task{
     /** 
     setName
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: Sets the name of the task
+    Parameters: String newName
+    Returns: void
     */
     public void setName(String newName){
         this.name = newName;
@@ -78,9 +74,9 @@ public class Task{
     /** 
     getDeadline
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: gets the deadline for this task
+    Parameters: void
+    Returns: Date object
     */
     public Date getDeadline(){
         return this.deadline;
@@ -88,20 +84,20 @@ public class Task{
     /** 
     setDeadline
 
-    Purpose: 
-    Parameters: 
-    Returns: 
+    Purpose: sets the deadline for the object
+    Parameters: Date newDeadline
+    Returns: void
     */
     public void setDeadline(Date newDeadline){
         this.deadline = newDeadline;
     }
-/** 
-toString
+    /** 
+    toString
 
-Purpose: To represent the Task Object as a String. (for debugging purposes);
-Parameters: none
-Returns: A string representation of the task data.
-*/
+    Purpose: To represent the Task Object as a String. (for debugging purposes);
+    Parameters: none
+    Returns: A string representation of the task data.
+    */
     
     public String toString(){
         return "-Task Object- \nName: " + this.name + "\nDeadline: " + this.deadline.toString()+ " \nCompleted: "+this.completed;
