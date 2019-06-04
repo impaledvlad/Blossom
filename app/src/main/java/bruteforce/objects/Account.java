@@ -1,4 +1,4 @@
-package bruteforce;
+package bruteforce.objects;
 
 import java.util.*;
 
@@ -39,6 +39,17 @@ public class Account {
         public String getUsername(){
             return username;
         }
+    /**
+     getPassword
+
+     Purpose: returns the password of the account object.
+     Parameters: none
+     Returns: String
+     */
+
+    public String getPassword(){
+        return password;
+    }
     /** 
     setUsername
 
