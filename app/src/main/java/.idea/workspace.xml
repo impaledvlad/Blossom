@@ -9,20 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c92b2db-1c50-407a-a355-4a1961ff61e5" name="Default Changelist" comment="User 23 - fixed merge conflicts">
-      <change afterPath="$PROJECT_DIR$/../../../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/application/Services.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/application/Services.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/business/AccessTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/business/AccessTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/objects/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Plant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/objects/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Task.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/objects/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/objects/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java" afterDir="false" />
-    </list>
+    <list default="true" id="6c92b2db-1c50-407a-a355-4a1961ff61e5" name="Default Changelist" comment="User 23 - fixed merge conflicts" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,12 +178,12 @@
       <workItem from="1559618657108" duration="2000" />
       <workItem from="1559618689427" duration="961000" />
       <workItem from="1559767219061" duration="1181000" />
-      <workItem from="1559773124328" duration="156000" />
+      <workItem from="1559773124328" duration="453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2952000" />
+    <option name="totallyTimeSpent" value="3249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="15" y="4" width="1260" height="640" extended-state="0" />
