@@ -1,4 +1,4 @@
-package com.bruteforce.blossom.objects;
+package bruteforce.objects;
 
 import org.junit.Test;
 

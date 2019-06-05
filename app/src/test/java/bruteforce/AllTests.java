@@ -1,4 +1,4 @@
-package com.bruteforce.blossom;
+package bruteforce;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -10,9 +10,9 @@ import bruteforce.objects.Account;
 import bruteforce.objects.Plant;
 import bruteforce.objects.Task;
 
-import com.bruteforce.blossom.objects.AccountTest;
-import com.bruteforce.blossom.objects.PlantTest;
-import com.bruteforce.blossom.objects.TaskTest;
+import bruteforce.objects.AccountTest;
+import bruteforce.objects.PlantTest;
+import bruteforce.objects.TaskTest;
 
 /**
  Class: AllTests
