@@ -1,5 +1,5 @@
-package bruteforce;
-
+package bruteforce.business;
+import bruteforce.objects.*;
 /** 
 Class: AccessPlant
 Author: Your name
@@ -8,7 +8,7 @@ Purpose: Business layer logic for a users Plant.
 
 public class AccessPlant {
     //fields
-    //Plant accessedPlant;
+    Plant accessedPlant;
     //constructors
     public AccessPlant(){
 

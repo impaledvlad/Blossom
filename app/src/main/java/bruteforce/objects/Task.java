@@ -1,4 +1,4 @@
-package bruteforce;
+package bruteforce.objects;
 
 import java.util.*;
 /** 
@@ -10,7 +10,7 @@ Purpose: To model a task object. includes getters, setters, deadline, etc.
 public class Task{
     //TO DO - update toString to provide taskID.
 //fields
-    private static int taskIDIterator;
+    private static int taskIDIterator = 0;
     private String name;
     private Date deadline;
     private boolean completed;

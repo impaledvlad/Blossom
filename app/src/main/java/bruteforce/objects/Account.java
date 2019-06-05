@@ -1,4 +1,4 @@
-package bruteforce;
+package bruteforce.objects;
 
 import java.util.*;
 

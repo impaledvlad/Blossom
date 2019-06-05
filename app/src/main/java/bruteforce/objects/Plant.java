@@ -1,5 +1,5 @@
 
-package bruteforce;
+package bruteforce.objects;
 /** 
 Class: Plant
 Author: John Manning

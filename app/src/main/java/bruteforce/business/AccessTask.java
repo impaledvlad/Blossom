@@ -1,6 +1,6 @@
-package bruteforce;
-
-/** 
+package bruteforce.business;
+import bruteforce.objects.*;
+/**
 Class: AccessTask
 Author: Your name
 Purpose: Business layer logic for a user Task
@@ -8,7 +8,7 @@ Purpose: Business layer logic for a user Task
 
 public class AccessTask {
     //fields
-    //Task accessedTask;
+    Task accessedTask;
     //constructors
     public AccessTask(){
 
