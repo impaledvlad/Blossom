@@ -1,5 +1,6 @@
+
 package bruteforce.objects;
-/**
+/** 
 Class: Plant
 Author: John Manning
 Purpose: An object for the Plant feature of our project. 

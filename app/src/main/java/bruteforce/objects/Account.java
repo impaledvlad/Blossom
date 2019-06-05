@@ -1,6 +1,7 @@
 package bruteforce.objects;
+
 import java.util.*;
-import android.support.annotation.NonNull;
+
 /** 
 Class: Account
 Author: John Manning
@@ -13,18 +14,17 @@ public class Account {
     private ArrayList<Task> userTasks;
     private String username;
     private String password;
-    private int points;
     private Plant userPlant;
-    
+
 //constructors
     public Account(){
-        this.username = "username"; this.password = "password"; this.userTasks = null; this.points = 0;
+        this.username = "username"; this.password = "password"; this.userTasks = null;
     }
     public Account(String username, String password){
-        this.username = username; this.password = password; this.userTasks = new ArrayList<>(); this.points = 0;
+        this.username = username; this.password = password; this.userTasks = new ArrayList<Task>();
     }
-    public Account(String username, String password, ArrayList<Task> userTasks, int points){
-        this.username = username; this.password = password; this.userTasks = userTasks; this.points = points;
+    public Account(String username, String password, ArrayList<Task> userTasks){
+        this.username = username; this.password = password; this.userTasks = userTasks;
     }
 //methods
    
@@ -39,6 +39,17 @@ public class Account {
         public String getUsername(){
             return username;
         }
+    /**
+     getPassword
+
+     Purpose: returns the password of the account object.
+     Parameters: none
+     Returns: String
+     */
+
+    public String getPassword(){
+        return password;
+    }
     /** 
     setUsername
 
@@ -69,40 +80,19 @@ public class Account {
     public ArrayList<Task> getUserTaskList(){
         return this.userTasks;
     }
-    /**
-     getPoints
 
-     Purpose: returns the users Current Points
-     Parameters: none
-     Returns: int
-     */
-    public int getPoints() {
-        return this.points;
-    }
-    /**
-     setPoints
-
-     Purpose: set the current points when gain or redeem points
-     Parameters: none
-     Returns: int
-     */
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    /**
+    /** 
     toString
 
     Purpose: to represent the Object as a single string (useful for examining on the backend)
     Parameters: none
     Returns: A String
     */
-    @NonNull
     public String toString(){
         return
         "-Account Object-\nUsername: " + this.username + 
         "\nPassword: " +this.password+ 
-        "\nuserTasks: " +this.userTasks.toString()+ "" +
-                "\nPoints: " +this.points;
+        "\nuserTasks: " +this.userTasks.toString();
     }
+    
 }

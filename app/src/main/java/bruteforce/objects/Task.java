@@ -1,49 +1,40 @@
 package bruteforce.objects;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import android.support.annotation.NonNull;
 
-/**
+import java.util.*;
+/** 
 Class: Task
 Author: John Manning
 Purpose: To model a task object. includes getters, setters, deadline, etc.
 */
 
 public class Task{
+    //TO DO - update toString to provide taskID.
 //fields
-
+    private static int taskIDIterator = 0;
     private String name;
     private Date deadline;
     private boolean completed;
-    private int priority; //priority(0 for low priority, 1 for medium priority, 2 for high priority, -1 for default);
+    private int taskID;
     //task value
 
 //constructors
     public Task(){
-        this.deadline = new Date();
-        this.name = "";
-        this.completed = false;
-        this.priority = -1;
+    this.deadline = new Date();
+    this.name = "";
+    this.completed = false;
+    this.taskID = taskIDIterator++;
     }
     public Task(String name){
-        this.name = name;
-        this.completed = false;
-        this.deadline = null;
-        this.priority = -1;
+        this.name = name; this.completed = false;
+        this.taskID = taskIDIterator++;
+
     }
     public Task(String name, Date deadline){
-        this.name = name;
-        this.deadline = deadline;
-        this.completed = false;
-        this.priority = -1;
+        this.name = name; this.deadline = deadline; this.completed = false;
     }
-    public Task(String name, Date deadline, boolean completed, int priority){
-        this.name = name;
-        this.deadline = deadline;
-        this.completed = completed;
-        this.priority = priority;
+    public Task(String name, Date deadline, boolean completed){
+        this.name = name; this. deadline = deadline; this. completed = completed;
+        this.taskID = taskIDIterator++;
     }
 //methods
     /** 
@@ -66,7 +57,16 @@ public class Task{
     public void setCompleted(boolean taskCompleted){
         this.completed = taskCompleted;
     }
+      /** 
+    getTaskID()
 
+    Purpose: gets the unique taskID
+    Parameters: none
+    Returns: an int
+    */
+    public int getTaskID(){
+        return taskID;
+    }
     /** 
     getName
 
@@ -86,26 +86,6 @@ public class Task{
     */
     public void setName(String newName){
         this.name = newName;
-    }
-    /**
-     getPriority
-
-     Purpose: gets the priority for this task
-     Parameters: void
-     Returns: int
-     */
-    public int getPriority(){
-        return this.priority;
-    }
-    /**
-     setDeadline
-
-     Purpose: sets the priority for the object
-     Parameters: int priority
-     Returns: void
-     */
-    public void setPriority(int priority){
-        this.priority = priority;
     }
     /** 
     getDeadline
@@ -127,7 +107,6 @@ public class Task{
     public void setDeadline(Date newDeadline){
         this.deadline = newDeadline;
     }
-
     /** 
     toString
 
@@ -135,11 +114,10 @@ public class Task{
     Parameters: none
     Returns: A string representation of the task data.
     */
-    @NonNull
+    
     public String toString(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.CANADA);
-        String strDate = dateFormat.format(deadline);
-        return "-Task Object- \nName: " + this.name + "\nDeadline: " + strDate +"\nPriority: "+this.priority +" \nCompleted: "+this.completed ;
+        return "-Task Object- \nName: " + this.name + "\nDeadline: " + this.deadline.toString()+ 
+        " \nCompleted: "+this.completed +"\ntaskID: " + this.taskID;
     }
 
 }
