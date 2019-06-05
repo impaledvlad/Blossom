@@ -8,11 +8,13 @@ Purpose: To model a task object. includes getters, setters, deadline, etc.
 */
 
 public class Task{
+    //TO DO - update toString to provide taskID.
 //fields
-
+    private static int taskIDIterator;
     private String name;
     private Date deadline;
     private boolean completed;
+    private int taskID;
     //task value
 
 //constructors
@@ -20,16 +22,21 @@ public class Task{
     this.deadline = new Date();
     this.name = "";
     this.completed = false;
+    this.taskID = taskIDIterator++;
     }
     public Task(String name){
-
         this.name = name; this.completed = false;
+        this.taskID = taskIDIterator++;
+
     }
     public Task(String name, Date deadline){
-=        this.name = name; this.deadline = deadline; this.completed = false;
+    this.name = name; this.deadline = deadline; this.completed = false;
+    this.taskID = taskIDIterator++;
+
     }
     public Task(String name, Date deadline, boolean completed){
         this.name = name; this. deadline = deadline; this. completed = completed;
+        this.taskID = taskIDIterator++;
     }
 //methods
     /** 
@@ -52,7 +59,16 @@ public class Task{
     public void setCompleted(boolean taskCompleted){
         this.completed = taskCompleted;
     }
+      /** 
+    getTaskID()
 
+    Purpose: gets the unique taskID
+    Parameters: none
+    Returns: an int
+    */
+    public void getTaskID(){
+        return taskID;
+    }
     /** 
     getName
 
@@ -102,7 +118,8 @@ public class Task{
     */
     
     public String toString(){
-        return "-Task Object- \nName: " + this.name + "\nDeadline: " + this.deadline.toString()+ " \nCompleted: "+this.completed;
+        return "-Task Object- \nName: " + this.name + "\nDeadline: " + this.deadline.toString()+ 
+        " \nCompleted: "+this.completed +"\ntaskID: " + this.taskID;
     }
 
 }
