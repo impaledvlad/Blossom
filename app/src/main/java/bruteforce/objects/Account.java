@@ -27,8 +27,30 @@ public class Account {
         this.username = username; this.password = password; this.userTasks = userTasks;
     }
 //methods
-   
-    /** 
+
+    /**
+     getPassword
+
+     Purpose: returns the password of the account object.
+     Parameters: none
+     Returns: String
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     getPassword
+
+     Purpose: sets the password of the account object.
+     Parameters: string password
+     Returns: void
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
     getUsername
 
     Purpose: returns the name of the account object.
