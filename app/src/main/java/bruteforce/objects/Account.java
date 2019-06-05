@@ -35,9 +35,20 @@ public class Account {
     Parameters: none
     Returns: String
     */
-    
-    public String getUsername(){
-        return username;
+
+        public String getUsername(){
+            return username;
+        }
+    /**
+     getPassword
+
+     Purpose: returns the password of the account object.
+     Parameters: none
+     Returns: String
+     */
+
+    public String getPassword(){
+        return password;
     }
     /** 
     setUsername

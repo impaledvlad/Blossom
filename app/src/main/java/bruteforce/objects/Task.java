@@ -30,9 +30,7 @@ public class Task{
 
     }
     public Task(String name, Date deadline){
-    this.name = name; this.deadline = deadline; this.completed = false;
-    this.taskID = taskIDIterator++;
-
+        this.name = name; this.deadline = deadline; this.completed = false;
     }
     public Task(String name, Date deadline, boolean completed){
         this.name = name; this. deadline = deadline; this. completed = completed;
