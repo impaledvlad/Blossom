@@ -16,8 +16,7 @@ public class Services{
      Parameters: none
      Returns: AccountPersistence
      */
-    public static synchronized AccountPersistence getAccountPersistence()
-    {
+    public static synchronized AccountPersistence getAccountPersistence() {
         if(accountPersistence == null)
         {
             //accountPersistence = new AccountPersistenceStub();

@@ -1,7 +1,7 @@
 package bruteforce.business;
 import java.util.Date;
 
-import bruteforce.objects.*;
+import bruteforce.objects.Task;
 /**
 Class: AccessTask
 Author: Your name
@@ -11,15 +11,18 @@ Purpose: Business layer logic for a user Task
 public class AccessTask {
     //fields
     private Task currentTask;
+
     //constructors
-    public AccessTask()
-    {
+    public AccessTask() {
         currentTask = null;
     }
+
     public AccessTask(Task currentTask){
         this.currentTask = currentTask;
     }
+
     //methods
+
     /**
      updateName
 
@@ -27,10 +30,10 @@ public class AccessTask {
      Parameters: String newName
      Returns: void
      */
-    public void updateName(String newName)
-    {
+    public void updateName(String newName) {
         currentTask.setName(newName);
     }
+
     /**
      updateDeadline
 
@@ -38,10 +41,10 @@ public class AccessTask {
      Parameters: Date newDate
      Returns: void
      */
-    public void updateDeadline(Date newDate)
-    {
+    public void updateDeadline(Date newDate) {
         currentTask.setDeadline(newDate);
     }
+
     /**
      updateComplete
 
@@ -49,10 +52,10 @@ public class AccessTask {
      Parameters: boolean newComplete
      Returns: void
      */
-    public void updateComplete(boolean newComplete)
-    {
+    public void updateComplete(boolean newComplete) {
         currentTask.setCompleted(newComplete);
     }
+
     /**
      updatePriority
 
@@ -60,8 +63,7 @@ public class AccessTask {
      Parameters: boolean newComplete
      Returns: void
      */
-    public void updatePriority(int newPriority)
-    {
+    public void updatePriority(int newPriority) {
         currentTask.setPriority(newPriority);
     }
 
