@@ -8,7 +8,7 @@ Purpose: An object for the Plant feature of our project.
 */
 public class Plant{
 //fields
-    int growthLevel;
+    private int growthLevel;
 //constructors
     public Plant(){
         this.growthLevel = 0;
