@@ -1,5 +1,5 @@
 package bruteforce.objects;
-
+import android.support.annotation.NonNull;
 import java.util.*;
 
 /** 
@@ -15,16 +15,26 @@ public class Account {
     private String username;
     private String password;
     private Plant userPlant;
+    private int points;
 
 //constructors
     public Account(){
-        this.username = "username"; this.password = "password"; this.userTasks = null;
+        this.username = "username";
+        this.password = "password";
+        this.userTasks = null;
+        this.points = 0;
     }
     public Account(String username, String password){
-        this.username = username; this.password = password; this.userTasks = new ArrayList<Task>();
+        this.username = username;
+        this.password = password;
+        this.userTasks = new ArrayList<>();
+        this.points = 0;
     }
-    public Account(String username, String password, ArrayList<Task> userTasks){
-        this.username = username; this.password = password; this.userTasks = userTasks;
+    public Account(String username, String password, ArrayList<Task> userTasks, int points){
+        this.username = username;
+        this.password = password;
+        this.userTasks = userTasks;
+        this.points = points;
     }
 //methods
 
@@ -58,9 +68,9 @@ public class Account {
     Returns: String
     */
 
-        public String getUsername(){
+    public String getUsername(){
             return username;
-        }
+    }
     /**
      getPassword
 
@@ -103,6 +113,27 @@ public class Account {
         return this.userTasks;
     }
 
+    /**
+     getPoints
+
+     Purpose: returns the users Current Points
+     Parameters: none
+     Returns: int
+     */
+    public int getPoints() {
+        return this.points;
+    }
+    /**
+     setPoints
+
+     Purpose: set the current points when gain or redeem points
+     Parameters: none
+     Returns: int
+     */
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
     /** 
     toString
 
@@ -110,11 +141,13 @@ public class Account {
     Parameters: none
     Returns: A String
     */
+    @NonNull
     public String toString(){
         return
         "-Account Object-\nUsername: " + this.username + 
         "\nPassword: " +this.password+ 
-        "\nuserTasks: " +this.userTasks.toString();
+        "\nuserTasks: " +this.userTasks.toString()+
+                "\nPoints: " +this.points;
     }
     
 }

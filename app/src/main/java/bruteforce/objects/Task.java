@@ -1,6 +1,10 @@
 package bruteforce.objects;
 
-import java.util.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import android.support.annotation.NonNull;
 /** 
 Class: Task
 Author: John Manning
@@ -15,6 +19,7 @@ public class Task{
     private Date deadline;
     private boolean completed;
     private int taskID;
+    private int priority; //priority(0 for low priority, 1 for medium priority, 2 for high priority, -1 for default);
     //task value
 
 //constructors
@@ -23,18 +28,27 @@ public class Task{
     this.name = "";
     this.completed = false;
     this.taskID = taskIDIterator++;
+    this.priority = -1;
     }
     public Task(String name){
-        this.name = name; this.completed = false;
+        this.name = name;
+        this.completed = false;
         this.taskID = taskIDIterator++;
+        this.priority = -1;
 
     }
     public Task(String name, Date deadline){
-        this.name = name; this.deadline = deadline; this.completed = false;
+        this.name = name;
+        this.deadline = deadline;
+        this.completed = false;
+        this.priority = -1;
     }
-    public Task(String name, Date deadline, boolean completed){
-        this.name = name; this. deadline = deadline; this. completed = completed;
+    public Task(String name, Date deadline, boolean completed, int priority){
+        this.name = name;
+        this. deadline = deadline;
+        this. completed = completed;
         this.taskID = taskIDIterator++;
+        this.priority = priority;
     }
 //methods
     /** 
@@ -97,6 +111,28 @@ public class Task{
     public Date getDeadline(){
         return this.deadline;
     }
+
+    /**
+     setPriority
+
+     Purpose: sets the priority for the object
+     Parameters: int newPriority
+     Returns: void
+     */
+
+    public void setPriority(int newPriority){
+        this.priority = newPriority;
+    }
+    /**
+     getPriority
+
+     Purpose: gets the priority for this task
+     Parameters: void
+     Returns: int
+     */
+    public int getPriority(){
+        return this.priority;
+    }
     /** 
     setDeadline
 
@@ -104,6 +140,7 @@ public class Task{
     Parameters: Date newDeadline
     Returns: void
     */
+
     public void setDeadline(Date newDeadline){
         this.deadline = newDeadline;
     }
@@ -114,9 +151,11 @@ public class Task{
     Parameters: none
     Returns: A string representation of the task data.
     */
-    
+    @NonNull
     public String toString(){
-        return "-Task Object- \nName: " + this.name + "\nDeadline: " + this.deadline.toString()+ 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.CANADA);
+        String strDate = dateFormat.format(deadline);
+        return "-Task Object- \nName: " + this.name + "\nDeadline: " + strDate +
         " \nCompleted: "+this.completed +"\ntaskID: " + this.taskID;
     }
 

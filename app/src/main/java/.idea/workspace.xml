@@ -9,7 +9,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c92b2db-1c50-407a-a355-4a1961ff61e5" name="Default Changelist" comment="" />
+    <list default="true" id="6c92b2db-1c50-407a-a355-4a1961ff61e5" name="Default Changelist" comment="User 23 - fixed format">
+      <change beforePath="$PROJECT_DIR$/bruteforce/application/Services.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/application/Services.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bruteforce/business/AccessTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/bruteforce/business/AccessTask.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +37,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bruteforce/objects/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,10 +56,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bruteforce/objects/Account.java">
+        <entry file="file://$PROJECT_DIR$/bruteforce/application/Services.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="20" />
+            <state>
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bruteforce/business/AccessTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#288#289#0" expanded="true" />
+                <element signature="e#322#323#0" expanded="true" />
+                <element signature="e#363#364#0" expanded="true" />
+                <element signature="e#409#410#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#643#644#0" expanded="true" />
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#1073#1074#0" expanded="true" />
+                <element signature="e#1126#1127#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+                <element signature="e#1372#1373#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bruteforce/persistence/TaskPersistence.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bruteforce/objects/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1819">
+              <caret line="111" column="27" selection-start-line="124" selection-start-column="5" selection-end-line="131" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bruteforce/objects/Plant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="153">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -70,6 +125,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/bruteforce/objects/AccountPersistence.java" />
+        <option value="$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java" />
+        <option value="$PROJECT_DIR$/bruteforce/objects/Task.java" />
+        <option value="$PROJECT_DIR$/bruteforce/objects/Account.java" />
+        <option value="$PROJECT_DIR$/bruteforce/application/Services.java" />
+        <option value="$PROJECT_DIR$/bruteforce/business/AccessTask.java" />
       </list>
     </option>
   </component>
@@ -92,7 +152,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -104,6 +164,18 @@
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bruteforce" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bruteforce" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bruteforce" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
@@ -121,11 +193,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sample-project-master" />
@@ -156,16 +229,18 @@
       <workItem from="1559603772455" duration="179000" />
       <workItem from="1559618657108" duration="2000" />
       <workItem from="1559618689427" duration="961000" />
+      <workItem from="1559767219061" duration="1181000" />
+      <workItem from="1559773124328" duration="1410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1615000" />
+    <option name="totallyTimeSpent" value="4206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="15" y="4" width="1260" height="640" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26206324" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2703827" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -182,10 +257,11 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.50083196" side_tool="true" visible="true" weight="0.3280943" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5016639" side_tool="true" visible="true" weight="0.3280943" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Build" order="12" sideWeight="0.49916804" visible="true" weight="0.3280943" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49916804" weight="0.3280943" />
+      <window_info anchor="bottom" id="Build" order="12" sideWeight="0.49916804" weight="0.3280943" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" sideWeight="0.4983361" visible="true" weight="0.3280943" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -201,50 +277,87 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="User 23 - fixed merge conflicts" />
+    <MESSAGE value="User 23 - fixed format" />
+    <option name="LAST_COMMIT_MESSAGE" value="User 23 - fixed format" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bruteforce/application/Services.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/bruteforce/business/AccessAccount.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/bruteforce/business/AccessPlant.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/bruteforce/business/AccessTask.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/bruteforce/application/Main.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/bruteforce/objects/AccountPersistence.java">
+    <entry file="file://$PROJECT_DIR$/bruteforce/objects/AccountPersistence.java" />
+    <entry file="file://$PROJECT_DIR$/bruteforce/objects/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bruteforce/objects/Plant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="1819">
+          <caret line="111" column="27" selection-start-line="124" selection-start-column="5" selection-end-line="131" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce/objects/Plant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce/persistence/TaskPersistence.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce/persistence/AccountPersistence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bruteforce/objects/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="20" />
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce/business/AccessTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#363#364#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+            <element signature="e#1126#1127#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bruteforce/application/Services.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
