@@ -15,7 +15,7 @@ public class Account {
     private String username;
     private String password;
     private Plant userPlant;
-    
+
 //constructors
     public Account(){
         this.username = "username"; this.password = "password"; this.userTasks = null;
@@ -80,6 +80,7 @@ public class Account {
     public ArrayList<Task> getUserTaskList(){
         return this.userTasks;
     }
+
     /** 
     toString
 
@@ -93,4 +94,5 @@ public class Account {
         "\nPassword: " +this.password+ 
         "\nuserTasks: " +this.userTasks.toString();
     }
+    
 }
