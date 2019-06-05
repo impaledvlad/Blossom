@@ -66,7 +66,7 @@ public class Task{
     Parameters: none
     Returns: an int
     */
-    public void getTaskID(){
+    public int getTaskID(){
         return taskID;
     }
     /** 
