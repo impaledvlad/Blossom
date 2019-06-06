@@ -10,30 +10,28 @@ Purpose: This class represents a single user account. the account has an ArrayLi
 */
 
 public class Account {
-//fields
-    private ArrayList<Task> userTasks;
+	
+	//fields
     private String username;
     private String password;
     private Plant userPlant;
     private int points;
 
-//constructors
+    //constructors
     public Account(){
         this.username = "username";
         this.password = "password";
-        this.userTasks = null;
         this.points = 0;
     }
+    
     public Account(String username, String password){
         this.username = username;
         this.password = password;
-        this.userTasks = new ArrayList<>();
         this.points = 0;
     }
-    public Account(String username, String password, ArrayList<Task> userTasks, int points){
+    public Account(String username, String password, int points){
         this.username = username;
         this.password = password;
-        this.userTasks = userTasks;
         this.points = points;
     }
 //methods
@@ -102,17 +100,7 @@ public class Account {
     public Plant getPlant(){
         return this.userPlant;
     }
-    /** 
-    getUserTaskList
-
-    Purpose: returns the users TaskList
-    Parameters: none
-    Returns: ArrayList<Task>
-    */
-    public ArrayList<Task> getUserTaskList(){
-        return this.userTasks;
-    }
-
+    
     /**
      getPoints
 
@@ -145,9 +133,7 @@ public class Account {
     public String toString(){
         return
         "-Account Object-\nUsername: " + this.username + 
-        "\nPassword: " +this.password+ 
-        "\nuserTasks: " +this.userTasks.toString()+
-                "\nPoints: " +this.points;
+        "\nPassword: " +this.password + "\nPoints: " +this.points;
     }
     
 }
