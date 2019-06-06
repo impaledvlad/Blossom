@@ -13,8 +13,9 @@ Purpose: To model a task object. includes getters, setters, deadline, etc.
 
 public class Task{
     //TO DO - update toString to provide taskID.
-//fields
+	//fields
     private static int taskIDIterator = 0;
+    private String username;
     private String name;
     private Date deadline;
     private boolean completed;
@@ -22,16 +23,19 @@ public class Task{
     private int priority; //priority(0 for low priority, 1 for medium priority, 2 for high priority, -1 for default);
     //task value
 
-//constructors
+    //constructors
     public Task(){
-    this.deadline = new Date();
-    this.name = "";
-    this.completed = false;
-    this.taskID = taskIDIterator++;
-    this.priority = -1;
+    	this.deadline = new Date();
+    	this.name = "";
+    	this.username = "";
+    	this.completed = false;
+    	this.taskID = taskIDIterator++;
+    	this.priority = -1;
     }
+    
     public Task(String name){
         this.name = name;
+        this.username = "";
         this.completed = false;
         this.taskID = taskIDIterator++;
         this.priority = -1;
@@ -43,10 +47,12 @@ public class Task{
         this.completed = false;
         this.priority = -1;
     }
-    public Task(String name, Date deadline, boolean completed, int priority){
+    
+    public Task(String name, String username, Date deadline, boolean completed, int priority){
         this.name = name;
-        this. deadline = deadline;
-        this. completed = completed;
+        this.username = username; 
+        this.deadline = deadline;
+        this.completed = completed;
         this.taskID = taskIDIterator++;
         this.priority = priority;
     }
