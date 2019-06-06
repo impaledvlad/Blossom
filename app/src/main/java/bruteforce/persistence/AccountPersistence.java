@@ -8,9 +8,39 @@ import bruteforce.objects.Account;
  */
 public interface AccountPersistence {
 
+    /**
+     insertAccount
+
+     Purpose: insert a new account to our account list
+     Parameters: Account currentAccount
+     Returns: None
+     */
     void insertAccount(Account currentAccount);
 
-    Account updateAccount(Account currentAccount);
+    /**
+     updateAccount
 
-    void deleteAccount(Account currentAccount);
+     Purpose: update an account in our account list
+     Parameters: Account currentAccount
+     Returns: boolean true if success, false if not
+     */
+    boolean updateAccount(Account currentAccount);
+
+    /**
+     deleteAccount
+
+     Purpose: delete an account in our task list
+     Parameters: Account currentAccount
+     Returns: boolean true if success, false if not
+     */
+    boolean deleteAccount(Account currentAccount);
+
+    /**
+     getAccount
+
+     Purpose: get an account with the given userName
+     Parameters: String userName
+     Returns: boolean true if success, false if not
+     */
+    Account getAccount(String userName);
 }

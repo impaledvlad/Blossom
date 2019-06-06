@@ -59,6 +59,16 @@ public class Task{
         this.priority = priority;
     }
 //methods
+    /**
+     getUsername()
+
+     Purpose: get the username of a task
+     Parameters: none
+     Returns: Returns the String username
+     */
+    public String getUsername(){
+        return username;
+    }
     /** 
     getCompleted
 
