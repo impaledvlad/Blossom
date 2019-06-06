@@ -43,11 +43,6 @@ public class Task{
     }
     public Task(String name, Date deadline){
         this.name = name;
-        /**
-         change here
-         add username instance variable to keep track which tasks user hold
-         add taskIDIterator to update task ID
-         */
         this.username = "";
         this.deadline = deadline;
         this.completed = false;

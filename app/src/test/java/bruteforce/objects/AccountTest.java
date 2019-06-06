@@ -27,9 +27,9 @@ public class AccountTest {
         Account user = new Account();
         System.out.println("\nStarting testAccountFirstConstructor");
 
-        assertNotNull("account object should not be null",user);
-        assertEquals("getUserName() in account classs is not correct","username",user.getUsername());
-        assertEquals("getPassword() in account class is not correct","password",user.getPassword());
+        assertNotNull("account object should not be null", user);
+        assertEquals("getUserName() in account classs is not correct", "username", user.getUsername());
+        assertEquals("getPassword() in account class is not correct", "password", user.getPassword());
 
         System.out.println("\nFinished testAccountFirstConstructor");
 
@@ -45,12 +45,12 @@ public class AccountTest {
 
     @Test
     public void testAccountSecondConstructor() {
-        Account user = new Account("John","john987");
+        Account user = new Account("John", "john987");
         System.out.println("\nStarting testAccountSecondConstructor");
 
-        assertNotNull("account object should not be null",user);
-        assertEquals("getUserName() in account classs is not correct","John",user.getUsername());
-        assertEquals("getPassword() in account class is not correct","john987",user.getPassword());
+        assertNotNull("account object should not be null", user);
+        assertEquals("getUserName() in account classs is not correct", "John", user.getUsername());
+        assertEquals("getPassword() in account class is not correct", "john987", user.getPassword());
 
         System.out.println("\nFinished testAccountSecondConstructor");
     }
@@ -67,11 +67,11 @@ public class AccountTest {
     public void testList() {
         System.out.println("\nStarting testAccountThirdConstructor");
 
-        Account user = new Account("John","john987",25);
-        assertNotNull("list which contains tasks should not be null",user);
-        assertEquals("getUserName() in account classs is not correct","John",user.getUsername());
-        assertEquals("getPassword() in account class is not correct","john987",user.getPassword());
-        assertEquals("getPoints() in account class is not correct",25,user.getPoints());
+        Account user = new Account("John", "john987", 25);
+        assertNotNull("list which contains tasks should not be null", user);
+        assertEquals("getUserName() in account classs is not correct", "John", user.getUsername());
+        assertEquals("getPassword() in account class is not correct", "john987", user.getPassword());
+        assertEquals("getPoints() in account class is not correct", 25, user.getPoints());
 
         System.out.println("Finished testAccountThirdConstructor");
     }
