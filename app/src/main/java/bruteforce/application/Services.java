@@ -8,6 +8,7 @@ import bruteforce.persistence.stubs.*;
  */
 public class Services{
     private static AccountPersistence accountPersistence = null;
+    private static TaskPersistence taskPersistence = null;
 
     /**
      getAccountPersistence
@@ -17,11 +18,26 @@ public class Services{
      Returns: AccountPersistence
      */
     public static synchronized AccountPersistence getAccountPersistence() {
-        if(accountPersistence == null)
-        {
-            //accountPersistence = new AccountPersistenceStub();
+        if(accountPersistence == null) {
+        	accountPersistence = new AccountPersistenceStub();
         }
 
         return accountPersistence;
     }
+    
+    /**
+    getTaskPersistence
+
+    Purpose: return a stub TaskPersistence if there are no data base created
+    Parameters: none
+    Returns: TaskPersistence
+    */
+    public static synchronized TaskPersistence getTaskPersistence() {
+       if(taskPersistence == null) {
+    	   taskPersistence = new TaskPersistenceStub();
+       }
+
+       return taskPersistence;
+   }
+
 }
