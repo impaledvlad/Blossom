@@ -2,7 +2,6 @@ package bruteforce.business;
 import java.util.Date;
 
 import bruteforce.objects.Account;
-import bruteforce.objects.Task;
 import bruteforce.persistence.AccountPersistence;
 import bruteforce.application.Services;
 
@@ -17,78 +16,85 @@ public class AccessAccount {
     private Account currentAccount;
     private AccountPersistence accountPersistence;
     //constructors
-    public AccessAccount(Account currentAccount){
+    public AccessAccount(){
         accountPersistence = Services.getAccountPersistence();
-        this.currentAccount = currentAccount;
+        this.currentAccount = null;
+    }
+    public AccessAccount(String userName){
+        accountPersistence = Services.getAccountPersistence();
+        currentAccount = accountPersistence.getAccount(userName);
     }
     //methods
 
-    /**
-     addTask
 
-     Purpose: adds a task to the users task list
-     Parameters: String name, Date deadline
+    /**
+     getAccount
+
+     Purpose: set a specific account base on username to current account
+     Parameters: String accountName
      Returns: void
      */
-
-    public void addTask(String name, Date deadline){
-        Task newTask = new Task(name,deadline);
-      //  currentAccount.getUserTaskList().add(newTask);
+    public void getAccount(String userName) {
+        currentAccount = accountPersistence.getAccount(userName);
     }
+
     /**
-     removeTask
+     insertAccount
 
-     Purpose: deletes a task from the users task list.
-     Parameters: int taskID
-     Returns: the deleted task
+     Purpose: insert an account to our database
+     Parameters: Task task
+     Returns: void
      */
-    public Task deleteTask(int taskID){
-       int index = findTask(taskID);
-       return currentAccount.getUserTaskList().remove(index);
-
+    public void insertAccount(Account account){
+        accountPersistence.insertAccount(account);
     }
-     /**
-     findTask
 
-     Purpose: returns the index of a task (in the arraylist)
-     Parameters: int taskID = the unique taskId you want to get the index of
-     Returns: integer i = index of the passed taskID
+    /**
+     updateAccount
+
+     Purpose: update an account into database
+     Parameters: None
+     Returns: void
      */
-    public int findTask(int taskID){
-        boolean found = false;
-        //i = index of task. 
-        int i = 0; 
-        //loop until found is true
-        while(!found){
-            //if the task at index i matches the taskID, set found to true.
-        if(currentAccount.getUserTaskList().get(i).getTaskID() == taskID){
-            found = true;
-        }else{
-            i++;
+    public void updateAccount(){
+        if(currentAccount!=null) {
+            accountPersistence.updateAccount(currentAccount);
         }
+    }
 
+    /**
+     deleteAccount
+
+     Purpose: delete task from the database
+     Parameters: None
+     Returns: void
+     */
+    public void deleteAccount(){
+        if(currentAccount!=null) {
+            accountPersistence.deleteAccount(currentAccount);
         }
-        return i;
     }
-    public void updateUsername(String newUsername){
-        currentAccount.setUsername(newUsername);
+
+    /**
+     updatePoints
+
+     Purpose: update the point for the current user(make sure user can't change it)
+     Parameters: int newPoints
+     Returns: void
+     */
+    public void updatePoints(int newPoints){
+        currentAccount.setPoints(newPoints);
+        updateAccount();
     }
+
+    /**
+     updatePassword
+
+     Purpose: update the passWord for the current user
+     Parameters: String newPassword
+     Returns: void
+     */
     public void updatePassword(String newPassword){
         currentAccount.setPassword(newPassword);
-
     }
-    /**
-     updateTask
-
-     Purpose: returns an accessTask object sepcific to the task you ask for 
-     Parameters: int taskID = the unique taskId for the task you want access to
-     Returns: An Accessed Task object.
-     */
-//    public void updateTask(int taskID){
-//    AccessTask currentTask = new AccessTask(currentAccount.getUserTaskList().get(findTask(taskID)));
-//    return currentTask;
-//    }
-
-    
-    
 }
