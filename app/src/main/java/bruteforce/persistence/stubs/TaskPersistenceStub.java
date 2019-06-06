@@ -1,7 +1,11 @@
 package bruteforce.persistence.stubs;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import bruteforce.persistence.TaskPersistence;
+import bruteforce.objects.Task;
 public class TaskPersistenceStub implements TaskPersistence {
 	
 	private List<Task> tasks;
@@ -14,15 +18,15 @@ public class TaskPersistenceStub implements TaskPersistence {
 		
 	}
 	
-	void insertTask(Task currentTask) {
+	public void insertTask(Task currentTask) {
 		tasks.add(currentTask);
 	}
 
-    Task updateTask(Task currentTask) {
-    	
+    public Task updateTask(Task currentTask) {
+    	return null;
     }
 
-    void deleteTask(Task currentTask) {
+    public void deleteTask(Task currentTask) {
     	
     }
 }

@@ -1,9 +1,12 @@
 package bruteforce.business;
 import java.util.Date;
 
-import bruteforce.objects.*;
+import bruteforce.objects.Account;
 import bruteforce.objects.Task;
-/** 
+import bruteforce.persistence.AccountPersistence;
+import bruteforce.application.Services;
+
+/**
 Class: AccessAccount
 Author: John Manning
 Purpose: Business layer logic for a user account.
@@ -12,9 +15,11 @@ Purpose: Business layer logic for a user account.
 public class AccessAccount {
     //fields
     private Account currentAccount;
+    private AccountPersistence accountPersistence;
     //constructors
     public AccessAccount(Account currentAccount){
-            this.currentAccount = currentAccount;
+        accountPersistence = Services.getAccountPersistence();
+        this.currentAccount = currentAccount;
     }
     //methods
 
@@ -28,7 +33,7 @@ public class AccessAccount {
 
     public void addTask(String name, Date deadline){
         Task newTask = new Task(name,deadline);
-        currentAccount.getUserTaskList().add(newTask);
+      //  currentAccount.getUserTaskList().add(newTask);
     }
     /**
      removeTask

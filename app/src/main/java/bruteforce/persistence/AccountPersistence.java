@@ -8,7 +8,7 @@ import bruteforce.objects.Account;
  */
 public interface AccountPersistence {
 
-    Account insertAccount(Account currentAccount);
+    void insertAccount(Account currentAccount);
 
     Account updateAccount(Account currentAccount);
 

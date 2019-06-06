@@ -1,12 +1,9 @@
-package bruteforce.srsys.application;
+package bruteforce.application;
 
-import bruteforce.srsys.presentation.CLI;
-
-public class Main() {
+public class Main{
     
-    private static final services;
+    private static final Services currentService;
 
-    public static void main(Strng[] args) { 
-    	services.getAccountPersistence();
+    public static void main(String[] args) {
     }
 }

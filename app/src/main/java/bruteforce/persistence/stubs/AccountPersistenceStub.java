@@ -1,7 +1,10 @@
 package bruteforce.persistence.stubs;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import bruteforce.objects.Account;
+import bruteforce.persistence.AccountPersistence;
 public class AccountPersistenceStub implements AccountPersistence {
 	
 	private List<Account> accounts;
@@ -13,9 +16,12 @@ public class AccountPersistenceStub implements AccountPersistence {
 		accounts.add(new Account("username2", "password2", 1 ));
 	}
 
-    Account insertAccount(Account currentAccount);
+    public void insertAccount(Account currentAccount){
+	}
 
-    Account updateAccount(Account currentAccount);
+    public Account updateAccount(Account currentAccount){
+    	return null;
+	}
 
-    void deleteAccount(Account currentAccount);
+    public void deleteAccount(Account currentAccount){}
 }

@@ -8,7 +8,7 @@ import bruteforce.objects.Task;
  */
 public interface TaskPersistence {
 
-    Task insertTask(Task currentTask);
+    void insertTask(Task currentTask);
 
     Task updateTask(Task currentTask);
 
