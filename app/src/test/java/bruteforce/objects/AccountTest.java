@@ -64,7 +64,7 @@ public class AccountTest {
      */
 
     @Test
-    public void testList() {
+    public void testAccountThirdConstructor() {
         System.out.println("\nStarting testAccountThirdConstructor");
 
         Account user = new Account("John", "john987", 25);
