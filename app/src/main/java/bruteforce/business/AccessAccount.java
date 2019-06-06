@@ -44,8 +44,11 @@ public class AccessAccount {
      */
     public Task deleteTask(int taskID){
        int index = findTask(taskID);
-       return currentAccount.getUserTaskList().remove(index);
-
+        /**
+         Error when compiling
+         return currentAccount.getUserTaskList().remove(index);
+         */
+        return null;
     }
      /**
      findTask
@@ -57,10 +60,14 @@ public class AccessAccount {
     public int findTask(int taskID){
         boolean found = false;
         //i = index of task. 
-        int i = 0; 
+        int i = 0;
+
+        /**
+         Error when compiling
         //loop until found is true
         while(!found){
             //if the task at index i matches the taskID, set found to true.
+
         if(currentAccount.getUserTaskList().get(i).getTaskID() == taskID){
             found = true;
         }else{
@@ -68,6 +75,8 @@ public class AccessAccount {
         }
 
         }
+         */
+
         return i;
     }
     public void updateUsername(String newUsername){

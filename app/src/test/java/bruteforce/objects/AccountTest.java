@@ -1,13 +1,7 @@
 package bruteforce.objects;
 
 import org.junit.Test;
-
-import bruteforce.objects.Account;
-import bruteforce.objects.Task;
 import static org.junit.Assert.*;
-
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,7 +12,7 @@ import java.util.Date;
  */
 
 public class AccountTest {
-    private List<Task> list;
+
 
     /**
      testAccountFirstConstructor
@@ -73,17 +67,11 @@ public class AccountTest {
     public void testList() {
         System.out.println("\nStarting testAccountThirdConstructor");
 
-        list = new ArrayList<>();
-        Task firstTask = new Task("John");
-        list.add(firstTask);
-        Task secondTask;
-        Date date;
-        date = new Date(2019,8,20);
-        secondTask = new Task("John",date,true);
-        list.add(secondTask);
-
-        Account user = new Account("John","john987", (ArrayList<Task>) list);
-        assertNotNull("list which contains tasks should not be null",user.getUserTaskList());
+        Account user = new Account("John","john987",25);
+        assertNotNull("list which contains tasks should not be null",user);
+        assertEquals("getUserName() in account classs is not correct","John",user.getUsername());
+        assertEquals("getPassword() in account class is not correct","john987",user.getPassword());
+        assertEquals("getPoints() in account class is not correct",25,user.getPoints());
 
         System.out.println("Finished testAccountThirdConstructor");
     }
