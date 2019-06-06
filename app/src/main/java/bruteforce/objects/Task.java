@@ -99,16 +99,7 @@ public class Task{
     public int getTaskID(){
         return taskID;
     }
-    /**
-     getUserName
 
-     Purpose: gets the user name of the account
-     Parameters: none
-     Returns: String
-     */
-    public String getUsername(){
-        return this.username;
-    }
     /** 
     getName
 
