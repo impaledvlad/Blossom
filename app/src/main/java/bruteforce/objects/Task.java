@@ -43,8 +43,10 @@ public class Task{
     }
     public Task(String name, Date deadline){
         this.name = name;
+        this.username = "";
         this.deadline = deadline;
         this.completed = false;
+        this.taskID = taskIDIterator++;
         this.priority = -1;
     }
     
@@ -86,6 +88,16 @@ public class Task{
     */
     public int getTaskID(){
         return taskID;
+    }
+    /**
+     getUserName
+
+     Purpose: gets the user name of the account
+     Parameters: none
+     Returns: String
+     */
+    public String getUsername(){
+        return this.username;
     }
     /** 
     getName
