@@ -2,7 +2,6 @@ package bruteforce.objects;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.Date;
 
 /**
  Class: AccountTest
@@ -13,63 +12,59 @@ import java.util.Date;
 
 public class AccountTest {
 
-
     /**
-     testAccountFirstConstructor
+    testAccountFirstConstructor
 
-     Purpose: test first constructor of Account class, this class has no parameter
-     Parameters: none
-     Returns: none, must print out finished to pass the test
-     */
-
+    Purpose: test first constructor of Account class, this class has no parameter
+    Parameters: none
+    Returns: none, must print out finished to pass the test
+    */
     @Test
     public void testAccountFirstConstructor() {
         Account user = new Account();
         System.out.println("\nStarting testAccountFirstConstructor");
 
-        assertNotNull("account object should not be null", user);
-        assertEquals("getUserName() in account classs is not correct", "username", user.getUsername());
+        assertNotNull("Account object should not be null", user);
+        assertEquals("getUserName() in account class is not correct", "username", user.getUsername());
         assertEquals("getPassword() in account class is not correct", "password", user.getPassword());
 
-        System.out.println("\nFinished testAccountFirstConstructor");
+        System.out.println("Finished testAccountFirstConstructor");
 
     }
 
     /**
-     testAccountSecondConstructor
+    testAccountSecondConstructor
 
-     Purpose: test second constructor of Account class, this class has two parameters
-     Parameters: none
-     Returns: none, must print out finished to pass the test
-     */
-
+    Purpose: test second constructor of Account class, this class has two parameters
+    Parameters: none
+    Returns: none, must print out finished to pass the test
+    */
     @Test
     public void testAccountSecondConstructor() {
         Account user = new Account("John", "john987");
         System.out.println("\nStarting testAccountSecondConstructor");
 
-        assertNotNull("account object should not be null", user);
-        assertEquals("getUserName() in account classs is not correct", "John", user.getUsername());
+        assertNotNull("Account object should not be null", user);
+        assertEquals("getUserName() in account class is not correct", "John", user.getUsername());
         assertEquals("getPassword() in account class is not correct", "john987", user.getPassword());
 
-        System.out.println("\nFinished testAccountSecondConstructor");
+        System.out.println("Finished testAccountSecondConstructor");
     }
 
     /**
-     testAccountThirdConstructor
+    testAccountThirdConstructor
 
-     Purpose: test third constructor of Account class, this class has three parameters
-     Parameters: none
-     Returns: none, must print out finished to pass the test
-     */
-
+    Purpose: test third constructor of Account class, this class has three parameters
+    Parameters: none
+    Returns: none, must print out finished to pass the test
+    */
     @Test
     public void testAccountThirdConstructor() {
         System.out.println("\nStarting testAccountThirdConstructor");
 
         Account user = new Account("John", "john987", 25);
-        assertNotNull("list which contains tasks should not be null", user);
-        assertEquals("getUserName() in account classs is not correct", "John", user.getUsername());
+        assertNotNull("Account object should not be null", user);
+        assertEquals("getUserName() in account class is not correct", "John", user.getUsername());
         assertEquals("getPassword() in account class is not correct", "john987", user.getPassword());
         assertEquals("getPoints() in account class is not correct", 25, user.getPoints());
 

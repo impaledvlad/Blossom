@@ -7,10 +7,9 @@ import java.util.List;
 import bruteforce.persistence.TaskPersistence;
 import bruteforce.objects.Task;
 public class TaskPersistenceStub implements TaskPersistence {
-	//fields
+
 	private List<Task> tasks;
 
-	//constructors
 	public TaskPersistenceStub() {
 		this.tasks = new ArrayList<>();
 		
@@ -19,26 +18,25 @@ public class TaskPersistenceStub implements TaskPersistence {
 		
 	}
 
-	//methods
 	/**
-	 insertTask
+	insertTask
 
-	 Purpose: insert a new task to our task list
-	 Parameters: Task currentTask
-	 Returns: None
-	 */
+	Purpose: insert a new task to our task list
+	Parameters: Task currentTask
+	Returns: None
+	*/
 	@Override
 	public void insertTask(Task currentTask) {
 		tasks.add(currentTask);
 	}
 
 	/**
-	 updateTask
+	updateTask
 
-	 Purpose: update a task in our task list
-	 Parameters: Task currentTask
-	 Returns: boolean true if success, false if not
-	 */
+	Purpose: update a task in our task list
+	Parameters: Task currentTask
+	Returns: boolean true if success, false if not
+	*/
 	@Override
     public boolean updateTask(Task currentTask) {
 //		Task task;
@@ -61,12 +59,12 @@ public class TaskPersistenceStub implements TaskPersistence {
     }
 
 	/**
-	 deleteTask
+	deleteTask
 
-	 Purpose: delete a task in our task list
-	 Parameters: Task currentTask
-	 Returns: boolean true if success, false if not
-	 */
+	Purpose: delete a task in our task list
+	Parameters: Task currentTask
+	Returns: boolean true if success, false if not
+	*/
     @Override
     public boolean deleteTask(Task currentTask) {
 //		Task task;
@@ -91,12 +89,12 @@ public class TaskPersistenceStub implements TaskPersistence {
 	}
 
 	/**
-	 getTasks
+	getTasks
 
-	 Purpose: get a list of task from that user
-	 Parameters: String accountName
-	 Returns: List<Task>
-	 */
+	Purpose: get a list of task from that user
+	Parameters: String accountName
+	Returns: List<Task>
+	*/
 	@Override
     public List<Task> getTasks(String accountName)
 	{
@@ -110,5 +108,4 @@ public class TaskPersistenceStub implements TaskPersistence {
 		}
 		return newTasks;
 	}
-
 }
