@@ -1,6 +1,5 @@
 package bruteforce.objects;
 import android.support.annotation.NonNull;
-import java.util.*;
 
 /** 
 Class: Account
@@ -10,14 +9,12 @@ Purpose: This class represents a single user account. the account has an ArrayLi
 */
 
 public class Account {
-	
-	//fields
+
     private String username;
     private String password;
     private Plant userPlant;
     private int points;
 
-    //constructors
     public Account(){
         this.username = "username";
         this.password = "password";
@@ -34,7 +31,6 @@ public class Account {
         this.password = password;
         this.points = points;
     }
-//methods
 
     /**
      getPassword
@@ -65,9 +61,8 @@ public class Account {
     Parameters: none
     Returns: String
     */
-
-    public String getUsername(){
-            return username;
+    public String getUsername() {
+        return username;
     }
 
     /**
@@ -77,9 +72,10 @@ public class Account {
     Parameters: String newName
     Returns: void
     */
-    public void setUsername(String newName){
+    public void setUsername(String newName) {
         this.username = newName;
     }
+
     /** 
     getPlant
 
@@ -87,8 +83,8 @@ public class Account {
     Parameters: none
     Returns: Plant
     */
-    public Plant getPlant(){
-        return this.userPlant;
+    public Plant getPlant() {
+        return userPlant;
     }
     
     /**
@@ -99,8 +95,9 @@ public class Account {
      Returns: int
      */
     public int getPoints() {
-        return this.points;
+        return points;
     }
+
     /**
      setPoints
 
@@ -121,9 +118,6 @@ public class Account {
     */
     @NonNull
     public String toString(){
-        return
-        "-Account Object-\nUsername: " + this.username + 
-        "\nPassword: " +this.password + "\nPoints: " +this.points;
+        return "-Account Object-\nUsername: " + this.username + "\nPassword: " + this.password + "\nPoints: " + this.points;
     }
-    
 }

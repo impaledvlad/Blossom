@@ -7,36 +7,35 @@ import bruteforce.persistence.TaskPersistence;
 import bruteforce.application.Services;
 /**
 Class: AccessTask
-Author: Your name
+Author:  Yunpeng Zhong
 Purpose: Business layer logic for a user Task
 */
 
 public class AccessTask {
-    //fields
+
     private List<Task> tasks;
     private TaskPersistence taskPersistence;
     private Task currentTask;
 
-    //constructors
-    public AccessTask(){
+    public AccessTask() {
         taskPersistence = Services.getTaskPersistence();
         tasks = null;
         currentTask = null;
     }
 
-    public AccessTask(String userName){
+    public AccessTask(String userName) {
         taskPersistence = Services.getTaskPersistence();
         tasks = taskPersistence.getTasks(userName);
         currentTask = null;
     }
-    //methods
-    /**
-     getTask
 
-     Purpose: get a specific task base on accountName and taskID
-     Parameters: String accountName, taskID
-     Returns: void
-     */
+    /**
+    getTask
+
+    Purpose: get a specific task base on accountName and taskID
+    Parameters: String accountName, taskID
+    Returns: void
+    */
     public void getTask(int taskId) {
         if(tasks != null) {
             Task task;
@@ -51,12 +50,12 @@ public class AccessTask {
     }
 
     /**
-     insertTask
+    insertTask
 
-     Purpose: insert a new Task into task list
-     Parameters: Task task
-     Returns: void
-     */
+    Purpose: insert a new Task into task list
+    Parameters: Task task
+    Returns: void
+    */
     public void insertTask(Task task){
         taskPersistence.insertTask(task);
         tasksRenew(task.getName());
@@ -64,12 +63,12 @@ public class AccessTask {
     }
 
     /**
-     updateTask
+    updateTask
 
-     Purpose: update task into database
-     Parameters: Task task
-     Returns: void
-     */
+    Purpose: update task into database
+    Parameters: Task task
+    Returns: void
+    */
     public void updateTask(){
         if(currentTask!=null) {
             taskPersistence.updateTask(currentTask);
@@ -79,12 +78,12 @@ public class AccessTask {
     }
 
     /**
-     deleteTask
+    deleteTask
 
-     Purpose: delete task from the task list
-     Parameters: Task task
-     Returns: void
-     */
+    Purpose: delete task from the task list
+    Parameters: Task task
+    Returns: void
+    */
     public void deleteTask(){
         if(currentTask!=null) {
             taskPersistence.deleteTask(currentTask);
@@ -94,12 +93,12 @@ public class AccessTask {
     }
 
     /**
-     updateName
+    updateName
 
-     Purpose: update the new name for task
-     Parameters: String newName
-     Returns: void
-     */
+    Purpose: update the new name for task
+    Parameters: String newName
+    Returns: void
+    */
     public void updateName(String newName) {
         if(currentTask!=null) {
             currentTask.setName(newName);
@@ -107,12 +106,12 @@ public class AccessTask {
     }
 
     /**
-     updateDeadline
+    updateDeadline
 
-     Purpose: update the new Deadline for task
-     Parameters: Date newDate
-     Returns: void
-     */
+    Purpose: update the new Deadline for task
+    Parameters: Date newDate
+    Returns: void
+    */
     public void updateDeadline(Date newDate) {
         if(currentTask!=null) {
             currentTask.setDeadline(newDate);
@@ -120,12 +119,12 @@ public class AccessTask {
     }
 
     /**
-     updateComplete
+    updateComplete
 
-     Purpose: update the new complete for task
-     Parameters: boolean newComplete
-     Returns: void
-     */
+    Purpose: update the new complete for task
+    Parameters: boolean newComplete
+    Returns: void
+    */
     public void updateComplete(boolean newComplete) {
         if(currentTask!=null) {
             currentTask.setCompleted(newComplete);
@@ -133,12 +132,12 @@ public class AccessTask {
     }
 
     /**
-     updatePriority
+    updatePriority
 
-     Purpose: update the new priority for task
-     Parameters: boolean newComplete
-     Returns: void
-     */
+    Purpose: update the new priority for task
+    Parameters: boolean newComplete
+    Returns: void
+    */
     public void updatePriority(int newPriority) {
         if(currentTask!=null) {
             currentTask.setPriority(newPriority);
@@ -146,12 +145,12 @@ public class AccessTask {
     }
 
     /**
-     completeTask
+    completeTask
 
-     Purpose: when complete a task, set that task to be complete and return the priority for that to calculate the points
-     Parameters: none
-     Returns: int
-     */
+    Purpose: when complete a task, set that task to be complete and return the priority for that to calculate the points
+    Parameters: none
+    Returns: int
+    */
     public int completeTask() {
         if(currentTask!=null) {
             currentTask.setCompleted(true);
@@ -163,12 +162,12 @@ public class AccessTask {
     }
 
     /**
-     removeAllTask
+    removeAllTask
 
-     Purpose: when delete user account also delete all user tasks for that user
-     Parameters: none
-     Returns: none
-     */
+    Purpose: when delete user account also delete all user tasks for that user
+    Parameters: none
+    Returns: none
+    */
     public void removeAllTask(){
         if(tasks.size()>0) {
             currentTask = tasks.get(0);
@@ -177,14 +176,13 @@ public class AccessTask {
     }
 
     /**
-     tasksRenew
+    tasksRenew
 
-     Purpose: renew the current task list for that user
-     Parameters: String userName
-     Returns: None
-     */
-    private void tasksRenew(String userName){
+    Purpose: renew the current task list for that user
+    Parameters: String userName
+    Returns: None
+    */
+    private void tasksRenew(String userName) {
         tasks = taskPersistence.getTasks(userName);
     }
-
 }
