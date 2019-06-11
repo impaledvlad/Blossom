@@ -13,6 +13,7 @@ import bruteforce.objects.Task;
 import bruteforce.objects.AccountTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
+import bruteforce.objects.AccessAccountTest;
 
 /**
  Class: AllTests
@@ -24,7 +25,8 @@ import bruteforce.objects.TaskTest;
 @Suite.SuiteClasses({
         AccountTest.class,
         PlantTest.class,
-        TaskTest.class
+        TaskTest.class,
+        AccessAccountTest.class
 })
 
 
