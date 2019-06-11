@@ -5,15 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import android.support.annotation.NonNull;
+
 /** 
 Class: Task
 Author: John Manning
 Purpose: To model a task object. includes getters, setters, deadline, etc.
 */
 
-public class Task{
-    //TO DO - update toString to provide taskID.
-	//fields
+public class Task {
     private static int taskIDIterator = 0;
     private String username;
     private String name;
@@ -21,10 +20,8 @@ public class Task{
     private boolean completed;
     private int taskID;
     private int priority; //priority(0 for low priority, 1 for medium priority, 2 for high priority, -1 for default);
-    //task value
 
-    //constructors
-    public Task(){
+    public Task() {
     	this.deadline = new Date();
     	this.name = "";
     	this.username = "";
@@ -33,7 +30,7 @@ public class Task{
     	this.priority = -1;
     }
     
-    public Task(String name){
+    public Task(String name) {
         this.name = name;
         this.username = "";
         this.completed = false;
@@ -41,7 +38,8 @@ public class Task{
         this.priority = -1;
 
     }
-    public Task(String name, Date deadline){
+
+    public Task(String name, Date deadline) {
         this.name = name;
         this.username = "";
         this.deadline = deadline;
@@ -50,7 +48,7 @@ public class Task{
         this.priority = -1;
     }
     
-    public Task(String name, String username, Date deadline, boolean completed, int priority){
+    public Task(String name, String username, Date deadline, boolean completed, int priority) {
         this.name = name;
         this.username = username; 
         this.deadline = deadline;
@@ -58,17 +56,18 @@ public class Task{
         this.taskID = taskIDIterator++;
         this.priority = priority;
     }
-//methods
-    /**
-     getUsername()
 
-     Purpose: get the username of a task
-     Parameters: none
-     Returns: Returns the String username
-     */
-    public String getUsername(){
+    /**
+    getUsername()
+
+    Purpose: get the username of a task
+    Parameters: none
+    Returns: Returns the String username
+    */
+    public String getUsername() {
         return username;
     }
+
     /** 
     getCompleted
 
@@ -76,9 +75,10 @@ public class Task{
     Parameters: none
     Returns: boolean
     */
-    public boolean getCompleted(){
-            return completed;
+    public boolean getCompleted() {
+        return completed;
     }
+
     /** 
     setCompleted()
 
@@ -89,7 +89,8 @@ public class Task{
     public void setCompleted(boolean taskCompleted){
         this.completed = taskCompleted;
     }
-      /** 
+
+    /**
     getTaskID()
 
     Purpose: gets the unique taskID
@@ -110,7 +111,8 @@ public class Task{
     public String getName(){
         return this.name;
     }
-    /** 
+
+    /**
     setName
 
     Purpose: Sets the name of the task
@@ -120,6 +122,7 @@ public class Task{
     public void setName(String newName){
         this.name = newName;
     }
+
     /** 
     getDeadline
 
@@ -127,8 +130,29 @@ public class Task{
     Parameters: void
     Returns: Date object
     */
-    public Date getDeadline(){
-        return this.deadline;
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    /**
+    setDeadline
+    Purpose: sets the deadline for the object
+    Parameters: Date newDeadline
+    Returns: void
+    */
+    public void setDeadline(Date newDeadline){
+        this.deadline = newDeadline;
+    }
+
+    /**
+     getPriority
+
+     Purpose: gets the priority for this task
+     Parameters: void
+     Returns: int
+     */
+    public int getPriority(){
+        return priority;
     }
 
     /**
@@ -138,31 +162,10 @@ public class Task{
      Parameters: int newPriority
      Returns: void
      */
-
     public void setPriority(int newPriority){
         this.priority = newPriority;
     }
-    /**
-     getPriority
 
-     Purpose: gets the priority for this task
-     Parameters: void
-     Returns: int
-     */
-    public int getPriority(){
-        return this.priority;
-    }
-    /** 
-    setDeadline
-
-    Purpose: sets the deadline for the object
-    Parameters: Date newDeadline
-    Returns: void
-    */
-
-    public void setDeadline(Date newDeadline){
-        this.deadline = newDeadline;
-    }
     /** 
     toString
 
@@ -174,8 +177,7 @@ public class Task{
     public String toString(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.CANADA);
         String strDate = dateFormat.format(deadline);
-        return "-Task Object- \nName: " + this.name + "\nDeadline: " + strDate +
-        " \nCompleted: "+this.completed +"\ntaskID: " + this.taskID;
-    }
 
+        return "-Task Object- \nName: " + this.name + "\nDeadline: " + strDate + " \nCompleted: "+this.completed +"\ntaskID: " + this.taskID;
+    }
 }

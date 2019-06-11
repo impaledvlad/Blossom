@@ -7,12 +7,9 @@ Purpose: Business layer logic for a users Plant.
 */
 
 public class AccessPlant {
-    //fields
     Plant accessedPlant;
-    //constructors
-    public AccessPlant(){
+
+    public AccessPlant() {
 
     }
-
-    //methods
 }
