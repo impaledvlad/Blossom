@@ -30,13 +30,23 @@ public class AccessTask {
     }
 
     /**
-    getTask
+     getTaskList
 
-    Purpose: get a specific task base on accountName and taskID
-    Parameters: String accountName, taskID
-    Returns: void
-    */
-    public void getTask(int taskId) {
+     Purpose: get a list of tasks with current user
+     Parameters: None
+     Returns: List<Task>
+     */
+    public List<Task> getTaskList() {
+        return tasks;
+    }
+    /**
+     getTask
+
+     Purpose: get a specific task base on accountName and taskID
+     Parameters: String accountName, taskID
+     Returns: void
+     */
+    public Task getTask(int taskId) {
         if(tasks != null) {
             Task task;
             for(int current = 0; current < tasks.size(); current++) {
@@ -44,9 +54,12 @@ public class AccessTask {
                 if(task.getTaskID()==taskId)
                 {
                     currentTask = task;
+                    return currentTask;
                 }
             }
         }
+
+        return null;
     }
 
     /**

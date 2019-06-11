@@ -25,6 +25,16 @@ public class AccessAccount {
     }
     //methods
 
+    /**
+     getCurrentAccount
+
+     Purpose: get the current account
+     Parameters: None
+     Returns: Account
+     */
+    public Account getCurrentAccount(){
+        return currentAccount;
+    }
 
     /**
      getAccount
@@ -71,6 +81,7 @@ public class AccessAccount {
     public void deleteAccount(){
         if(currentAccount!=null) {
             accountPersistence.deleteAccount(currentAccount);
+            currentAccount = null;
         }
     }
 
@@ -95,5 +106,17 @@ public class AccessAccount {
      */
     public void updatePassword(String newPassword){
         currentAccount.setPassword(newPassword);
+        updateAccount();
+    }
+
+    /**
+     logOut
+
+     Purpose: logOut the current account(set the current account to be null
+     Parameters: none
+     Returns: void
+     */
+    public void logOut(){
+        currentAccount = null;
     }
 }
