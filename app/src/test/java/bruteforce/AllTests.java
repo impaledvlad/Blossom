@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import bruteforce.objects.AccountTest;
+import bruteforce.objects.CalculatePointsTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
 import bruteforce.objects.AccessAccountTest;
@@ -19,7 +20,8 @@ import bruteforce.objects.AccessAccountTest;
         AccountTest.class,
         PlantTest.class,
         TaskTest.class,
-        AccessAccountTest.class
+        AccessAccountTest.class,
+        CalculatePointsTest.class
 })
 
 public class AllTests {
