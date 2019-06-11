@@ -1,7 +1,5 @@
-package bruteforce.objects;
-import bruteforce.business.CalculatePoints;
-import bruteforce.business.AccessAccount;
-import bruteforce.business.AccessTask;
+package bruteforce.business;
+import bruteforce.objects.Account;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

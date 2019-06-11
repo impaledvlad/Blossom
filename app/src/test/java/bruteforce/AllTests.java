@@ -4,10 +4,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import bruteforce.objects.AccountTest;
-import bruteforce.objects.CalculatePointsTest;
+import bruteforce.business.CalculatePointsTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
-import bruteforce.objects.AccessAccountTest;
+import bruteforce.business.AccessAccountTest;
 
 /**
  Class: AllTests
