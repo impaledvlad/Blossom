@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 import bruteforce.objects.AccountTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
-import bruteforce.objects.AccessAccountTest;
+import bruteforce.business.AccessAccountTest;
+import bruteforce.business.AccessTaskTest;
 
 /**
  Class: AllTests
@@ -19,7 +20,8 @@ import bruteforce.objects.AccessAccountTest;
         AccountTest.class,
         PlantTest.class,
         TaskTest.class,
-        AccessAccountTest.class
+        AccessAccountTest.class,
+        AccessTaskTest.class
 })
 
 public class AllTests {
