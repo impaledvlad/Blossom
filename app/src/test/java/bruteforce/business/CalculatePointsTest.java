@@ -7,13 +7,13 @@ import static org.junit.Assert.assertNotNull;
 public class CalculatePointsTest {
 
     /**
-     Class: test_CalculatePoints
+     Class: testConstructor
      Author: Ahmed Kidwai
      Purpose: This function tests to see if the CalculatePoints object in the business layer is functional.
      */
 
     @Test
-    public void ConstructorTest() {
+    public void testConstructor() {
 
         System.out.println("Testing Constructor For Calculate Points.");
 
@@ -40,14 +40,14 @@ public class CalculatePointsTest {
 
 
     /**
-     Class: test_CalculatePoints
+     Class: testAwardPoints
      Author: Ahmed Kidwai
      Purpose: This function tests to see if the AwardPoints method in the CalculatePoints
      //       object updates the users points based on the priority level, upon completion of a task.
      */
 
     @Test
-    public void awardPointsTest() {
+    public void testAwardPoints() {
 
         System.out.println("Testing awardPoints method in  CalculatePoints Class.");
 
