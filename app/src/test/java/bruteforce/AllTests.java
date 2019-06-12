@@ -7,8 +7,8 @@ import bruteforce.objects.AccountTest;
 import bruteforce.business.CalculatePointsTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
-import bruteforce.objects.AccessAccountTest;
-import bruteforce.objects.AccessTaskTest;
+import bruteforce.business.AccessAccountTest;
+import bruteforce.business.AccessTaskTest;
 
 /**
  Class: AllTests
@@ -18,11 +18,12 @@ import bruteforce.objects.AccessTaskTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        AccessAccountTest.class,
+        AccessTaskTest.class,
+        CalculatePointsTest.class,
         AccountTest.class,
         PlantTest.class,
-        TaskTest.class,
-        AccessAccountTest.class,
-        AccessTaskTest.class
+        TaskTest.class
 })
 
 

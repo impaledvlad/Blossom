@@ -42,7 +42,7 @@ public class AccessAccountTest {
     @Test
     public void testGetAccount() {
         AccessAccount accessAccount = new AccessAccount();
-        accessAccount.getAccount("username3");
+        accessAccount.getAccount("username4");
         Account expectAccount = new Account("username1", "password1", 0);
         System.out.println("\nStarting testGetAccount");
 
@@ -63,9 +63,9 @@ public class AccessAccountTest {
     @Test
     public void testInsertAccount() {
         AccessAccount accessAccount = new AccessAccount();
-        Account newAccount = new Account("username3", "password3", 20);
+        Account newAccount = new Account("username4", "password3", 20);
         accessAccount.insertAccount(newAccount);
-        accessAccount.getAccount("username3");
+        accessAccount.getAccount("username4");
         System.out.println("\nStarting testInsertAccount");
 
         assertEquals("The current account should be the newAccount", newAccount, accessAccount.getCurrentAccount());

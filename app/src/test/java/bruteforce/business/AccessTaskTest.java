@@ -1,4 +1,4 @@
-package bruteforce.objects;
+package bruteforce.business;
 
 import org.junit.Test;
 
@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import bruteforce.business.AccessTask;
+import bruteforce.objects.Task;
 
 /**
  Class: AccessTaskTest
