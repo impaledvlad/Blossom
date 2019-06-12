@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import bruteforce.objects.AccountTest;
+import bruteforce.business.CalculatePointsTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
 import bruteforce.business.AccessAccountTest;
@@ -17,13 +18,16 @@ import bruteforce.business.AccessTaskTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        AccessAccountTest.class,
+        AccessTaskTest.class,
+        CalculatePointsTest.class,
         AccountTest.class,
         PlantTest.class,
-        TaskTest.class,
-        AccessAccountTest.class,
-        AccessTaskTest.class
+        TaskTest.class
 })
 
+
 public class AllTests {
+
 }
 

@@ -2,12 +2,6 @@ package bruteforce.business;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import bruteforce.business.AccessAccount;
 import bruteforce.objects.Account;
 /**
  Class: AccessAccountTest
@@ -17,15 +11,13 @@ import bruteforce.objects.Account;
 
 public class AccessAccountTest {
 
-
     /**
      * testGetCurrentAccount
      * <p>
-     * Purpose: test getTask method in the AccessTask
+     * Purpose: test getCurrentAccount method in the AccessAccount class
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testGetCurrentAccount() {
         AccessAccount accessAccount = new AccessAccount("username1");
@@ -36,7 +28,7 @@ public class AccessAccountTest {
         assertEquals("The Account should be equal", expectAccount.getUsername(), accessAccount.getCurrentAccount().getUsername());
         assertNull("When the Account not in the database it should return null", accessAccount1.getCurrentAccount());
 
-        System.out.println("\nFinished testGetCurrentAccount");
+        System.out.println("Finished testGetCurrentAccount");
 
     }
 
@@ -47,11 +39,10 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testGetAccount() {
         AccessAccount accessAccount = new AccessAccount();
-        accessAccount.getAccount("username3");
+        accessAccount.getAccount("username4");
         Account expectAccount = new Account("username1", "password1", 0);
         System.out.println("\nStarting testGetAccount");
 
@@ -59,7 +50,7 @@ public class AccessAccountTest {
         accessAccount.getAccount("username1");
         assertEquals("Current account shold be usename1 account", expectAccount.getUsername(), accessAccount.getCurrentAccount().getUsername());
 
-        System.out.println("\nFinished testGetAccount");
+        System.out.println("Finished testGetAccount");
     }
 
     /**
@@ -69,18 +60,17 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testInsertAccount() {
         AccessAccount accessAccount = new AccessAccount();
-        Account newAccount = new Account("username3", "password3", 20);
+        Account newAccount = new Account("username4", "password3", 20);
         accessAccount.insertAccount(newAccount);
-        accessAccount.getAccount("username3");
+        accessAccount.getAccount("username4");
         System.out.println("\nStarting testInsertAccount");
 
         assertEquals("The current account should be the newAccount", newAccount, accessAccount.getCurrentAccount());
 
-        System.out.println("\nFinished testInsertAccount");
+        System.out.println("Finished testInsertAccount");
     }
 
     /**
@@ -90,7 +80,6 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testUpdatePoints() {
         AccessAccount accessAccount = new AccessAccount("username1");
@@ -99,7 +88,7 @@ public class AccessAccountTest {
 
         assertEquals("the new points for username1 should be 3", 3, accessAccount.getCurrentAccount().getPoints());
 
-        System.out.println("\nFinished testUpdatePoints");
+        System.out.println("Finished testUpdatePoints");
     }
 
     /**
@@ -109,7 +98,6 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testUpdatePassword() {
         AccessAccount accessAccount = new AccessAccount("username1");
@@ -118,7 +106,7 @@ public class AccessAccountTest {
 
         assertEquals("the new password for username1 should be newPassword", "newPassword", accessAccount.getCurrentAccount().getPassword());
 
-        System.out.println("\nFinished testUpdatePoints");
+        System.out.println("Finished testUpdatePoints");
     }
 
     /**
@@ -128,7 +116,6 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testUpdateAccount() {
         AccessAccount accessAccount = new AccessAccount("username1");
@@ -141,7 +128,7 @@ public class AccessAccountTest {
         assertEquals("the new points for username1 should be 4", 4, accessAccount.getCurrentAccount().getPoints());
         assertEquals("the new password for username1 should be newPassword1", "newPassword1", accessAccount.getCurrentAccount().getPassword());
 
-        System.out.println("\nFinished testUpdateAccount");
+        System.out.println("Finished testUpdateAccount");
     }
 
     /**
@@ -151,7 +138,6 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testLogOut() {
         AccessAccount accessAccount = new AccessAccount("username1");
@@ -161,7 +147,7 @@ public class AccessAccountTest {
         accessAccount.logOut();
         assertNull("When user logout the current account, the current should be null",accessAccount.getCurrentAccount());
 
-        System.out.println("\nFinished testLogOut");
+        System.out.println("Finished testLogOut");
     }
 
     /**
@@ -171,7 +157,6 @@ public class AccessAccountTest {
      * Parameters: none
      * Returns: none, must print out finished to pass the test
      */
-
     @Test
     public void testDeleteAccount() {
         AccessAccount accessAccount = new AccessAccount();
@@ -184,7 +169,7 @@ public class AccessAccountTest {
         accessAccount.getAccount("username2");
         assertNull("When the account delete the current account should be null", accessAccount.getCurrentAccount());
 
-        System.out.println("\nFinished testDeleteAccount");
+        System.out.println("Finished testDeleteAccount");
     }
 }
 
