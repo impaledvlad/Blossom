@@ -93,7 +93,7 @@ public class AccessTaskTest {
     public void testUpdateTask() {
         AccessTask accessTask = new AccessTask("username2");
         accessTask.getTask(2);
-        //assertNotNull(accessTask.getTask(1));
+
         System.out.println("\nStarting testUpdateTask");
 
         accessTask.updateComplete(false);
@@ -123,7 +123,7 @@ public class AccessTaskTest {
     public void testCompleteTask() {
         AccessTask accessTask = new AccessTask("username1");
         accessTask.getTask(0);
-        //assertNotNull(accessTask.getTask(1));
+
         System.out.println("\nStarting testCompleteTask");
 
         assertEquals("When complete the task it should return the priority with 1",1,accessTask.completeTask());
@@ -164,7 +164,6 @@ public class AccessTaskTest {
     public void testRemoveAllTask() {
         AccessTask accessTask = new AccessTask("username3");
 
-        //assertNotNull(accessTask.getTask(1));
         System.out.println("\nStarting testRemoveAllTask");
 
         assertNotNull("Before remove all task the task list should not be null",accessTask.getTaskList());
