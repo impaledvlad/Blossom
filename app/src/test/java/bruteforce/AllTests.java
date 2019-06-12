@@ -21,7 +21,7 @@ import bruteforce.objects.AccessTaskTest;
         PlantTest.class,
         TaskTest.class,
         AccessAccountTest.class,
-        //AccessTaskTest.class
+        AccessTaskTest.class
 })
 
 public class AllTests {
