@@ -16,7 +16,11 @@ import android.widget.TextView;
 
 import com.bruteforce.blossom.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.objects.Task;
@@ -64,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
                 //create TextView for text2 in simple_list_item
 
                 String text1Str = String.format("%s - %d", taskDetails.get(position).getName(), taskDetails.get(position).getPriority());
-                String text2Str = String.format("%d/%d/%d",
-                        taskDetails.get(position).getDeadline().getYear(),taskDetails.get(position).getDeadline().getMonth(),taskDetails.get(position).getDeadline().getDate());
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.CANADA);
+                String text2Str = dateFormat.format(taskDetails.get(position).getDeadline());
+
                 //Make string format for text1 and text2
 
                 text1.setText(text1Str);

@@ -106,7 +106,6 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 //display chosen date in blank TextView
-
                 month = month + 1;
                 Log.d(TAG,"date has been set");
 
@@ -161,7 +160,7 @@ public class AddTaskActivity extends AppCompatActivity {
                     if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
                         //check date which user select, if date is not valid, user cannot proceed any further
 
-                        Date testDate = new Date(yearSelect, monthSelect, daySelect);
+                        Date testDate = new Date(yearSelect+"/" + monthSelect + "/" + daySelect);
                         Task testTask = new Task(description, userName, testDate, false, priority);
                         taskListTest.insertTask(testTask);
                         //create a new task and add it

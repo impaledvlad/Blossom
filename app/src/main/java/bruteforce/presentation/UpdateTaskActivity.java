@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private int yearSelect;
     private DateValidation validation;
     private AccessTask accessTask;
-    private Task holder;
+    private Task showTask;
+    private Task taskInlist;
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -47,21 +49,24 @@ public class UpdateTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_task);
 
         Intent i = getIntent();
-        holder = (Task) i.getSerializableExtra("key");
+        accessTask = new AccessTask("username1");
+        showTask = (Task) i.getSerializableExtra("key");
+
+        taskInlist = accessTask.getTask(showTask.getTaskID());
 
         selection = false;
         validation = new DateValidation();
 
-        accessTask = new AccessTask("username1");
+
 
         TextView description = (TextView) findViewById(R.id.editText2);
-        description.setText(holder.getName());
+        description.setText(showTask.getName());
 
         RadioButton button1 = (RadioButton) findViewById(R.id.radioButton);
         RadioButton button2 = (RadioButton) findViewById(R.id.radioButton2);
         RadioButton button3 = (RadioButton) findViewById(R.id.radioButton3);
 
-        int priority = holder.getPriority();
+        int priority = showTask.getPriority();
         if (priority == 0){
             button1.setChecked(true);
         } else if (priority == 1) {
@@ -71,7 +76,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         }
 
         TextView dateShown = (TextView) findViewById(R.id.editText3);
-        String dateStr = holder.getDeadline().getYear()+"/"+holder.getDeadline().getMonth()+"/"+holder.getDeadline().getDate();
+        String dateStr = showTask.getDeadline().getYear()+"/"+showTask.getDeadline().getMonth()+"/"+showTask.getDeadline().getDate();
         dateShown.setText(dateStr);
 
         mDate =(TextView) findViewById(R.id.textView7);
@@ -98,7 +103,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 dialog.show();
                 //show calendar dialog into activity_add_task
 
-                selection = true;
+                //selection = true;
 
             }
         });
@@ -130,7 +135,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 int selectedButton = rateGroup.getCheckedRadioButtonId();
                 //RadioGroup is used to select priority
 
-                if (selection) {
+                //if (selection) {
                     //check to one of three radio button is clicked or not
 
                     EditText descriptionText = (EditText) findViewById(R.id.editText2);
@@ -153,23 +158,24 @@ public class UpdateTaskActivity extends AppCompatActivity {
                         priority = 2;
                     }
 
-                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                    //if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
                         //check date which user select, if date is not valid, user cannot proceed any further
 
-                        Date testDate = new Date(yearSelect, monthSelect, daySelect);
-                        Task testTask = new Task(description, holder.getUsername(), testDate, false, priority);
+                        //Date testDate = new Date(yearSelect, monthSelect, daySelect);
+                        //Task testTask = new Task(description, holder.getUsername(), testDate, false, priority);
 
-                        Task taskInlist = accessTask.getTask(testTask.getTaskID());
+                        accessTask.updateName(description);
+                        accessTask.updatePriority(priority);
                         accessTask.updateTask();
                         //create a new task and add it
 
                         Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
-                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                        //testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(testIntent);
 
 
-                    }
-                }
+                   // }
+                //}
             }
         });
     }
