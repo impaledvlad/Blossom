@@ -1,9 +1,12 @@
 package bruteforce.objects;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 /** 
@@ -12,7 +15,7 @@ Author: John Manning
 Purpose: To model a task object. includes getters, setters, deadline, etc.
 */
 
-public class Task {
+public class Task implements Serializable {
     private static int taskIDIterator = 0;
     private String username;
     private String name;

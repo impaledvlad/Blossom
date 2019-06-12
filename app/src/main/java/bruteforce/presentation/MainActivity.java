@@ -2,21 +2,21 @@ package bruteforce.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-
+import android.widget.TextView;
 
 import com.bruteforce.blossom.R;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.objects.Task;
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     //fields
     private AccessAccount accounts;
     private AccessTask tasks;
+    private Task testTask;
 
     /**
      onCreate
@@ -45,22 +46,55 @@ public class MainActivity extends AppCompatActivity {
         //set this MainActivity to work activity_main.xml
 
         tasks = new AccessTask("username1");
-        List<Task> taskDetails = tasks.getTaskList();
+        final List<Task> taskDetails = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
 
-        ArrayList<String> taskInfo = new ArrayList<>();
-        for (int i = 0; i < taskDetails.size(); i++) {
-            //create new arraylist of string to store one line of task information
-            taskInfo.add("Name: "+taskDetails.get(i).getName()+", Priority: "+taskDetails.get(i).getPriority()+", Date: "+
-                    taskDetails.get(i).getDeadline().getYear()+"/"+taskDetails.get(i).getDeadline().getMonth()+"/"+taskDetails.get(i).getDeadline().getDate());
-        }
+        final ArrayAdapter<Task> taskArrayAdapter = new ArrayAdapter<Task>(
+                this, android.R.layout.simple_list_item_2, android.R.id.text1, taskDetails) {
+            //create ArrayAdapter to implement sub-item in ListView
 
+            @NonNull
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position,convertView,parent);
 
-        ListView taskListDisplay = (ListView) findViewById(R.id.list1);
-        ListAdapter showInfo = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskInfo);
-        taskListDisplay.setAdapter(showInfo);
-        //ListView is used to display all element in a list, i set it to show each task information in list.
+                TextView text1 = view.findViewById(android.R.id.text1);
+                //create TextView for text1 in simple_list_item
+                TextView text2 = view.findViewById(android.R.id.text2);
+                //create TextView for text2 in simple_list_item
 
+                String text1Str = String.format("%s - %d", taskDetails.get(position).getName(), taskDetails.get(position).getPriority());
+                String text2Str = String.format("%d/%d/%d",
+                        taskDetails.get(position).getDeadline().getYear(),taskDetails.get(position).getDeadline().getMonth(),taskDetails.get(position).getDeadline().getDate());
+                //Make string format for text1 and text2
+
+                text1.setText(text1Str);
+                text2.setText(text2Str);
+                //Set two strings to text1 and text2
+
+                return view;
+
+            }
+        };
+
+        ListView listView = findViewById(R.id.list1);
+        listView.setAdapter(taskArrayAdapter);
+        //Implement above adapter into ListView in activity_main.xml
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //check which item in ListView is clicked
+
+                Intent intent = new Intent(MainActivity.this, ShowTaskActivity.class);
+                Task test = taskArrayAdapter.getItem(position);
+                intent.putExtra("key", test);
+                //intent.putExtra("user","username1");
+                MainActivity.this.startActivity(intent);
+                //Move to ShowTaskActivity to get more task options
+            }
+        });
 
         final Button addToTask = (Button) findViewById(R.id.button);
         //create Button object to handle Add new task button in activity_main.xml
@@ -89,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         //from one page to another page
 
     }
+
     /**
      onCreateOptionsMenu
 
@@ -119,6 +154,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

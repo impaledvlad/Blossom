@@ -14,4 +14,7 @@
     <string name="month">Month</string>
     <string name="year">Year</string>
     <string name="create">Create</string>
+    <string name="choose_options">Choose Options</string>
+    <string name="modify">Modify</string>
+    <string name="delete">Delete</string>
 </resources>

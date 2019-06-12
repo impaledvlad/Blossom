@@ -24,6 +24,8 @@ import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.objects.Task;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 /**
  Class: AddTaskActivity
  Author: Triet Nguyen
@@ -164,8 +166,11 @@ public class AddTaskActivity extends AppCompatActivity {
                         taskListTest.insertTask(testTask);
                         //create a new task and add it
 
-                        startActivity(new Intent(AddTaskActivity.this, MainActivity.class));
-                        finish();
+                        Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(testIntent);
+
+
                     }
                 }
             }
