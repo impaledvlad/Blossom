@@ -26,8 +26,8 @@ import bruteforce.objects.Task;
  Author: Triet Nguyen
  Purpose: To set up front-end stuff for main page
  */
-
 public class MainActivity extends AppCompatActivity {
+    //fields
     private AccessAccount accounts;
     private AccessTask tasks;
 
@@ -50,27 +50,34 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> taskInfo = new ArrayList<>();
         for (int i = 0; i < taskDetails.size(); i++) {
-            taskInfo.add("Name: "+taskDetails.get(i).getName()+", Priority: "+taskDetails.get(i).getPriority());
+            //create new arraylist of string to store one line of task information
+            taskInfo.add("Name: "+taskDetails.get(i).getName()+", Priority: "+taskDetails.get(i).getPriority()+", Date: "+
+                    taskDetails.get(i).getDeadline().getYear()+"/"+taskDetails.get(i).getDeadline().getMonth()+"/"+taskDetails.get(i).getDeadline().getDate());
         }
-        //create new arraylist of string to store one line of task information
+
 
         ListView taskListDisplay = (ListView) findViewById(R.id.list1);
-        ListAdapter showInfo = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,taskInfo);
+        ListAdapter showInfo = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskInfo);
         taskListDisplay.setAdapter(showInfo);
         //ListView is used to display all element in a list, i set it to show each task information in list.
 
 
         final Button addToTask = (Button) findViewById(R.id.button);
+        //create Button object to handle Add new task button in activity_main.xml
+
         addToTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //these codes will be executed when Add new task button is clicked
+
                 try {
                     String userName = "username1";
-                    Intent intent = new Intent(MainActivity.this,AddTaskActivity.class);
+                    Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
                     intent.putExtra("key",userName);
                     //pass username to AddTaskActivity
 
                     MainActivity.this.startActivity(intent);
+                    //start AddTaskActivity
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
