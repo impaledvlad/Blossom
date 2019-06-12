@@ -7,7 +7,8 @@ import bruteforce.objects.AccountTest;
 import bruteforce.business.CalculatePointsTest;
 import bruteforce.objects.PlantTest;
 import bruteforce.objects.TaskTest;
-import bruteforce.business.AccessAccountTest;
+import bruteforce.objects.AccessAccountTest;
+import bruteforce.objects.AccessTaskTest;
 
 /**
  Class: AllTests
@@ -21,7 +22,7 @@ import bruteforce.business.AccessAccountTest;
         PlantTest.class,
         TaskTest.class,
         AccessAccountTest.class,
-        CalculatePointsTest.class
+        AccessTaskTest.class
 })
 
 
