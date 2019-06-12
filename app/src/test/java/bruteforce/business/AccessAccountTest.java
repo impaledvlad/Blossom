@@ -1,13 +1,7 @@
-package bruteforce.objects;
+package bruteforce.business;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import bruteforce.business.AccessAccount;
 import bruteforce.objects.Account;
 /**
  Class: AccessAccountTest
@@ -16,7 +10,6 @@ import bruteforce.objects.Account;
  */
 
 public class AccessAccountTest {
-
 
     /**
      * testGetCurrentAccount
