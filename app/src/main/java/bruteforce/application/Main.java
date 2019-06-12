@@ -1,9 +1,8 @@
 package bruteforce.application;
 
-public class Main{
-    
-    //private static final Services currentService;
+public class Main {
 
     public static void main(String[] args) {
+
     }
 }

@@ -1,5 +1,4 @@
 package bruteforce.business;
-import java.util.Date;
 
 import bruteforce.objects.Account;
 import bruteforce.persistence.AccountPersistence;

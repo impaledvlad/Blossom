@@ -14,42 +14,38 @@ import static org.junit.Assert.*;
 public class PlantTest {
 
     /**
-     testPlantFirstConstructor
+    testPlantFirstConstructor
 
-     Purpose: test first constructor of Plant class, this constructor has no parameter
-     Parameters: none
-     Returns: none, must print out finished to pass the test
-     */
-
+    Purpose: test first constructor of Plant class, this constructor has no parameter
+    Parameters: none
+    Returns: none, must print out finished to pass the test
+    */
     @Test
     public void testPlantFirstConstructor() {
-        Plant plant;
         System.out.println("\nStarting testPlantFirstConstructor");
 
-        plant = new Plant();
-        assertNotNull("plant object should not be null",plant);
-        assertEquals("initial value must be 0",0,plant.getGrowthLevel());
+        Plant plant = new Plant();
+        assertNotNull("Plant object should not be null", plant);
+        assertEquals("Initial value must be 0",0, plant.getGrowthLevel());
 
-        System.out.println("\nFinished testPlanFirstConstructor");
+        System.out.println("Finished testPlantFirstConstructor");
     }
 
     /**
-     testPlantSecondConstructor
+    testPlantSecondConstructor
 
-     Purpose: test second constructor of Plant class, this constructor has three parameters
-     Parameters: none
-     Returns: none, must print out finished to pass the test
-     */
-
+    Purpose: test second constructor of Plant class, this constructor has three parameters
+    Parameters: none
+    Returns: none, must print out finished to pass the test
+    */
     @Test
     public void testPlantSecondConstructor() {
-        Plant plant;
-        System.out.println("\nStarting testSecondConstructor");
+        System.out.println("\nStarting testPlantSecondConstructor");
 
-        plant = new Plant(13);
-        assertNotNull("plant object should not be null",plant);
-        assertEquals("plant growth level is not correct",13,plant.getGrowthLevel());
+        Plant plant = new Plant(13);
+        assertNotNull("Plant object should not be null", plant);
+        assertEquals("Plant growth level is not correct",13, plant.getGrowthLevel());
 
-        System.out.println("\nFinished testSecondConstructor");
+        System.out.println("Finished testPlantSecondConstructor");
     }
 }
