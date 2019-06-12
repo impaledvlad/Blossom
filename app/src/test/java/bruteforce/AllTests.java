@@ -24,6 +24,8 @@ import bruteforce.business.AccessAccountTest;
         CalculatePointsTest.class
 })
 
+
 public class AllTests {
+
 }
 

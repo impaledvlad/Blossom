@@ -11,7 +11,6 @@ import bruteforce.objects.Account;
 
 public class AccessAccountTest {
 
-
     /**
      * testGetCurrentAccount
      * <p>

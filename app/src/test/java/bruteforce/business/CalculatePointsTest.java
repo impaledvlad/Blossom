@@ -4,9 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-
-
-
 public class CalculatePointsTest {
 
     /**
@@ -16,9 +13,10 @@ public class CalculatePointsTest {
      */
 
     @Test
-    public void testConstructor(){
+    public void ConstructorTest() {
 
-        System.out.println("Testing the the Constructor for CalculatePoints");
+        System.out.println("Testing Constructor For Calculate Points.");
+
 
         AccessTask currUser = new AccessTask("username1");
 
@@ -34,8 +32,9 @@ public class CalculatePointsTest {
         currUser.getTask(1);
 
 
-        assertNotNull("The constructor has failed to initialize", testConstructor0);
-        System.out.println("The constructor in the CalculatePoints class has run succesfully.");
+        assertNotNull("The award points constructor has failed to initialize.", testConstructor0);
+
+        System.out.println("Constructor for Calculate Points has run successfully.");
 
     }
 
@@ -48,10 +47,11 @@ public class CalculatePointsTest {
      */
 
     @Test
-    public void test_awardPoints() {
+    public void awardPointsTest() {
 
-        System.out.println("Testing the Award Points Method in CalculatePoints");
-        // Create AccessAcount object..
+        System.out.println("Testing awardPoints method in  CalculatePoints Class.");
+
+        // Create AccessAccount object.
         AccessAccount currAccount = new AccessAccount("username1");
 
         //Create AccessTask object
@@ -69,7 +69,9 @@ public class CalculatePointsTest {
         Account checkDB = currAccount.getCurrentAccount();
 
         //check to see if current user information has updated correctly to the DB.
-        assertEquals("The awardPoints method has failed", value, checkDB.getPoints());
-        System.out.println("The awardPoints method has run successfully.");
+        assertEquals("The awardPoints method has failed.", value, checkDB.getPoints());
+        System.out.println("The awardPoints method has run successfully ");
+
     }
+
 }
