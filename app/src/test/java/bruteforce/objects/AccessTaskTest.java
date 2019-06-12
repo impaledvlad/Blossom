@@ -2,9 +2,7 @@ package bruteforce.objects;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
@@ -29,19 +27,14 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testAGetTaskList() {
+    public void testGetTaskList() {
         AccessTask accessTask = new AccessTask("username1");
         AccessTask accessTask1 = new AccessTask();
 
         System.out.println("\nStarting testGetTaskList");
-        List<Task> expectList = new ArrayList<>();
-
-        expectList.add(new Task("Task1", "username1", new Date(2019, 06, 20), false, 1));
-        expectList.add(new Task("Task2", "username1", new Date(2019, 07, 20), true, 2));
 
         assertNull("When the Account not in the database it should return null", accessTask1.getTaskList());
         assertNotNull("When the account in the database, it should be not null",accessTask.getTaskList());
-        //assertEquals("When the account in the database, it should be",expectList,accessTask.getTaskList());
 
         System.out.println("Finished testGetTaskList");
 
@@ -58,7 +51,7 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testBGetTask() {
+    public void testGetTask() {
         AccessTask accessTask = new AccessTask("username1");
 
         System.out.println("\nStarting testGetTask");
@@ -78,7 +71,7 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testCInsertTask() {
+    public void testInsertTask() {
         AccessTask accessTask = new AccessTask("username1");
         Task newTask = new Task("Task3", "username1", new Date(2019, 9, 20), false, 0);
         accessTask.insertTask(newTask);
@@ -97,22 +90,22 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testDUpdateTask() {
-        AccessTask accessTask = new AccessTask("username1");
-        accessTask.getTask(1);
+    public void testUpdateTask() {
+        AccessTask accessTask = new AccessTask("username2");
+        accessTask.getTask(2);
         //assertNotNull(accessTask.getTask(1));
         System.out.println("\nStarting testUpdateTask");
 
         accessTask.updateComplete(false);
-        accessTask.updateDeadline(new Date(2020, 3, 20));
+        accessTask.updateDeadline(new Date("2020/3/20"));
         accessTask.updateName("taskNameChange");
         accessTask.updatePriority(0);
         accessTask.updateTask();
 
-        Task taskChange = accessTask.getTask(1);
+        Task taskChange = accessTask.getTask(2);
 
         assertEquals("The new complete should be false",false,taskChange.getCompleted());
-        assertEquals("The new deadline should be update",new Date(2020, 3, 20),taskChange.getDeadline());
+        assertEquals("The new deadline should be update",new Date("2020/3/20"),taskChange.getDeadline());
         assertEquals("The new Name should be taskNameChange","taskNameChange",taskChange.getName());
         assertEquals("The new priority should be 0",0,taskChange.getPriority());
 
@@ -127,7 +120,7 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testECompleteTask() {
+    public void testCompleteTask() {
         AccessTask accessTask = new AccessTask("username1");
         accessTask.getTask(0);
         //assertNotNull(accessTask.getTask(1));
@@ -146,16 +139,16 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testFDeleteTask() {
-        AccessTask accessTask = new AccessTask("username1");
-        Task deleteTask = accessTask.getTask(1);
+    public void testDeleteTask() {
+        AccessTask accessTask = new AccessTask("username2");
+        Task deleteTask = accessTask.getTask(3);
         System.out.println("\nStarting testDeleteTask");
 
         assertNotNull("the task going to delete not null",deleteTask);
 
         accessTask.deleteTask();
 
-        assertNull("The task should be null after delete it",accessTask.getTask(1));
+        assertNull("The task should be null after delete it",accessTask.getTask(3));
 
         System.out.println("Finished testDeleteTask");
     }
@@ -168,8 +161,8 @@ public class AccessTaskTest {
      * Returns: none, must print out finished to pass the test
      */
     @Test
-    public void testGRemoveAllTask() {
-        AccessTask accessTask = new AccessTask("username1");
+    public void testRemoveAllTask() {
+        AccessTask accessTask = new AccessTask("username3");
 
         //assertNotNull(accessTask.getTask(1));
         System.out.println("\nStarting testRemoveAllTask");
