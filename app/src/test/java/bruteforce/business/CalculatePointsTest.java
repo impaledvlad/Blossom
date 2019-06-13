@@ -3,13 +3,20 @@ import bruteforce.objects.Account;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
+/**
+ Method: CalculatePointsTest
+ Author: Ahmed Kidwai
+ Purpose: Tests CalculatePoints class.
+ */
 public class CalculatePointsTest {
 
+
     /**
-     Class: testConstructor
-     Author: Ahmed Kidwai
-     Purpose: This function tests to see if the CalculatePoints object in the business layer is functional.
+     * testConstructor
+     * <p>
+     * Purpose: test to see if constructor is initialied correctly.
+     * Parameters: none
+     * Returns: none
      */
 
     @Test
@@ -40,10 +47,11 @@ public class CalculatePointsTest {
 
 
     /**
-     Class: testAwardPoints
-     Author: Ahmed Kidwai
-     Purpose: This function tests to see if the AwardPoints method in the CalculatePoints
-     //       object updates the users points based on the priority level, upon completion of a task.
+     * testAwardPoints
+     * <p>
+     * Purpose: Test to see if points are assigned correctly upon completing task
+     * Parameters: none
+     * Returns: none
      */
 
     @Test
