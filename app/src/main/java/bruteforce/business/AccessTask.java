@@ -39,6 +39,7 @@ public class AccessTask {
     public List<Task> getTaskList() {
         return tasks;
     }
+
     /**
      getTask
 
@@ -71,8 +72,7 @@ public class AccessTask {
     */
     public void insertTask(Task task){
         taskPersistence.insertTask(task);
-        tasksRenew(task.getName());
-        tasks.add(task);
+        tasksRenew(task.getUsername());
     }
 
     /**
@@ -85,7 +85,7 @@ public class AccessTask {
     public void updateTask(){
         if(currentTask!=null) {
             taskPersistence.updateTask(currentTask);
-            tasksRenew(currentTask.getName());
+            tasksRenew(currentTask.getUsername());
             currentTask = null;
         }
     }
@@ -165,7 +165,7 @@ public class AccessTask {
     Returns: int
     */
     public int completeTask() {
-        if(currentTask!=null) {
+        if(currentTask!=null&&!currentTask.getCompleted()) {
             currentTask.setCompleted(true);
             taskPersistence.updateTask(currentTask);
 

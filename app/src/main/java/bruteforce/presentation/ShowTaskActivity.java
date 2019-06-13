@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.bruteforce.blossom.R;
 
@@ -42,8 +43,27 @@ public class ShowTaskActivity extends AppCompatActivity {
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
         //get data passed from MainActivity
+        CheckBox testBox = (CheckBox) findViewById(R.id.checkBox);
+        if (doTask.getCompleted()) {
+            testBox.setChecked(true);
+        }
     }
 
+    /**
+     checkBoxClick
+
+     Purpose: mark that task is completed
+     Parameters: View v
+     Returns: none
+     */
+    public void checkBoxClick(View v) {
+        CheckBox finishBox = (CheckBox) findViewById(R.id.checkBox);
+        if (finishBox.isChecked()) {
+            doTask.setCompleted(true);
+        } else {
+            doTask.setCompleted(false);
+        }
+    }
     /**
      buttonModifyOnClick
 

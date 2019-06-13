@@ -14,6 +14,7 @@ public class AccountPersistenceStub implements AccountPersistence {
 				
 		accounts.add(new Account("username1", "password1", 0 ));
 		accounts.add(new Account("username2", "password2", 1 ));
+		accounts.add(new Account("username3", "password3", 0 ));
 	}
 
 	/**

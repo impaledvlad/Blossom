@@ -47,6 +47,15 @@
                 android:value="bruteforce.presentation.MainActivity" />
 
         </activity>
+
+        <activity
+            android:name="bruteforce.presentation.ShowCompletedTaskActivity"
+            android:label="ShowCompletedTaskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="bruteforce.presentation.MainActivity" />
+
+        </activity>
     </application>
 
 </manifest>
