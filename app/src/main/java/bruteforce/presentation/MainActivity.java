@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 //create TextView for text2 in simple_list_item
 
                 String text1Str = String.format("%s - %d", taskDetails.get(position).getName(), taskDetails.get(position).getPriority());
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.CANADA);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd", Locale.CANADA);
                 String text2Str = dateFormat.format(taskDetails.get(position).getDeadline());
 
                 //Make string format for text1 and text2

@@ -19,8 +19,11 @@ import android.widget.TextView;
 
 import com.bruteforce.blossom.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
@@ -76,10 +79,12 @@ public class UpdateTaskActivity extends AppCompatActivity {
         }
 
         TextView dateShown = (TextView) findViewById(R.id.editText3);
-        String dateStr = showTask.getDeadline().getYear()+"/"+showTask.getDeadline().getMonth()+"/"+showTask.getDeadline().getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd", Locale.CANADA);
+        String dateStr = dateFormat.format(showTask.getDeadline());
         dateShown.setText(dateStr);
 
         mDate =(TextView) findViewById(R.id.textView7);
+        showDateChosen = (TextView) findViewById(R.id.editText3);
 
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,10 +124,10 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 yearSelect = year;
                 monthSelect = month;
                 daySelect = dayOfMonth;
-                String selectDate = year + "/" + month + "/" + dayOfMonth;
+                String dateStr = year + "/" + month + "/" + dayOfMonth;
                 //create a format string for displaying date
 
-                showDateChosen.setText(selectDate);
+                showDateChosen.setText(dateStr);
                 //set blank TextView to show date
             }
         };
@@ -166,15 +171,18 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
                         accessTask.updateName(description);
                         accessTask.updatePriority(priority);
+                        Date correctDate = new Date(yearSelect+"/"+monthSelect+"/"+daySelect);
+                        accessTask.updateDeadline(correctDate);
                         accessTask.updateTask();
                         //create a new task and add it
 
                         Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
-                        //testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(testIntent);
+                        //finish();
 
 
-                   // }
+                    //}
                 //}
             }
         });
