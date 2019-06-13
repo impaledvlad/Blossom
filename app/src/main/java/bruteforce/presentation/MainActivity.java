@@ -23,6 +23,7 @@ import java.util.Locale;
 
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
+import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 /**
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private AccessAccount accounts;
     private AccessTask tasks;
     private Task testTask;
-
+    private StringConverter converter;
     /**
      onCreate
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //set this MainActivity to work activity_main.xml
 
+        converter = new StringConverter();
         tasks = new AccessTask("username1");
         final List<Task> taskDetails = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
@@ -67,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 TextView text2 = view.findViewById(android.R.id.text2);
                 //create TextView for text2 in simple_list_item
 
-                String text1Str = String.format("%s - %d", taskDetails.get(position).getName(), taskDetails.get(position).getPriority());
+                String checkCompletion = converter.getCompletionString(taskDetails.get(position).getCompleted());
+
+                String checkPriority = converter.getPriorityString(taskDetails.get(position).getPriority());
+
+                String text1Str = String.format("%s - %s - %s", taskDetails.get(position).getName(), checkPriority, checkCompletion);
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd", Locale.CANADA);
                 String text2Str = dateFormat.format(taskDetails.get(position).getDeadline());
 
@@ -127,6 +133,23 @@ public class MainActivity extends AppCompatActivity {
         //has a function to move from Main page to Add Task page. Intent object is used to transform
         //from one page to another page
 
+        final Button completeTaskList = (Button) findViewById(R.id.button4) ;
+
+        completeTaskList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    String userName = "username1";
+                    Intent intent = new Intent(MainActivity.this, ShowCompletedTaskActivity.class);
+                    intent.putExtra("key", userName);
+                    MainActivity.this.startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     /**
@@ -151,11 +174,6 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

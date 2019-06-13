@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +25,7 @@ import java.util.Locale;
 
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
+import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -36,12 +35,14 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
+    private StringConverter converter;
     private DateValidation validation;
     private AccessTask accessTask;
     private Task showTask;
     private Task taskInlist;
     private TextView mDate;
     private TextView showDateChosen;
+    private TextView description;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private static final String TAG = "UpdateTaskActivity";
@@ -51,6 +52,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_task);
 
+        converter = new StringConverter();
         Intent i = getIntent();
         accessTask = new AccessTask("username1");
         showTask = (Task) i.getSerializableExtra("key");
@@ -62,7 +64,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
 
 
-        TextView description = (TextView) findViewById(R.id.editText2);
+        description = (TextView) findViewById(R.id.editText2);
         description.setText(showTask.getName());
 
         RadioButton button1 = (RadioButton) findViewById(R.id.radioButton);
@@ -79,7 +81,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         }
 
         TextView dateShown = (TextView) findViewById(R.id.editText3);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd", Locale.CANADA);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MMM/dd", Locale.CANADA);
         String dateStr = dateFormat.format(showTask.getDeadline());
         dateShown.setText(dateStr);
 
@@ -141,51 +143,44 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 //RadioGroup is used to select priority
 
                 //if (selection) {
-                    //check to one of three radio button is clicked or not
+                //check to one of three radio button is clicked or not
 
-                    EditText descriptionText = (EditText) findViewById(R.id.editText2);
-                    String description = descriptionText.getText().toString();
-                    //Text input for task desciption
+                EditText descriptionText = (EditText) findViewById(R.id.editText2);
+                String descriptionStr = descriptionText.getText().toString();
+                //Text input for task desciption
 
-                    RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
-                    String priorityName = priorityNumber.getText().toString();
-                    //Find which radio button clicked
+                RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
+                String priorityName = priorityNumber.getText().toString();
+                //Find which radio button clicked
 
-                    int priority;
-                    if (priorityName.equals("Low")) {
-                        //priority is low
-                        priority = 0;
-                    } else if (priorityName.equals("Medium")) {
-                        //priority is medium
-                        priority = 1;
-                    } else {
-                        //priority is high
-                        priority = 2;
-                    }
-
-                    //if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
-                        //check date which user select, if date is not valid, user cannot proceed any further
-
-                        //Date testDate = new Date(yearSelect, monthSelect, daySelect);
-                        //Task testTask = new Task(description, holder.getUsername(), testDate, false, priority);
-
-                        accessTask.updateName(description);
-                        accessTask.updatePriority(priority);
-                        Date correctDate = new Date(yearSelect+"/"+monthSelect+"/"+daySelect);
-                        accessTask.updateDeadline(correctDate);
-                        accessTask.updateTask();
-                        //create a new task and add it
-
-                        Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
-                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(testIntent);
-                        //finish();
+                int priority = converter.getPriorityInt(priorityName);
 
 
-                    //}
-                //}
+
+                accessTask.updateName(descriptionStr);
+                accessTask.updatePriority(priority);
+                if (!validation.validateDate(yearSelect,monthSelect,daySelect)) {
+                    Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
+                    accessTask.updateDeadline(correctDate);
+                }
+                accessTask.updateTask();
+
+
+                Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
+                testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(testIntent);
+
+
+
+
             }
         });
+    }
+
+    public void buttonCancelClick(View v) {
+        Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
+        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(testIntent);
     }
 
 }

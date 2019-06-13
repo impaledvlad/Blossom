@@ -22,6 +22,7 @@ import java.util.Date;
 
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
+import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -38,6 +39,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
+    private StringConverter converter;
     private AccessTask taskListTest;
     private DateValidation validation;
     private TextView mDate;
@@ -59,6 +61,7 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
         //set this Activity to handle activity_add_task.xml
 
+        converter = new StringConverter();
         Intent i = getIntent();
         final String userName = i.getStringExtra("key");
         //get username from main page
@@ -145,17 +148,8 @@ public class AddTaskActivity extends AppCompatActivity {
                     String priorityName = priorityNumber.getText().toString();
                     //Find which radio button clicked
 
-                    int priority;
-                    if (priorityName.equals("Low")) {
-                        //priority is low
-                        priority = 0;
-                    } else if (priorityName.equals("Medium")) {
-                        //priority is medium
-                        priority = 1;
-                    } else {
-                        //priority is high
-                        priority = 2;
-                    }
+                    int priority = converter.getPriorityInt(priorityName);
+
 
                     if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
                         //check date which user select, if date is not valid, user cannot proceed any further

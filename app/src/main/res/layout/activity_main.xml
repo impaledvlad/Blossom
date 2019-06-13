@@ -30,31 +30,14 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="295dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="800dp"
-        android:layout_marginEnd="300dp"
-        android:layout_marginRight="300dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/button4"
         android:layout_width="295dp"
         android:layout_height="97dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
         android:layout_marginTop="800dp"
         android:layout_marginBottom="32dp"
-        android:text="Completed Task"
+        android:text="@string/completed_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
