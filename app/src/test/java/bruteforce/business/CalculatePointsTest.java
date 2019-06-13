@@ -22,7 +22,7 @@ public class CalculatePointsTest {
     @Test
     public void testConstructor() {
 
-        System.out.println("\nTesting Constructor For Calculate Points.");
+        System.out.println("\nStarting testConstructor");
 
 
         AccessTask currUser = new AccessTask("username1");
@@ -41,7 +41,7 @@ public class CalculatePointsTest {
 
         assertNotNull("The award points constructor has failed to initialize.", testConstructor0);
 
-        System.out.println("Constructor for Calculate Points has run successfully.");
+        System.out.println("Finished testConstructor.");
 
     }
 
@@ -57,7 +57,7 @@ public class CalculatePointsTest {
     @Test
     public void testAwardPoints() {
 
-        System.out.println("\nTesting awardPoints method in  CalculatePoints Class.");
+        System.out.println("\nStarting testAwardPoints");
 
         // Create AccessAccount object.
         AccessAccount currAccount = new AccessAccount("username1");
@@ -78,7 +78,7 @@ public class CalculatePointsTest {
 
         //check to see if current user information has updated correctly to the DB.
         assertEquals("The awardPoints method has failed.", value, checkDB.getPoints());
-        System.out.println("The awardPoints method has run successfully ");
+        System.out.println("Finished testAwardPoints");
 
     }
 
