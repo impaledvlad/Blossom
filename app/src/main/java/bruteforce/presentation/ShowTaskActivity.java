@@ -29,7 +29,7 @@ public class ShowTaskActivity extends AppCompatActivity {
 
      Purpose: setup everything for ShowTask page
      Parameters: Bundle savedInstanceState
-     Returns: none
+     Returns: void
      */
     @Override
     protected  void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class ShowTaskActivity extends AppCompatActivity {
 
      Purpose: mark that task is completed
      Parameters: View v
-     Returns: none
+     Returns: void
      */
     public void checkBoxClick(View v) {
         CheckBox finishBox = (CheckBox) findViewById(R.id.checkBox);
@@ -69,7 +69,7 @@ public class ShowTaskActivity extends AppCompatActivity {
 
      Purpose: transfer to UpdateTaskActivity when pressing Modify button
      Parameters: View v
-     Returns: none
+     Returns: void
      */
     public void buttonModifyOnClick(View v) {
         Intent modify = new Intent(ShowTaskActivity.this,UpdateTaskActivity.class);
@@ -82,7 +82,7 @@ public class ShowTaskActivity extends AppCompatActivity {
 
      Purpose: delete selected task when pressing Delete button
      Parameters: View v
-     Returns: none
+     Returns: void
      */
     public void buttonDeleteOnClick(View v) {
         accessTask.deleteTask();

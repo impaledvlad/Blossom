@@ -44,7 +44,7 @@ public class AccessTask {
      getTask
 
      Purpose: get a specific task base on accountName and taskID
-     Parameters: String accountName, taskID
+     Parameters: int taskID
      Returns: void
      */
     public Task getTask(int taskId) {
@@ -79,7 +79,7 @@ public class AccessTask {
     updateTask
 
     Purpose: update task into database
-    Parameters: Task task
+    Parameters: None
     Returns: void
     */
     public void updateTask(){
@@ -94,7 +94,7 @@ public class AccessTask {
     deleteTask
 
     Purpose: delete task from the task list
-    Parameters: Task task
+    Parameters: None
     Returns: void
     */
     public void deleteTask(){
@@ -148,7 +148,7 @@ public class AccessTask {
     updatePriority
 
     Purpose: update the new priority for task
-    Parameters: boolean newComplete
+    Parameters: int newPriority
     Returns: void
     */
     public void updatePriority(int newPriority) {
@@ -179,7 +179,7 @@ public class AccessTask {
 
     Purpose: when delete user account also delete all user tasks for that user
     Parameters: none
-    Returns: none
+    Returns: void
     */
     public void removeAllTask(){
         if(tasks.size()>0) {
@@ -193,7 +193,7 @@ public class AccessTask {
 
     Purpose: renew the current task list for that user
     Parameters: String userName
-    Returns: None
+    Returns: void
     */
     private void tasksRenew(String userName) {
         tasks = taskPersistence.getTasks(userName);

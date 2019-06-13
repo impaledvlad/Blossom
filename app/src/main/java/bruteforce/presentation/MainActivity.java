@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
      Purpose: setup everything for main page
      Parameters: Bundle savedInstanceState
-     Returns: none
+     Returns: void
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
