@@ -53,7 +53,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
      Purpose: setup everything for Add task page
      Parameters: Bundle savedInstanceState
-     Returns: void
+     Returns: none
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

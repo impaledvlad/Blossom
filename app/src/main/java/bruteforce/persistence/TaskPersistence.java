@@ -15,7 +15,7 @@ public interface TaskPersistence {
 
     Purpose: insert a new task to our task list
     Parameters: Task currentTask
-    Returns: void
+    Returns: None
     */
     void insertTask(Task currentTask);
 

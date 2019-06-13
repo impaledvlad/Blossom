@@ -30,7 +30,13 @@ import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
+/**
+ Class: UpdateTaskActivity
+ Author: Triet Nguyen
+ Purpose: To set up front-end stuff for update task page
+ */
 public class UpdateTaskActivity extends AppCompatActivity {
+    //fields
     boolean selection;
     private int daySelect;
     private int monthSelect;
@@ -47,15 +53,24 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
     private static final String TAG = "UpdateTaskActivity";
 
+    /**
+     onCreate
+
+     Purpose: setup everything for UpdateTaskActivity page
+     Parameters: Bundle savedInstanceState
+     Returns: none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_task);
+        //set this activity to handle activity_update_task.xml
 
         converter = new StringConverter();
         Intent i = getIntent();
         accessTask = new AccessTask("username1");
         showTask = (Task) i.getSerializableExtra("key");
+        //get username information from last activity
 
         taskInlist = accessTask.getTask(showTask.getTaskID());
 
@@ -70,13 +85,17 @@ public class UpdateTaskActivity extends AppCompatActivity {
         RadioButton button1 = (RadioButton) findViewById(R.id.radioButton);
         RadioButton button2 = (RadioButton) findViewById(R.id.radioButton2);
         RadioButton button3 = (RadioButton) findViewById(R.id.radioButton3);
+        //setup radio button
 
         int priority = showTask.getPriority();
         if (priority == 0){
+            //if priority in Task object is Low, set checkbox to true
             button1.setChecked(true);
         } else if (priority == 1) {
+            //if priority in Task object is Medium, set checkbox to true
             button2.setChecked(true);
         } else if (priority == 2) {
+            //if priority in Task object is Low, set checkbox to true
             button3.setChecked(true);
         }
 
@@ -84,6 +103,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MMM/dd", Locale.CANADA);
         String dateStr = dateFormat.format(showTask.getDeadline());
         dateShown.setText(dateStr);
+        //setup for showing deadline of Task object
 
         mDate =(TextView) findViewById(R.id.textView7);
         showDateChosen = (TextView) findViewById(R.id.editText3);
@@ -110,7 +130,6 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 dialog.show();
                 //show calendar dialog into activity_add_task
 
-                //selection = true;
 
             }
         });
@@ -142,8 +161,6 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 int selectedButton = rateGroup.getCheckedRadioButtonId();
                 //RadioGroup is used to select priority
 
-                //if (selection) {
-                //check to one of three radio button is clicked or not
 
                 EditText descriptionText = (EditText) findViewById(R.id.editText2);
                 String descriptionStr = descriptionText.getText().toString();
@@ -155,8 +172,6 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
                 int priority = converter.getPriorityInt(priorityName);
 
-
-
                 accessTask.updateName(descriptionStr);
                 accessTask.updatePriority(priority);
                 if (!validation.validateDate(yearSelect,monthSelect,daySelect)) {
@@ -164,19 +179,24 @@ public class UpdateTaskActivity extends AppCompatActivity {
                     accessTask.updateDeadline(correctDate);
                 }
                 accessTask.updateTask();
-
+                //Do update all things here
 
                 Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
                 testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(testIntent);
-
-
-
+                //Return back to MainActivity
 
             }
         });
     }
 
+    /**
+     buttonCancelClick
+
+     Purpose: return to MainActivity if user don't want to update
+     Parameters: View v
+     Returns: none
+     */
     public void buttonCancelClick(View v) {
         Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
         testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);

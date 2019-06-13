@@ -15,19 +15,17 @@ public class Account {
     private Plant userPlant;
     private int points;
 
-    // Constructor 1:
     public Account(){
         this.username = "username";
         this.password = "password";
         this.points = 0;
     }
-    // Constructor 2:
+    
     public Account(String username, String password){
         this.username = username;
         this.password = password;
         this.points = 0;
     }
-    //Constructor 3:
     public Account(String username, String password, int points){
         this.username = username;
         this.password = password;

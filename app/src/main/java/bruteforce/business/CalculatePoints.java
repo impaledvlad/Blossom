@@ -26,11 +26,9 @@ public class CalculatePoints {
     }
 
     /**
-     awardPoints
-
-     Purpose: Awards points to user for completing a task
-     Parameters: None
-     Returns: int
+     Class: awardPoints
+     Author: Ahmed Kidwai
+     Purpose: This method will award points to a user when a task has been completed.
      */
 
     public int awardPoints() {

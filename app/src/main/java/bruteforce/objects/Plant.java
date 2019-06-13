@@ -10,13 +10,10 @@ Purpose: An object for the Plant feature of our project.
 public class Plant {
     private int growthLevel;
 
-    // Constructor
     public Plant() {
         this.growthLevel = 0;
     }
 
-
-    // Constructor
     public Plant(int growthLevel) {
         this.growthLevel = growthLevel;
     }

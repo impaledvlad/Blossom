@@ -22,7 +22,7 @@ public class AccountPersistenceStub implements AccountPersistence {
 
 	Purpose: insert a new account to our account list
 	Parameters: Account currentAccount
-	Returns: void
+	Returns: None
 	*/
 	@Override
     public void insertAccount(Account currentAccount){
@@ -96,7 +96,7 @@ public class AccountPersistenceStub implements AccountPersistence {
 
 	Purpose: get an account with the given userName
 	Parameters: String userName
-	Returns: Account
+	Returns: boolean true if success, false if not
 	*/
 	@Override
     public Account getAccount(String userName){

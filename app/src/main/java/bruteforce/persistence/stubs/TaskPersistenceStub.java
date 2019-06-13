@@ -26,7 +26,7 @@ public class TaskPersistenceStub implements TaskPersistence {
 
 	Purpose: insert a new task to our task list
 	Parameters: Task currentTask
-	Returns: void
+	Returns: None
 	*/
 	@Override
 	public void insertTask(Task currentTask) {

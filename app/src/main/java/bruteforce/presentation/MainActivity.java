@@ -37,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private AccessTask tasks;
     private Task testTask;
     private StringConverter converter;
+
     /**
      onCreate
 
      Purpose: setup everything for main page
      Parameters: Bundle savedInstanceState
-     Returns: void
+     Returns: none
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

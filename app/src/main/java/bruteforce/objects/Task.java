@@ -24,7 +24,6 @@ public class Task implements Serializable {
     private int taskID;
     private int priority; //priority(0 for low priority, 1 for medium priority, 2 for high priority, -1 for default);
 
-    // Constructor 1
     public Task() {
     	this.deadline = new Date();
     	this.name = "";
@@ -33,8 +32,7 @@ public class Task implements Serializable {
     	this.taskID = taskIDIterator++;
     	this.priority = -1;
     }
-
-    // Constructor 2
+    
     public Task(String name) {
         this.name = name;
         this.username = "";
@@ -44,7 +42,6 @@ public class Task implements Serializable {
 
     }
 
-    // Constructor 3
     public Task(String name, Date deadline) {
         this.name = name;
         this.username = "";
@@ -53,8 +50,7 @@ public class Task implements Serializable {
         this.taskID = taskIDIterator++;
         this.priority = -1;
     }
-
-    // Constructor 4
+    
     public Task(String name, String username, Date deadline, boolean completed, int priority) {
         this.name = name;
         this.username = username; 
@@ -134,7 +130,7 @@ public class Task implements Serializable {
     getDeadline
 
     Purpose: gets the deadline for this task
-    Parameters: none
+    Parameters: void
     Returns: Date object
     */
     public Date getDeadline() {
@@ -155,7 +151,7 @@ public class Task implements Serializable {
      getPriority
 
      Purpose: gets the priority for this task
-     Parameters: none
+     Parameters: void
      Returns: int
      */
     public int getPriority(){

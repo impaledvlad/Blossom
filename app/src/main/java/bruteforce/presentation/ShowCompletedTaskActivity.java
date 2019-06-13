@@ -23,6 +23,12 @@ import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
+/**
+ Class: ShowCompletedActivity
+ Author: Triet Nguyen
+ Purpose: To set up front-end stuff for completed task page
+ */
+
 public class ShowCompletedTaskActivity extends AppCompatActivity {
     //fields
     private AccessAccount accounts;
@@ -31,6 +37,13 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
     private String userName;
     private StringConverter converter;
 
+    /**
+     onCreate
+
+     Purpose: setup everything for ShowTask page
+     Parameters: Bundle savedInstanceState
+     Returns: none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

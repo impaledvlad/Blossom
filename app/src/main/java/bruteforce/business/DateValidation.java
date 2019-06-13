@@ -23,10 +23,13 @@ public class DateValidation {
         Calendar cal = Calendar.getInstance();
         boolean error = false;
         if (year < cal.get(Calendar.YEAR)) {
+            //if year is less than current year
             error = true;
         } else if (year == cal.get(Calendar.YEAR) && month < cal.get(Calendar.MONTH) + 1) {
+            //if year equals current year but month is less than current month
             error = true;
         } else if (year == cal.get(Calendar.YEAR) && month == cal.get(Calendar.MONTH) + 1 && day < cal.get(Calendar.DATE)) {
+            //if year and month equals current timeline but date is less than current date
             error = true;
         }
         return error;
