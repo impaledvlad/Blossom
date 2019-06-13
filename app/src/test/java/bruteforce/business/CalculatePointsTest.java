@@ -34,7 +34,7 @@ public class CalculatePointsTest {
 
         assertNotNull("The award points constructor has failed to initialize.", testConstructor0);
 
-        System.out.println("\nConstructor for Calculate Points has run successfully.");
+        System.out.println("Constructor for Calculate Points has run successfully.");
 
     }
 
@@ -70,7 +70,7 @@ public class CalculatePointsTest {
 
         //check to see if current user information has updated correctly to the DB.
         assertEquals("The awardPoints method has failed.", value, checkDB.getPoints());
-        System.out.println("\nThe awardPoints method has run successfully ");
+        System.out.println("The awardPoints method has run successfully ");
 
     }
 
