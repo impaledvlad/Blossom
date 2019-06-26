@@ -174,13 +174,13 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
                 accessTask.updateName(descriptionStr);
                 accessTask.updatePriority(priority);
-                if (!validation.validateDate(yearSelect,monthSelect,daySelect)) {
+                if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
                     Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
                     accessTask.updateDeadline(correctDate);
                 }
+
                 accessTask.updateTask();
                 //Do update all things here
-
                 Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
                 testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(testIntent);

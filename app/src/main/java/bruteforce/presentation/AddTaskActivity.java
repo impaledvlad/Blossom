@@ -164,10 +164,24 @@ public class AddTaskActivity extends AppCompatActivity {
                         startActivity(testIntent);
 
 
+                    } else {
+                        openDialog();
                     }
                 }
             }
         });
         //this button is used for inserting new task
+    }
+
+    /**
+     openDialog
+
+     Purpose: create DateErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openDialog() {
+        DateErrorDialog errorDialog = new DateErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"example dialog");
     }
 }
