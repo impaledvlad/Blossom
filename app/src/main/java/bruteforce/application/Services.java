@@ -3,6 +3,8 @@ import bruteforce.persistence.AccountPersistence;
 import bruteforce.persistence.TaskPersistence;
 import bruteforce.persistence.stubs.AccountPersistenceStub;
 import bruteforce.persistence.stubs.TaskPersistenceStub;
+import bruteforce.persistence.hsqldb.AccountPersistenceHSQLDB;
+import bruteforce.persistence.hsqldb.TaskPersistenceHSQLDB;
 
 /**
  Class: Services
@@ -23,7 +25,9 @@ public class Services{
     */
     public static synchronized AccountPersistence getAccountPersistence() {
         if(accountPersistence == null) {
-        	accountPersistence = new AccountPersistenceStub();
+        	//accountPersistence = new AccountPersistenceStub();
+            //accountPersistence = new AccountPersistenceHSQLDB(Main.getDBPathName());
+
         }
 
         return accountPersistence;
@@ -38,7 +42,9 @@ public class Services{
     */
     public static synchronized TaskPersistence getTaskPersistence() {
        if(taskPersistence == null) {
-    	   taskPersistence = new TaskPersistenceStub();
+    	   //taskPersistence = new TaskPersistenceStub();
+           //taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+
        }
 
        return taskPersistence;
