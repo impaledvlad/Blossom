@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 
 import com.bruteforce.blossom.R;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.objects.Task;
 
@@ -38,7 +39,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         //set this activity to handle activity_show_task.xml
 
         Intent intent = getIntent();
-        holder = "username1";
+        holder = Services.getAccount().getUsername();
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
@@ -74,6 +75,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void buttonModifyOnClick(View v) {
         Intent modify = new Intent(ShowTaskActivity.this,UpdateTaskActivity.class);
         modify.putExtra("key",showTask);
+        //modify.putExtra("user",holder);
         ShowTaskActivity.this.startActivity(modify);
     }
 

@@ -43,8 +43,15 @@ public class AccessAccount {
      Parameters: String accountName
      Returns: void
      */
-    public void getAccount(String userName) {
+    public boolean getAccount(String userName, String password) {
+        boolean check = false;
         currentAccount = accountPersistence.getAccount(userName);
+        if (currentAccount != null) {
+            if (password.equals(currentAccount.getPassword())) {
+                check = true;
+            }
+        }
+        return check;
     }
 
     /**
@@ -106,6 +113,11 @@ public class AccessAccount {
      */
     public void updatePassword(String newPassword){
         currentAccount.setPassword(newPassword);
+        updateAccount();
+    }
+
+    public void updateUsername(String newUsername){
+        currentAccount.setUsername(newUsername);
         updateAccount();
     }
 

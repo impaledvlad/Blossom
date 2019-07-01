@@ -20,6 +20,7 @@ import com.bruteforce.blossom.R;
 import java.util.Calendar;
 import java.util.Date;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.business.StringConverter;
@@ -45,6 +46,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private String userName;
 
     private static final String TAG = "AddTaskActivity";
 
@@ -62,8 +64,7 @@ public class AddTaskActivity extends AppCompatActivity {
         //set this Activity to handle activity_add_task.xml
 
         converter = new StringConverter();
-        Intent i = getIntent();
-        final String userName = i.getStringExtra("key");
+        userName = Services.getAccount().getUsername();
         //get username from main page
 
         chooseYet = false;
@@ -160,6 +161,7 @@ public class AddTaskActivity extends AppCompatActivity {
                         //create a new task and add it
 
                         Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                        //testIntent.putExtra("user",userName);
                         testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(testIntent);
 

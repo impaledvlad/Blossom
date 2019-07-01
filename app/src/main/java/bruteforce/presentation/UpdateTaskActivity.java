@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.business.StringConverter;
@@ -50,7 +51,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private TextView showDateChosen;
     private TextView description;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-
+    private String user;
     private static final String TAG = "UpdateTaskActivity";
 
     /**
@@ -68,7 +69,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
         converter = new StringConverter();
         Intent i = getIntent();
-        accessTask = new AccessTask("username1");
+        user = Services.getAccount().getUsername();
+        accessTask = new AccessTask(user);
         showTask = (Task) i.getSerializableExtra("key");
         //get username information from last activity
 
@@ -182,6 +184,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 accessTask.updateTask();
                 //Do update all things here
                 Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
+                //testIntent.putExtra("user",user);
                 testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(testIntent);
                 //Return back to MainActivity
