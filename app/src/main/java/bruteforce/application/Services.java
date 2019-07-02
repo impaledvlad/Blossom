@@ -27,7 +27,6 @@ public class Services{
         if(accountPersistence == null) {
         	//accountPersistence = new AccountPersistenceStub();
             //accountPersistence = new AccountPersistenceHSQLDB(Main.getDBPathName());
-
         }
 
         return accountPersistence;
