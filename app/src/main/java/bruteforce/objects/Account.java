@@ -19,17 +19,22 @@ public class Account {
         this.username = "username";
         this.password = "password";
         this.points = 0;
+        this.userPlant = new Plant();
     }
     
     public Account(String username, String password){
         this.username = username;
         this.password = password;
         this.points = 0;
+        this.userPlant = new Plant();
+
     }
     public Account(String username, String password, int points){
         this.username = username;
         this.password = password;
         this.points = points;
+        this.userPlant = new Plant();
+
     }
 
     /**

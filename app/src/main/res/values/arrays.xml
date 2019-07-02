@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="plant_imgs">
+        <item>@drawable/cacti</item>
+        <item>@drawable/cacti2</item>
+
+        <!--<item>@drawable/</item>-->
+    </integer-array>
+
+</resources>

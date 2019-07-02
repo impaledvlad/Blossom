@@ -21,4 +21,6 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="completed_task">Completed Task</string>
+    <string name="water_plant">Water Plant</string>
+    <string name="todo">TODO</string>
 </resources>

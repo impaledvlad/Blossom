@@ -29,6 +29,14 @@
                 android:value="bruteforce.presentation.MainActivity" />
 
         </activity>
+        <activity
+            android:name="bruteforce.presentation.PlantActivity"
+            android:label="PlantActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="bruteforce.presentation.MainActivity" />
+
+        </activity>
 
         <activity
             android:name="bruteforce.presentation.ShowTaskActivity"

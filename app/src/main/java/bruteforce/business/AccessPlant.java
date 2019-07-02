@@ -1,15 +1,21 @@
 package bruteforce.business;
+import bruteforce.application.Services;
 import bruteforce.objects.*;
 /** 
 Class: AccessPlant
-Author: Your name
+Author: John Maning
 Purpose: Business layer logic for a users Plant.
 */
 
 public class AccessPlant {
-    Plant accessedPlant;
+    private Plant accessedPlant;
 
-    public AccessPlant() {
-
+    public AccessPlant(Plant currPlant) {
+        accessedPlant = currPlant;
     }
+    public Plant getCurrentPlant()
+    {
+        return accessedPlant;
+    }
+
 }

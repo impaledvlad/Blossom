@@ -9,13 +9,17 @@ Purpose: An object for the Plant feature of our project.
 
 public class Plant {
     private int growthLevel;
+    private int waterLevel;
 
     public Plant() {
         this.growthLevel = 0;
+        this.waterLevel = 0;
     }
 
     public Plant(int growthLevel) {
         this.growthLevel = growthLevel;
+        this.waterLevel = 0;
+
     }
 
     /**
@@ -39,4 +43,20 @@ public class Plant {
     public void setGrowthLevel(int newLevel){
         this.growthLevel = newLevel;
     }
+
+    public int getWaterLevel(){
+        return waterLevel;
+    }
+
+    public void setWaterLevel(int waterLevel) {
+        this.waterLevel = waterLevel;
+    }
+    public void addWaterLevel(int waterAdded){
+        this.waterLevel += waterAdded;
+        if(this.waterLevel >= 100){
+            this.growthLevel++;
+            this.waterLevel = this.waterLevel-100;
+        }
+    }
+
 }
