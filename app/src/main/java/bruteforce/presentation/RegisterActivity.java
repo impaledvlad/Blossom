@@ -23,6 +23,14 @@ public class RegisterActivity extends AppCompatActivity {
     private AccessAccount accessAccount;
     private String username;
     private String password;
+
+    /**
+     onCreate
+
+     Purpose: setup everything for Register page
+     Parameters: Bundle savedInstanceState
+     Returns: none
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +57,12 @@ public class RegisterActivity extends AppCompatActivity {
                     accessAccount.insertAccount(testAccount);
                     Intent backToLogin = new Intent(RegisterActivity.this,LogInActivity.class);
                     startActivity(backToLogin);
+
+
+                    Toast showInfo = Toast.makeText(getBaseContext(),"Register successfully",Toast.LENGTH_LONG);
+                    showInfo.show();
                     finish();
+
                 }
 
             }

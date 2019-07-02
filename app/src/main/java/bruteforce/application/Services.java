@@ -49,18 +49,18 @@ public class Services{
    }
 
     /**
-     getAccount
+     * getAccount
 
      Purpose: return account that currently log in
      Parameters: none
      Returns: Account
      */
-   public static Account getAccount() {
+     public static Account getAccount() {
         if (account == null) {
             throw new NotLoginException();
         }
         return account;
-   }
+     }
 
     /**
      setAccount
@@ -69,14 +69,14 @@ public class Services{
      Parameters: Account newAccount
      Returns: none
      */
-   public static void setAccount(Account newAccount) {
+     public static void setAccount(Account newAccount) {
         if (newAccount == null) {
             throw new ApplicationExceptions(
                     "illegal access, setting global account to be null",
                     new NullPointerException("Services.account"));
         }
         account = newAccount;
-   }
+     }
 
     /**
      reset
@@ -85,9 +85,9 @@ public class Services{
      Parameters: none
      Returns: none
      */
-   public static void reset() {
+     public static void reset() {
         account = null;
         accountPersistence = null;
         taskPersistence = null;
-   }
+     }
 }

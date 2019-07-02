@@ -1,8 +1,10 @@
 package bruteforce.presentation;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import com.bruteforce.blossom.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private AccessTask tasks;
     private Task testTask;
     private StringConverter converter;
+
     /**
      onCreate
 
@@ -57,8 +61,16 @@ public class MainActivity extends AppCompatActivity {
 
         converter = new StringConverter();
         tasks = new AccessTask(userNameLogIn);
-        final List<Task> taskDetails = tasks.getTaskList();
+        final List<Task> doneTask = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
+
+        //Change thing here for testing
+        final List<Task> taskDetails = new ArrayList<>();
+        for (int i = 0; i < doneTask.size(); i++) {
+            if (!doneTask.get(i).getCompleted()) {
+                taskDetails.add(doneTask.get(i));
+            }
+        }
 
         final ArrayAdapter<Task> taskArrayAdapter = new ArrayAdapter<Task>(
                 this, android.R.layout.simple_list_item_2, android.R.id.text1, taskDetails) {
@@ -191,4 +203,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     onBackPressed
+
+     Purpose: setup soft back button for Main page
+     Parameters: none
+     Returns: none
+     */
+    @Override
+    public void onBackPressed() {
+        backButtonHandler();
+        return;
+    }
+
+    /**
+     backButtonHandler
+
+     Purpose: show dialog for closing application
+     Parameters: none
+     Returns: none
+     */
+    public void backButtonHandler() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+
+        //Setting Dialog Title
+        alertDialog.setTitle("Leave application?");
+        //Setting Dialog Message
+        alertDialog.setMessage("Are you sure you want to leave the application?");
+        //Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+        //Setting Negative "No" Button
+        alertDialog.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
 }

@@ -55,7 +55,7 @@ public class LogInActivity extends AppCompatActivity {
                     Toast text3 = Toast.makeText(getApplicationContext(),"You did not enter a username",LENGTH_SHORT);
                     text3.show();
                 } else if (!userName.matches("") && !password.matches("")) {
-                    if(accessAccount.getAccount(userName,password)) {
+                    if(accessAccount.checkLogin(userName,password)) {
 
                         Account account = accessAccount.getCurrentAccount();
                         Services.setAccount(account);

@@ -34,12 +34,10 @@
             android:layout_height="35dp"
             android:text="Current Username" />
 
-        <EditText
-            android:id="@+id/editText7"
+        <TextView
+            android:id="@+id/textView10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/textView15"

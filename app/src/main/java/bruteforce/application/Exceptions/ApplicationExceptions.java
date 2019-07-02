@@ -5,7 +5,6 @@ package bruteforce.application.Exceptions;
  Author: Triet Nguyen
  Purpose: To set up application exceptions
  */
-
 public class ApplicationExceptions extends RuntimeException {
     private String detialInfo = "\"go to:\\n\" +\n" +
             "                    \"Presentation/MessageExceptionHandlers/MessageExceptionHandlers.java to make Exception handler for your specific Exception%s\"";

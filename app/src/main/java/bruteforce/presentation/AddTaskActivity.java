@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
@@ -165,7 +166,8 @@ public class AddTaskActivity extends AppCompatActivity {
                         testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(testIntent);
 
-
+                        Toast infoTest = Toast.makeText(getBaseContext(),"Added successfully",Toast.LENGTH_LONG);
+                        infoTest.show();
                     } else {
                         openDialog();
                     }

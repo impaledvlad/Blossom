@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
@@ -27,6 +29,13 @@ public class AccountInfoActivity extends AppCompatActivity {
     private String name;
     private String pass;
 
+    /**
+     onCreate
+
+     Purpose: setup everything for Account Information page
+     Parameters: Bundle savedInstanceState
+     Returns: none
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +45,7 @@ public class AccountInfoActivity extends AppCompatActivity {
         name = Services.getAccount().getUsername();
         pass = Services.getAccount().getPassword();
         accessAccount = new AccessAccount(name);
-        final EditText userText = (EditText) findViewById(R.id.editText7);
+        final TextView userText = (TextView) findViewById(R.id.textView10);
         final EditText passText = (EditText) findViewById(R.id.editText6);
 
         //update button handler
@@ -46,15 +55,13 @@ public class AccountInfoActivity extends AppCompatActivity {
         showInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = userText.getText().toString();
                 pass = passText.getText().toString();
 
-                accessAccount.updateUsername(name);
                 accessAccount.updatePassword(pass);
 
-                Intent backIntent = new Intent(AccountInfoActivity.this, MainActivity.class);
-                backIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(backIntent);
+                Toast showInfo = Toast.makeText(getApplicationContext(),"Password changed successfully",Toast.LENGTH_SHORT);
+                showInfo.show();
+
             }
         });
     }
