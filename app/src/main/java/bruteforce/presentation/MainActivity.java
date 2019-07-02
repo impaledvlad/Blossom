@@ -21,9 +21,10 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import bruteforce.business.AccessAccount;
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
+import bruteforce.objects.Account;
 import bruteforce.objects.Task;
 
 /**
@@ -33,7 +34,8 @@ import bruteforce.objects.Task;
  */
 public class MainActivity extends AppCompatActivity {
     //fields
-    private AccessAccount accounts;
+    private Account accounts;
+    private String userNameLogIn;
     private AccessTask tasks;
     private Task testTask;
     private StringConverter converter;
@@ -51,8 +53,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //set this MainActivity to work activity_main.xml
 
+
+        userNameLogIn = Services.getAccount().getUsername();
+
         converter = new StringConverter();
-        tasks = new AccessTask("username1");
+        tasks = new AccessTask(userNameLogIn);
         final List<Task> taskDetails = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
 
@@ -102,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ShowTaskActivity.class);
                 Task test = taskArrayAdapter.getItem(position);
                 intent.putExtra("key", test);
-                //intent.putExtra("user","username1");
+                //intent.putExtra("user",userNameLogIn);
                 MainActivity.this.startActivity(intent);
                 //Move to ShowTaskActivity to get more task options
             }
@@ -117,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 //these codes will be executed when Add new task button is clicked
 
                 try {
-                    String userName = "username1";
+                    //String userName = "username1";
                     Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                    intent.putExtra("key",userName);
+                    //intent.putExtra("key",userNameLogIn);
                     //pass username to AddTaskActivity
 
                     MainActivity.this.startActivity(intent);
@@ -141,9 +146,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    String userName = "username1";
+                    //String userName = "username1";
                     Intent intent = new Intent(MainActivity.this, ShowCompletedTaskActivity.class);
-                    intent.putExtra("key", userName);
+                    //intent.putExtra("key", userNameLogIn);
                     MainActivity.this.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -175,8 +180,16 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                Intent transit = new Intent(MainActivity.this, AccountInfoActivity.class);
+                startActivity(transit);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
-        return super.onOptionsItemSelected(item);
+
     }
 
 }

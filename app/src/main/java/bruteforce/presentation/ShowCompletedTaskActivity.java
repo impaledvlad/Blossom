@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
@@ -52,7 +53,7 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
 
         converter = new StringConverter();
         Intent i = getIntent();
-        userName = i.getStringExtra("key");
+        userName = Services.getAccount().getUsername();
         tasks = new AccessTask(userName);
         List<Task> tempList = tasks.getTaskList();
         final List<Task> taskDetails = new ArrayList<>();
