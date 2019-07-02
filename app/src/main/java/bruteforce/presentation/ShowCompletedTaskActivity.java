@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
@@ -52,7 +53,7 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
 
         converter = new StringConverter();
         Intent i = getIntent();
-        userName = i.getStringExtra("key");
+        userName = Services.getAccount().getUsername();
         tasks = new AccessTask(userName);
         List<Task> tempList = tasks.getTaskList();
         final List<Task> taskDetails = new ArrayList<>();
@@ -75,8 +76,10 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
                 View view = super.getView(position, convertView, parent);
 
                 TextView text1 = view.findViewById(android.R.id.text1);
+                text1.setClickable(false);
                 //create TextView for text1 in simple_list_item
                 TextView text2 = view.findViewById(android.R.id.text2);
+                text2.setClickable(false);
                 //create TextView for text2 in simple_list_item
 
                 String checkCompletion = converter.getCompletionString(taskDetails.get(position).getCompleted());
@@ -96,6 +99,18 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
 
                 return view;
 
+            }
+
+            /**
+             isEnabled
+
+             Purpose: lock ListView's item
+             Parameters: int position
+             Returns: boolean
+             */
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
             }
         };
 
