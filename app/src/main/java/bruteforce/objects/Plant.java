@@ -8,6 +8,7 @@ Purpose: An object for the Plant feature of our project.
 */
 
 public class Plant {
+    private int maxGrowthLevel = 1;
     private int growthLevel;
     private int waterLevel;
 
@@ -43,19 +44,39 @@ public class Plant {
     public void setGrowthLevel(int newLevel){
         this.growthLevel = newLevel;
     }
+    /**
+     getWaterLevel
 
+     Purpose: returns the current water level of the the plant. (This is a hidden value, the user can't see it)
+     Parameters: void
+     Returns: an integer
+     */
     public int getWaterLevel(){
         return waterLevel;
     }
+/**
+ setWaterLevel
 
+     Purpose: used to manually set the water level. currently unused
+     Parameters: an integer.
+     Returns: void
+     */
     public void setWaterLevel(int waterLevel) {
         this.waterLevel = waterLevel;
     }
 
+    /**
+     addWaterLevel
+
+     Purpose: adds water to the waterlevel of the plant. will update the growth level evey 100
+                water points until the max level is hit.
+     Parameters: an integer
+     Returns: void
+     */
     public void addWaterLevel(int waterAdded){
         this.waterLevel += waterAdded;
         if(this.waterLevel >= 100){
-            if(growthLevel<=1) {
+            if(growthLevel<=maxGrowthLevel) {
                 this.growthLevel++;
                 this.waterLevel = this.waterLevel - 100;
             }
@@ -63,3 +84,10 @@ public class Plant {
     }
 
 }
+/**
+ methodName
+
+ Purpose:
+ Parameters:
+ Returns:
+ */
