@@ -93,6 +93,7 @@ public class AccessAccount {
      Returns: void
      */
     public void updatePoints(int newPoints){
+
         currentAccount.setPoints(newPoints);
         updateAccount();
     }

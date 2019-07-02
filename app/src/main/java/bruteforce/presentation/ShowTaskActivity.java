@@ -9,7 +9,9 @@ import android.widget.CheckBox;
 
 import com.bruteforce.blossom.R;
 
+import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
+import bruteforce.business.CalculatePoints;
 import bruteforce.objects.Task;
 
 /**
@@ -19,6 +21,7 @@ import bruteforce.objects.Task;
  */
 public class ShowTaskActivity extends AppCompatActivity {
     //fields
+    AccessAccount accessAccount;
     AccessTask accessTask;
     Task showTask;
     Task doTask;
@@ -38,6 +41,8 @@ public class ShowTaskActivity extends AppCompatActivity {
         //set this activity to handle activity_show_task.xml
 
         Intent intent = getIntent();
+        accessAccount = new AccessAccount("username1");
+
         holder = "username1";
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
@@ -59,7 +64,9 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void checkBoxClick(View v) {
         CheckBox finishBox = (CheckBox) findViewById(R.id.checkBox);
         if (finishBox.isChecked()) {
-            doTask.setCompleted(true);
+            //doTask.setCompleted(true);
+            CalculatePoints tempCalculate = new CalculatePoints(accessAccount, accessTask);
+            tempCalculate.awardPoints();
         } else {
             doTask.setCompleted(false);
         }

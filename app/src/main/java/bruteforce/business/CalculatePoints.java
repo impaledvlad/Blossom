@@ -1,6 +1,6 @@
 package bruteforce.business;
 import bruteforce.objects.Account;
-
+import bruteforce.objects.Task;
 
 
 /**
@@ -14,7 +14,7 @@ public class CalculatePoints {
     private AccessAccount currAccountPersistence;
     private AccessTask currTaskPersistence;
     private String userName;
-
+    private Task currTask;
 
     // Constructor.
     public CalculatePoints(AccessAccount currAccountPersistence, AccessTask currTaskPersistence, String userName) {
@@ -22,6 +22,13 @@ public class CalculatePoints {
         this.currAccountPersistence = currAccountPersistence;
         this.currTaskPersistence = currTaskPersistence;
         this.userName = userName;
+
+    }
+    public CalculatePoints(AccessAccount currAccountPersistence, AccessTask currTaskPersistence) {
+
+        this.currAccountPersistence = currAccountPersistence;
+        this.currTaskPersistence = currTaskPersistence;
+        this.currTask = currTask;
 
     }
 
