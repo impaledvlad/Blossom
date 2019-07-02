@@ -29,7 +29,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence{
      Returns: Connection
      */
     private Connection connection() throws SQLException{
-        return DriverManager.getConnection("jbdc:hsql:file" + dbPath + ";shutdown=true","sa","");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
     /**

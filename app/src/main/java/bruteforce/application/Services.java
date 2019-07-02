@@ -26,7 +26,7 @@ public class Services{
     public static synchronized AccountPersistence getAccountPersistence() {
         if(accountPersistence == null) {
         	//accountPersistence = new AccountPersistenceStub();
-            //accountPersistence = new AccountPersistenceHSQLDB(Main.getDBPathName());
+            accountPersistence = new AccountPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return accountPersistence;
@@ -42,7 +42,7 @@ public class Services{
     public static synchronized TaskPersistence getTaskPersistence() {
        if(taskPersistence == null) {
     	   //taskPersistence = new TaskPersistenceStub();
-           //taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+           taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
 
        }
 

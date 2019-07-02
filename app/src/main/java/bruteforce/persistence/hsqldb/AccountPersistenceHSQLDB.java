@@ -27,7 +27,7 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
      Returns: Connection
      */
     private Connection connection() throws SQLException{
-        return DriverManager.getConnection("jbdc:hsql:file" + dbPath + ";shutdown=true","sa","");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
     /**
@@ -38,7 +38,7 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
      Returns: Account
      */
     private Account fromResultSet(final ResultSet rs) throws SQLException{
-        final String userName = rs.getString("useName");
+        final String userName = rs.getString("userName");
         final String passWord = rs.getString("passWord");
         final int points = rs.getInt("points");
         return new Account(userName,passWord,points);
@@ -126,6 +126,7 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
             statement.setString(1,userName);
 
             final ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
             Account account = fromResultSet(resultSet);
             return account;
         } catch (final SQLException e) {

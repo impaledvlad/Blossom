@@ -29,6 +29,10 @@ public class AccessTask {
         currentTask = null;
     }
 
+    public AccessTask(final TaskPersistence taskPersistence){
+        this();
+        this.taskPersistence = taskPersistence;
+    }
     /**
      getTaskList
 

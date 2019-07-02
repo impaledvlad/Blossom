@@ -4,6 +4,7 @@ import bruteforce.objects.Account;
 import bruteforce.persistence.AccountPersistence;
 import bruteforce.application.Services;
 
+
 /**
 Class: AccessAccount
 Author: John Manning
@@ -22,6 +23,10 @@ public class AccessAccount {
     public AccessAccount(String userName){
         accountPersistence = Services.getAccountPersistence();
         currentAccount = accountPersistence.getAccount(userName);
+    }
+    public AccessAccount(final AccountPersistence accountPersistence){
+        this();
+        this.accountPersistence=accountPersistence;
     }
     //methods
 
