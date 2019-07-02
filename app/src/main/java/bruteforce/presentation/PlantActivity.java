@@ -41,7 +41,7 @@ public class PlantActivity extends AppCompatActivity {
     public void waterButtonOnClick(View v){
         int currProgress = myBar.getProgress();
         this.myPlant.getCurrentPlant().addWaterLevel(currProgress);
-        myBar.setProgress(myPlant.getCurrentPlant().getWaterLevel());
+        myAccount.getCurrentAccount().setPoints(0);
         setPlantImg();
         setWaterBar();
     }
