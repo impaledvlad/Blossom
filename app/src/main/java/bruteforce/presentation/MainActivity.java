@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private StringConverter converter;
 
     /**
-     onCreate
-
-     Purpose: setup everything for main page
-     Parameters: Bundle savedInstanceState
-     Returns: none
+     * onCreate
+     * <p>
+     * Purpose: setup everything for main page
+     * Parameters: Bundle savedInstanceState
+     * Returns: none
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position,convertView,parent);
+                View view = super.getView(position, convertView, parent);
 
                 TextView text1 = view.findViewById(android.R.id.text1);
                 //create TextView for text1 in simple_list_item
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String userName = "username1";
                     Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                    intent.putExtra("key",userName);
+                    intent.putExtra("key", userName);
                     //pass username to AddTaskActivity
 
                     MainActivity.this.startActivity(intent);
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         //has a function to move from Main page to Add Task page. Intent object is used to transform
         //from one page to another page
 
-        final Button completeTaskList = (Button) findViewById(R.id.button4) ;
+        final Button completeTaskList = (Button) findViewById(R.id.button4);
 
         completeTaskList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,11 +154,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     onCreateOptionsMenu
-
-     Purpose: setup default menu
-     Parameters: Menu menu
-     Returns: boolean
+     * onCreateOptionsMenu
+     * <p>
+     * Purpose: setup default menu
+     * Parameters: Menu menu
+     * Returns: boolean
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -167,16 +167,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-    onOpTionsItemSelected
-
-     Purpose: setup settings button on toolbar
-     Parameters: MenuItem item
-     Returns: boolean
+     * onOpTionsItemSelected
+     * <p>
+     * Purpose: setup settings button on toolbar
+     * Parameters: MenuItem item
+     * Returns: boolean
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         return super.onOptionsItemSelected(item);
+    }
+
+   public void plantBtnOnClick(View v) {
+        Intent plant = new Intent(MainActivity.this, PlantActivity.class);
+        startActivity(plant);
     }
 
 }
