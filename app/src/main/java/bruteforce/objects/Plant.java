@@ -76,7 +76,7 @@ public class Plant {
     public void addWaterLevel(int waterAdded){
         this.waterLevel += waterAdded;
         if(this.waterLevel >= 100){
-            if(growthLevel<=maxGrowthLevel) {
+            if(growthLevel<maxGrowthLevel) {
                 this.growthLevel++;
                 this.waterLevel = this.waterLevel - 100;
             }
@@ -84,10 +84,3 @@ public class Plant {
     }
 
 }
-/**
- methodName
-
- Purpose:
- Parameters:
- Returns:
- */
