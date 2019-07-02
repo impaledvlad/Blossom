@@ -55,7 +55,7 @@ public class Plant {
     public void addWaterLevel(int waterAdded){
         this.waterLevel += waterAdded;
         if(this.waterLevel >= 100){
-            if(growthLevel<=1) {
+            if(growthLevel<1) {
                 this.growthLevel++;
                 this.waterLevel = this.waterLevel - 100;
             }

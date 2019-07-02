@@ -41,11 +41,11 @@ public class CalculatePoints {
     public int awardPoints() {
 
         int [] points = {25, 50, 75, 100};
-        int currPoints = 0;
+        int currPoints;
 
 
         Account currAccount = currAccountPersistence.getCurrentAccount();
-        int currentPoints = currAccount.getPoints();
+         currPoints = currAccount.getPoints();
 
         // Get the priority.
         int priority = currTaskPersistence.completeTask();
@@ -56,10 +56,10 @@ public class CalculatePoints {
 
             int awarded = points[priority];
 
-            currentPoints = currPoints+awarded;
-            currAccountPersistence.updatePoints(currentPoints);
+            currPoints += awarded;
+            currAccountPersistence.updatePoints(currPoints);
         }
 
-        return currentPoints;
+        return currPoints;
     }
 }
