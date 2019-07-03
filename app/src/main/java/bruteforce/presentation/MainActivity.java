@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ShowTaskActivity.class);
                 Task test = taskArrayAdapter.getItem(position);
                 intent.putExtra("key", test);
-                //intent.putExtra("user",userNameLogIn);
                 MainActivity.this.startActivity(intent);
                 //Move to ShowTaskActivity to get more task options
             }
@@ -135,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                    //intent.putExtra("key",userNameLogIn);
-                    //pass username to AddTaskActivity
-
                     MainActivity.this.startActivity(intent);
                     //start AddTaskActivity
 
@@ -159,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
                     Intent intent = new Intent(MainActivity.this, ShowCompletedTaskActivity.class);
-                    //intent.putExtra("key", userNameLogIn);
                     MainActivity.this.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
