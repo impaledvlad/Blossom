@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import bruteforce.business.AccessAccountTest;
+import bruteforce.business.AccessPlantTest;
 import bruteforce.business.AccessTaskTest;
 import bruteforce.business.DateValidationTest;
 import bruteforce.business.CalculatePointsTest;
@@ -28,7 +29,8 @@ import bruteforce.objects.TaskTest;
         PlantTest.class,
         TaskTest.class,
         DateValidationTest.class,
-        StringConverterTest.class
+        StringConverterTest.class,
+        AccessPlantTest.class
 })
 
 
