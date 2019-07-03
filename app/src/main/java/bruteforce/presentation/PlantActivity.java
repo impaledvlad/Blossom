@@ -7,6 +7,8 @@ import android.widget.ProgressBar;
 import android.view.View;
 import  android.content.res.TypedArray;
 import com.bruteforce.blossom.R;
+
+import bruteforce.application.Services;
 import  bruteforce.business.AccessAccount;
 import  bruteforce.business.AccessPlant;
 
@@ -17,6 +19,8 @@ import  bruteforce.business.AccessPlant;
  */
 
 public class PlantActivity extends AppCompatActivity {
+    private String userNameLogIn;
+
     AccessAccount myAccount;
     AccessPlant myPlant;
     ProgressBar myBar;
@@ -34,7 +38,9 @@ public class PlantActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_plant);
-        myAccount = new AccessAccount("username1");
+        userNameLogIn = Services.getAccount().getUsername();
+
+        myAccount = new AccessAccount(userNameLogIn);
         myPlant = new AccessPlant(myAccount.getCurrentAccount().getPlant());
         setPlantImg();
         setWaterBar();

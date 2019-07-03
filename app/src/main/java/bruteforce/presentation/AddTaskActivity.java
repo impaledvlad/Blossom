@@ -14,12 +14,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.business.StringConverter;
@@ -45,6 +47,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private String userName;
 
     private static final String TAG = "AddTaskActivity";
 
@@ -62,8 +65,7 @@ public class AddTaskActivity extends AppCompatActivity {
         //set this Activity to handle activity_add_task.xml
 
         converter = new StringConverter();
-        Intent i = getIntent();
-        final String userName = i.getStringExtra("key");
+        userName = Services.getAccount().getUsername();
         //get username from main page
 
         chooseYet = false;
@@ -160,14 +162,30 @@ public class AddTaskActivity extends AppCompatActivity {
                         //create a new task and add it
 
                         Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                        //testIntent.putExtra("user",userName);
                         testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(testIntent);
 
-
+                        Toast infoTest = Toast.makeText(getBaseContext(),"Added successfully",Toast.LENGTH_LONG);
+                        infoTest.show();
+                    } else {
+                        openDialog();
                     }
                 }
             }
         });
         //this button is used for inserting new task
+    }
+
+    /**
+     openDialog
+
+     Purpose: create DateErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openDialog() {
+        DateErrorDialog errorDialog = new DateErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"example dialog");
     }
 }
