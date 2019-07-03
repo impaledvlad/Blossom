@@ -57,7 +57,7 @@ public class AccessTaskTest {
 
         System.out.println("\nStarting testGetTask");
 
-        assertNull("When the id not in the database, it should get null",accessTask.getTask(2));
+        assertNull("When the id not in the database, it should get null",accessTask.getTask(9));
         assertEquals("When get the task1 form database, it should get the task with name task2","Task2",accessTask.getTask(1).getName());
 
         System.out.println("Finished testGetTask");

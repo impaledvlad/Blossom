@@ -55,7 +55,7 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
     @TargetApi(19)
     public void insertAccount(Account currentAccount){
         try(final Connection connection=connection()){
-            final PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts Value(?,?,?)");
+            final PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts Values(?,?,?)");
             statement.setString(1,currentAccount.getUsername());
             statement.setString(2,currentAccount.getPassword());
             statement.setInt(3,currentAccount.getPoints());
@@ -102,7 +102,7 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
             final PreparedStatement statement = connection.prepareStatement("DELETE FROM tasks WHERE userName = ?");
             statement.setString(1, currentAccount.getUsername());
             statement.executeUpdate();
-            final PreparedStatement st = connection.prepareStatement("DELETE FROM accounts WHERE studentID = ?");
+            final PreparedStatement st = connection.prepareStatement("DELETE FROM accounts WHERE userName = ?");
             st.setString(1, currentAccount.getUsername());
             st.executeUpdate();
             return true;

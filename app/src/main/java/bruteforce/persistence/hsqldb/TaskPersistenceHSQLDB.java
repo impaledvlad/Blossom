@@ -40,13 +40,13 @@ public class TaskPersistenceHSQLDB implements TaskPersistence{
      Returns: Task
      */
     private Task fromResultSet(final ResultSet rs) throws SQLException{
-        final String userName = rs.getString("useName");
-        final String passWord = rs.getString("name");
+        final String userName = rs.getString("userName");
+        final String taskName = rs.getString("taskName");
         final java.util.Date date = new java.util.Date(rs.getDate("deadline").getTime());
         final boolean complete = rs.getBoolean("completed");
         final int taskId = rs.getInt("taskID");
         final int priority = rs.getInt("priority");
-        return new Task(userName,passWord,date,complete,priority);
+        return new Task(taskName,userName,date,complete,priority);
     }
 
 
@@ -61,7 +61,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence{
     @TargetApi(19)
     public void insertTask(Task currentTask){
         try(final Connection connection=connection()){
-            final PreparedStatement statement = connection.prepareStatement("INSERT INTO tasks Value(?,?,?,?,?,?)");
+            final PreparedStatement statement = connection.prepareStatement("INSERT INTO tasks Values(?,?,?,?,?,?)");
             statement.setString(1,currentTask.getUsername());
             statement.setString(2,currentTask.getName());
             statement.setDate(3,new java.sql.Date(currentTask.getDeadline().getTime()));
@@ -86,7 +86,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence{
     @TargetApi(19)
     public boolean updateTask(Task currentTask){
         try (final Connection connection = connection()) {
-            final PreparedStatement statement = connection.prepareStatement("UPDATE tasks SET taskName = ?, date = ?, completed = ?, priority = ?, WHERE userName = ? AND taskId = ?");
+            final PreparedStatement statement = connection.prepareStatement("UPDATE tasks SET taskName = ?, deadline = ?, completed = ?, priority = ? WHERE userName = ? AND taskId = ?");
             statement.setString(1,currentTask.getName());
             statement.setDate(2,new java.sql.Date(currentTask.getDeadline().getTime()));
             statement.setBoolean(3,currentTask.getCompleted());
