@@ -120,6 +120,18 @@ public class AccessAccount {
         currentAccount.setPoints(newPoints);
         updateAccount();
     }
+    /**
+     updatePlant
+
+     Purpose: update the plant for the current user
+     Parameters: int waterLevel, int growthLevel
+     Returns: void
+     */
+    public void updatePlant(int waterLevel, int growthLevel)
+    {
+        currentAccount.setPlant(waterLevel,growthLevel);
+        updateAccount();
+    }
 
     /**
      updatePassword
@@ -130,11 +142,6 @@ public class AccessAccount {
      */
     public void updatePassword(String newPassword){
         currentAccount.setPassword(newPassword);
-        updateAccount();
-    }
-
-    public void updateUsername(String newUsername){
-        currentAccount.setUsername(newUsername);
         updateAccount();
     }
 

@@ -20,7 +20,11 @@ public class Plant {
     public Plant(int growthLevel) {
         this.growthLevel = growthLevel;
         this.waterLevel = 0;
+    }
 
+    public Plant(int waterLevel, int growthLevel){
+        this.growthLevel = growthLevel;
+        this.waterLevel = waterLevel;
     }
 
     /**

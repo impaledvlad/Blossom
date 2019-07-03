@@ -57,6 +57,7 @@ public class PlantActivity extends AppCompatActivity {
         plantArray = getResources().obtainTypedArray(R.array.plant_imgs);
         plantImg = findViewById(R.id.plant_img_view);
         int plantIndex = myPlant.getCurrentPlant().getGrowthLevel();
+        System.out.println(plantIndex);
         plantImg.setImageResource(plantArray.getResourceId(plantIndex, -1));
 
     }

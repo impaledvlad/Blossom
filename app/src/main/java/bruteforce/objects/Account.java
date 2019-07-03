@@ -29,12 +29,12 @@ public class Account {
         this.userPlant = new Plant();
 
     }
-    public Account(String username, String password, int points){
+    public Account(String username, String password, int points, int waterlevel, int growthlevel
+    ){
         this.username = username;
         this.password = password;
         this.points = points;
-        this.userPlant = new Plant();
-
+        this.userPlant = new Plant(waterlevel,growthlevel);
     }
 
     /**
@@ -112,6 +112,17 @@ public class Account {
      */
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    /**
+     setPlant
+
+     Purpose: set the current plant when  you gain or redeem points
+     Parameters: plant
+     Returns: null
+     */
+    public void setPlant(int waterLevel, int growthLevel) {
+        this.userPlant = new Plant(waterLevel,growthLevel);
     }
 
 

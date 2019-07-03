@@ -12,9 +12,9 @@ public class AccountPersistenceStub implements AccountPersistence {
 	public AccountPersistenceStub() {
 		this.accounts = new ArrayList<>(); 
 				
-		accounts.add(new Account("username1", "password1", 0 ));
-		accounts.add(new Account("username2", "password2", 1 ));
-		accounts.add(new Account("username3", "password3", 0 ));
+		accounts.add(new Account("username1", "password1", 0 , 10,0 ));
+		accounts.add(new Account("username2", "password2", 1 , 0, 0));
+		accounts.add(new Account("username3", "password3", 0 ,80 , 0));
 	}
 
 	/**

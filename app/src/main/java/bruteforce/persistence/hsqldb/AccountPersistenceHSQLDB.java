@@ -42,7 +42,9 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
         final String userName = rs.getString("userName");
         final String passWord = rs.getString("passWord");
         final int points = rs.getInt("points");
-        return new Account(userName,passWord,points);
+        final int waterLevel = rs.getInt("waterlevel");
+        final int growthLevel = rs.getInt("growthlevel");
+        return new Account(userName,passWord,points,waterLevel,growthLevel);
     }
 
     /**
@@ -56,10 +58,12 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
     @TargetApi(19)
     public void insertAccount(Account currentAccount){
         try(final Connection connection=connection()){
-            final PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts Values(?,?,?)");
+            final PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts Values(?,?,?,?,?)");
             statement.setString(1,currentAccount.getUsername());
             statement.setString(2,currentAccount.getPassword());
             statement.setInt(3,currentAccount.getPoints());
+            statement.setInt(4,currentAccount.getPlant().getWaterLevel());
+            statement.setInt(5,currentAccount.getPlant().getGrowthLevel());
             statement.execute();
         }catch (final SQLException e)
         {
@@ -78,10 +82,12 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
     @TargetApi(19)
     public boolean updateAccount(Account currentAccount) {
         try (final Connection connection = connection()) {
-            final PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET password = ?, points = ? WHERE userName = ?");
+            final PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET password = ?, points = ?, waterlevel = ?, growthlevel = ? WHERE userName = ?");
             statement.setString(1, currentAccount.getPassword());
             statement.setInt(2,currentAccount.getPoints() );
-            statement.setString(3, currentAccount.getUsername());
+            statement.setInt(3,currentAccount.getPlant().getWaterLevel());
+            statement.setInt(4,currentAccount.getPlant().getGrowthLevel());
+            statement.setString(5, currentAccount.getUsername());
             statement.executeUpdate();
             return true;
         } catch (final SQLException e) {

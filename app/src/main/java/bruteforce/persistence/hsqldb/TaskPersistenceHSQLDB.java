@@ -47,7 +47,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence{
         final boolean complete = rs.getBoolean("completed");
         final int taskId = rs.getInt("taskID");
         final int priority = rs.getInt("priority");
-        return new Task(taskName,userName,date,complete,priority);
+        return new Task(taskName,userName,date,complete,taskId,priority);
     }
 
 

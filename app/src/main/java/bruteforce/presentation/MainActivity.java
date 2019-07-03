@@ -1,7 +1,6 @@
 package bruteforce.presentation;
 
-import android.content.Context;
-import android.content.res.AssetManager;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,13 +21,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 
-import bruteforce.application.Main;
+import bruteforce.application.Services;
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
@@ -45,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private AccessTask tasks;
     private Task testTask;
     private StringConverter converter;
+    private String holder;
 
     /**
      onCreate
@@ -58,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //set this MainActivity to work activity_main.xml
-        copyDatabaseToDevice();
 
+        holder = Services.getAccount().getUsername();
         converter = new StringConverter();
-        tasks = new AccessTask("username1");
+        tasks = new AccessTask(holder);
         final List<Task> taskDetails = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
 
@@ -126,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 //these codes will be executed when Add new task button is clicked
 
                 try {
-                    String userName = "username1";
+                    String userName = holder;
                     Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
                     intent.putExtra("key",userName);
                     //pass username to AddTaskActivity
@@ -150,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    String userName = "username1";
+                    String userName = holder;
                     Intent intent = new Intent(MainActivity.this, ShowCompletedTaskActivity.class);
                     intent.putExtra("key", userName);
                     MainActivity.this.startActivity(intent);
@@ -188,57 +184,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void copyDatabaseToDevice() {
-        final String DB_PATH = "db";
-
-        String[] assetNames;
-        Context context = getApplicationContext();
-        File dataDirectory = context.getDir(DB_PATH, Context.MODE_PRIVATE);
-        AssetManager assetManager = getAssets();
-
-        try {
-
-            assetNames = assetManager.list(DB_PATH);
-            for (int i = 0; i < assetNames.length; i++) {
-                assetNames[i] = DB_PATH + "/" + assetNames[i];
-            }
-
-            copyAssetsToDirectory(assetNames, dataDirectory);
-
-            Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
-
-        } catch (final IOException ioe) {
-            Messages.warning(this, "Unable to access application data: " + ioe.getMessage());
-        }
+    public void plantOnClick(View v) {
+        Intent plant = new Intent(MainActivity.this,PlantActivity.class);
+        startActivity(plant);
     }
-
-    public void copyAssetsToDirectory(String[] assets, File directory) throws IOException {
-        AssetManager assetManager = getAssets();
-
-        for (String asset : assets) {
-            String[] components = asset.split("/");
-            String copyPath = directory.toString() + "/" + components[components.length - 1];
-
-            char[] buffer = new char[1024];
-            int count;
-
-            File outFile = new File(copyPath);
-
-            if (!outFile.exists()) {
-                InputStreamReader in = new InputStreamReader(assetManager.open(asset));
-                FileWriter out = new FileWriter(outFile);
-
-                count = in.read(buffer);
-                while (count != -1) {
-                    out.write(buffer, 0, count);
-                    count = in.read(buffer);
-                }
-
-                out.close();
-                in.close();
-            }
-        }
-    }
-
 
 }

@@ -59,7 +59,7 @@
         android:layout_marginEnd="300dp"
         android:layout_marginRight="300dp"
         android:layout_marginBottom="8dp"
-        android:onClick="plantBtnOnClick"
+        android:onClick="plantOnClick"
         android:text="Plant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
