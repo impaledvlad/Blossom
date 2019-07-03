@@ -21,4 +21,6 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="completed_task">Completed Task</string>
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
 </resources>
