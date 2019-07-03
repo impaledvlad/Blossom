@@ -43,15 +43,8 @@ public class AccessAccount {
      Parameters: String accountName
      Returns: void
      */
-    public boolean getAccount(String userName, String password) {
-        boolean check = false;
+    public void getAccount(String userName) {
         currentAccount = accountPersistence.getAccount(userName);
-        if (currentAccount != null) {
-            if (password.equals(currentAccount.getPassword())) {
-                check = true;
-            }
-        }
-        return check;
     }
 
     /**
