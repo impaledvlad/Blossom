@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.objects.Task;
 
@@ -38,7 +41,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         //set this activity to handle activity_show_task.xml
 
         Intent intent = getIntent();
-        holder = "username1";
+        holder = Services.getAccount().getUsername();
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
@@ -47,6 +50,21 @@ public class ShowTaskActivity extends AppCompatActivity {
         if (doTask.getCompleted()) {
             testBox.setChecked(true);
         }
+    }
+
+    /**
+     onBackPressed
+
+     Purpose: setup soft back button for ShowTask page
+     Parameters: none
+     Returns: none
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent test = new Intent(ShowTaskActivity.this, MainActivity.class);
+        test.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(test);
     }
 
     /**
@@ -74,6 +92,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void buttonModifyOnClick(View v) {
         Intent modify = new Intent(ShowTaskActivity.this,UpdateTaskActivity.class);
         modify.putExtra("key",showTask);
+        //modify.putExtra("user",holder);
         ShowTaskActivity.this.startActivity(modify);
     }
 
@@ -86,6 +105,8 @@ public class ShowTaskActivity extends AppCompatActivity {
      */
     public void buttonDeleteOnClick(View v) {
         accessTask.deleteTask();
+        Toast showInfo = Toast.makeText(getBaseContext(),"Deleted successfully",Toast.LENGTH_LONG);
+        showInfo.show();
         NavUtils.navigateUpFromSameTask(this);
 
 
