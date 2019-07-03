@@ -53,6 +53,24 @@ public class AccessAccount {
     }
 
     /**
+     checkLogin
+
+     Purpose: check if account is existed in database
+     Parameters: String accountName, String password
+     Returns: boolean
+     */
+    public boolean checkLogin(String userName, String password) {
+        boolean check = false;
+        currentAccount = accountPersistence.getAccount(userName);
+        if (currentAccount != null) {
+            if (password.equals(currentAccount.getPassword())) {
+                check = true;
+            }
+        }
+        return check;
+    }
+
+    /**
      insertAccount
 
      Purpose: insert an account to our database
@@ -98,6 +116,7 @@ public class AccessAccount {
      Returns: void
      */
     public void updatePoints(int newPoints){
+
         currentAccount.setPoints(newPoints);
         updateAccount();
     }
@@ -111,6 +130,11 @@ public class AccessAccount {
      */
     public void updatePassword(String newPassword){
         currentAccount.setPassword(newPassword);
+        updateAccount();
+    }
+
+    public void updateUsername(String newUsername){
+        currentAccount.setUsername(newUsername);
         updateAccount();
     }
 
