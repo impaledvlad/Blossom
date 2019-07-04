@@ -133,8 +133,9 @@ public class AccountPersistenceHSQLDB implements AccountPersistence{
             statement.setString(1,userName);
 
             final ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            Account account = fromResultSet(resultSet);
+            Account account = null;
+            if (resultSet.next())
+                account = fromResultSet(resultSet);
             return account;
         } catch (final SQLException e) {
             throw new PersistenceException(e);
