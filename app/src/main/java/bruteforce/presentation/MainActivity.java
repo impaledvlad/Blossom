@@ -1,9 +1,10 @@
 package bruteforce.presentation;
 
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,14 +20,14 @@ import com.bruteforce.blossom.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
 import bruteforce.application.Services;
-import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
 import bruteforce.business.StringConverter;
+import bruteforce.objects.Account;
 import bruteforce.objects.Task;
 
 /**
@@ -36,11 +37,11 @@ import bruteforce.objects.Task;
  */
 public class MainActivity extends AppCompatActivity {
     //fields
-    private AccessAccount accounts;
+    private Account accounts;
+    private String userNameLogIn;
     private AccessTask tasks;
     private Task testTask;
     private StringConverter converter;
-    private String holder;
 
     /**
      onCreate
@@ -55,11 +56,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //set this MainActivity to work activity_main.xml
 
-        holder = Services.getAccount().getUsername();
+
+        userNameLogIn = Services.getAccount().getUsername();
+
         converter = new StringConverter();
-        tasks = new AccessTask(holder);
-        final List<Task> taskDetails = tasks.getTaskList();
+        tasks = new AccessTask(userNameLogIn);
+        final List<Task> doneTask = tasks.getTaskList();
         //create new AccessTask with "username1" and get list of tasks of username1
+
+        //Change thing here for testing
+        final List<Task> taskDetails = new ArrayList<>();
+        for (int i = 0; i < doneTask.size(); i++) {
+            if (!doneTask.get(i).getCompleted()) {
+                taskDetails.add(doneTask.get(i));
+            }
+        }
 
         final ArrayAdapter<Task> taskArrayAdapter = new ArrayAdapter<Task>(
                 this, android.R.layout.simple_list_item_2, android.R.id.text1, taskDetails) {
@@ -107,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ShowTaskActivity.class);
                 Task test = taskArrayAdapter.getItem(position);
                 intent.putExtra("key", test);
-                //intent.putExtra("user","username1");
+                //intent.putExtra("user",userNameLogIn);
                 MainActivity.this.startActivity(intent);
                 //Move to ShowTaskActivity to get more task options
             }
@@ -122,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
                 //these codes will be executed when Add new task button is clicked
 
                 try {
-                    String userName = holder;
+                    //String userName = "username1";
                     Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                    intent.putExtra("key",userName);
+                    //intent.putExtra("key",userNameLogIn);
                     //pass username to AddTaskActivity
 
                     MainActivity.this.startActivity(intent);
@@ -146,9 +157,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    String userName = holder;
+                    //String userName = "username1";
                     Intent intent = new Intent(MainActivity.this, ShowCompletedTaskActivity.class);
-                    intent.putExtra("key", userName);
+                    //intent.putExtra("key", userNameLogIn);
                     MainActivity.this.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -180,13 +191,62 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                Intent transit = new Intent(MainActivity.this, AccountInfoActivity.class);
+                startActivity(transit);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
-        return super.onOptionsItemSelected(item);
+
     }
 
-    public void plantOnClick(View v) {
-        Intent plant = new Intent(MainActivity.this,PlantActivity.class);
-        startActivity(plant);
+    /**
+     onBackPressed
+
+     Purpose: setup soft back button for Main page
+     Parameters: none
+     Returns: none
+     */
+    @Override
+    public void onBackPressed() {
+        backButtonHandler();
+        return;
     }
 
+    /**
+     backButtonHandler
+
+     Purpose: show dialog for closing application
+     Parameters: none
+     Returns: none
+     */
+    public void backButtonHandler() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+
+        //Setting Dialog Title
+        alertDialog.setTitle("Leave application?");
+        //Setting Dialog Message
+        alertDialog.setMessage("Are you sure you want to leave the application?");
+        //Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+        //Setting Negative "No" Button
+        alertDialog.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
 }
