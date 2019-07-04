@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer-array name="plant_imgs">
-        <item>@drawable/pea-01</item>
-        <item>@drawable/pea-02</item>
-        <item>@drawable/pea-03</item>
-        <item>@drawable/pea-03</item>
-        <item>@drawable/pea-05</item>
-        <item>@drawable/pea-06</item>
+        <item>@drawable/pea01</item>
+        <item>@drawable/pea02</item>
+        <item>@drawable/pea03</item>
+        <item>@drawable/pea03</item>
+        <item>@drawable/pea05</item>
+        <item>@drawable/pea06</item>
     </integer-array>
 
 </resources>
