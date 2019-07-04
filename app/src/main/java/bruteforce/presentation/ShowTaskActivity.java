@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
+import bruteforce.business.AccessAccount;
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
+import bruteforce.business.CalculatePoints;
 import bruteforce.objects.Task;
 
 /**
@@ -22,6 +24,7 @@ import bruteforce.objects.Task;
  */
 public class ShowTaskActivity extends AppCompatActivity {
     //fields
+    AccessAccount accessAccount;
     AccessTask accessTask;
     Task showTask;
     Task doTask;
@@ -42,6 +45,8 @@ public class ShowTaskActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         holder = Services.getAccount().getUsername();
+        accessAccount = new AccessAccount(holder);
+
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
@@ -77,7 +82,9 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void checkBoxClick(View v) {
         CheckBox finishBox = (CheckBox) findViewById(R.id.checkBox);
         if (finishBox.isChecked()) {
-            doTask.setCompleted(true);
+            //doTask.setCompleted(true);
+            CalculatePoints tempCalculate = new CalculatePoints(accessAccount, accessTask);
+            tempCalculate.awardPoints();
         } else {
             doTask.setCompleted(false);
         }
@@ -92,7 +99,6 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void buttonModifyOnClick(View v) {
         Intent modify = new Intent(ShowTaskActivity.this,UpdateTaskActivity.class);
         modify.putExtra("key",showTask);
-        //modify.putExtra("user",holder);
         ShowTaskActivity.this.startActivity(modify);
     }
 

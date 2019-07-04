@@ -4,6 +4,7 @@ import bruteforce.objects.Account;
 import bruteforce.persistence.AccountPersistence;
 import bruteforce.application.Services;
 
+
 /**
 Class: AccessAccount
 Author: John Manning
@@ -22,6 +23,10 @@ public class AccessAccount {
     public AccessAccount(String userName){
         accountPersistence = Services.getAccountPersistence();
         currentAccount = accountPersistence.getAccount(userName);
+    }
+    public AccessAccount(final AccountPersistence accountPersistence){
+        this();
+        this.accountPersistence=accountPersistence;
     }
     //methods
 
@@ -111,7 +116,20 @@ public class AccessAccount {
      Returns: void
      */
     public void updatePoints(int newPoints){
+
         currentAccount.setPoints(newPoints);
+        updateAccount();
+    }
+    /**
+     updatePlant
+
+     Purpose: update the plant for the current user
+     Parameters: int waterLevel, int growthLevel
+     Returns: void
+     */
+    public void updatePlant(int waterLevel, int growthLevel)
+    {
+        currentAccount.setPlant(waterLevel,growthLevel);
         updateAccount();
     }
 

@@ -144,32 +144,36 @@ public class AddTaskActivity extends AppCompatActivity {
 
                     EditText descriptionText = (EditText) findViewById(R.id.editText);
                     String description = descriptionText.getText().toString();
-                    //Text input for task desciption
-
-                    RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
-                    String priorityName = priorityNumber.getText().toString();
-                    //Find which radio button clicked
-
-                    int priority = converter.getPriorityInt(priorityName);
-
-
-                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
-                        //check date which user select, if date is not valid, user cannot proceed any further
-
-                        Date testDate = new Date(yearSelect+"/" + monthSelect + "/" + daySelect);
-                        Task testTask = new Task(description, userName, testDate, false, priority);
-                        taskListTest.insertTask(testTask);
-                        //create a new task and add it
-
-                        Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
-                        //testIntent.putExtra("user",userName);
-                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(testIntent);
-
-                        Toast infoTest = Toast.makeText(getBaseContext(),"Added successfully",Toast.LENGTH_LONG);
-                        infoTest.show();
+                    if (description.equals("")) {
+                        openTaskDialog();
                     } else {
-                        openDialog();
+                        //Text input for task desciption
+
+                        RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
+                        String priorityName = priorityNumber.getText().toString();
+                        //Find which radio button clicked
+
+                        int priority = converter.getPriorityInt(priorityName);
+
+
+                        if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                            //check date which user select, if date is not valid, user cannot proceed any further
+
+                            Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
+                            Task testTask = new Task(description, userName, testDate, false, priority);
+                            taskListTest.insertTask(testTask);
+                            //create a new task and add it
+
+                            Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                            //testIntent.putExtra("user",userName);
+                            testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(testIntent);
+
+                            Toast infoTest = Toast.makeText(getBaseContext(), "Added successfully", Toast.LENGTH_LONG);
+                            infoTest.show();
+                        } else {
+                            openDialog();
+                        }
                     }
                 }
             }
@@ -187,5 +191,17 @@ public class AddTaskActivity extends AppCompatActivity {
     public void openDialog() {
         DateErrorDialog errorDialog = new DateErrorDialog();
         errorDialog.show(getSupportFragmentManager(),"example dialog");
+    }
+
+    /**
+     openDialog
+
+     Purpose: create TitleErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openTaskDialog() {
+        TitleErrorDialog errorDialog = new TitleErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"test dialog");
     }
 }

@@ -6,7 +6,7 @@ package bruteforce.application.Exceptions;
  Purpose: To set up application exceptions
  */
 public class ApplicationExceptions extends RuntimeException {
-    private String detialInfo = "\"go to:\\n\" +\n" +
+    private String detailInfo = "\"go to:\\n\" +\n" +
             "                    \"Presentation/MessageExceptionHandlers/MessageExceptionHandlers.java to make Exception handler for your specific Exception%s\"";
 
     public ApplicationExceptions() {
@@ -19,19 +19,19 @@ public class ApplicationExceptions extends RuntimeException {
 
     public ApplicationExceptions(final String context) {
         super(context);
-        detialInfo = context;
+        detailInfo = context;
     }
 
     public ApplicationExceptions(final String context, Exception cause) {
         super(context, cause);
-        detialInfo = context;
+        detailInfo = context;
     }
 
-    protected void setDetialInfo(String detialInfo) {
-        this.detialInfo = detialInfo;
+    protected void setDetailInfo(String detailInfo) {
+        this.detailInfo = detailInfo;
     }
 
-    public String getDetialInfo() {
-        return this.detialInfo;
+    public String getDetailInfo() {
+        return this.detailInfo;
     }
 }

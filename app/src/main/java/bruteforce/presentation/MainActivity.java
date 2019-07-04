@@ -249,4 +249,10 @@ public class MainActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+    public void plantOnClick(View v) {
+        Intent plant = new Intent(MainActivity.this,PlantActivity.class);
+        startActivity(plant);
+    }
+
 }
