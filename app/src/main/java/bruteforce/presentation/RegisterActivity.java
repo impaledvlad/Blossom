@@ -53,16 +53,22 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast text1 = Toast.makeText(getApplicationContext(),"Username or password is missing",Toast.LENGTH_SHORT);
                     text1.show();
                 } else if (!username.equals("") && !password.equals("")) {
-                    Account testAccount = new Account(username,password);
-                    accessAccount.insertAccount(testAccount);
-                    Intent backToLogin = new Intent(RegisterActivity.this,LogInActivity.class);
-                    startActivity(backToLogin);
+                    accessAccount.getAccount(username);
+                    if (accessAccount.getCurrentAccount() == null) {
+                        Account testAccount = new Account(username, password);
+                        accessAccount.insertAccount(testAccount);
+                        Intent backToLogin = new Intent(RegisterActivity.this, LogInActivity.class);
+                        startActivity(backToLogin);
 
 
-                    Toast showInfo = Toast.makeText(getBaseContext(),"Register successfully",Toast.LENGTH_LONG);
-                    showInfo.show();
-                    finish();
-
+                        Toast showInfo = Toast.makeText(getBaseContext(), "Register successfully", Toast.LENGTH_LONG);
+                        showInfo.show();
+                        finish();
+                    } else {
+                        accessAccount.logOut();
+                        Toast handler = Toast.makeText(getBaseContext(),"Account is already existed",Toast.LENGTH_SHORT);
+                        handler.show();
+                    }
                 }
 
             }

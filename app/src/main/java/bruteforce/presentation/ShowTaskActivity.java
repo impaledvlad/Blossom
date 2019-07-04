@@ -47,7 +47,6 @@ public class ShowTaskActivity extends AppCompatActivity {
         holder = Services.getAccount().getUsername();
         accessAccount = new AccessAccount(holder);
 
-        //holder = "username1";
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
