@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
+import bruteforce.business.AccessAccount;
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
+import bruteforce.business.CalculatePoints;
 import bruteforce.objects.Task;
 
 /**
@@ -19,6 +24,7 @@ import bruteforce.objects.Task;
  */
 public class ShowTaskActivity extends AppCompatActivity {
     //fields
+    AccessAccount accessAccount;
     AccessTask accessTask;
     Task showTask;
     Task doTask;
@@ -38,7 +44,9 @@ public class ShowTaskActivity extends AppCompatActivity {
         //set this activity to handle activity_show_task.xml
 
         Intent intent = getIntent();
-        holder = "username1";
+        holder = Services.getAccount().getUsername();
+        accessAccount = new AccessAccount(holder);
+
         accessTask = new AccessTask(holder);
         showTask = (Task)intent.getSerializableExtra("key");
         doTask = accessTask.getTask(showTask.getTaskID());
@@ -47,6 +55,21 @@ public class ShowTaskActivity extends AppCompatActivity {
         if (doTask.getCompleted()) {
             testBox.setChecked(true);
         }
+    }
+
+    /**
+     onBackPressed
+
+     Purpose: setup soft back button for ShowTask page
+     Parameters: none
+     Returns: none
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent test = new Intent(ShowTaskActivity.this, MainActivity.class);
+        test.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(test);
     }
 
     /**
@@ -59,7 +82,9 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void checkBoxClick(View v) {
         CheckBox finishBox = (CheckBox) findViewById(R.id.checkBox);
         if (finishBox.isChecked()) {
-            doTask.setCompleted(true);
+            //doTask.setCompleted(true);
+            CalculatePoints tempCalculate = new CalculatePoints(accessAccount, accessTask);
+            tempCalculate.awardPoints();
         } else {
             doTask.setCompleted(false);
         }
@@ -86,6 +111,8 @@ public class ShowTaskActivity extends AppCompatActivity {
      */
     public void buttonDeleteOnClick(View v) {
         accessTask.deleteTask();
+        Toast showInfo = Toast.makeText(getBaseContext(),"Deleted successfully",Toast.LENGTH_LONG);
+        showInfo.show();
         NavUtils.navigateUpFromSameTask(this);
 
 

@@ -21,4 +21,11 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="completed_task">Completed Task</string>
+    <string name="action_account_info" />
+    <string name="action_account" />
+    <string name="AccountInfo" />
+    <string name="water_plant">Water Plant</string>
+    <string name="todo">TODO</string>
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
 </resources>

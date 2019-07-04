@@ -14,12 +14,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bruteforce.blossom.R;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.business.StringConverter;
@@ -45,6 +47,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private String userName;
 
     private static final String TAG = "AddTaskActivity";
 
@@ -62,8 +65,7 @@ public class AddTaskActivity extends AppCompatActivity {
         //set this Activity to handle activity_add_task.xml
 
         converter = new StringConverter();
-        Intent i = getIntent();
-        final String userName = i.getStringExtra("key");
+        userName = Services.getAccount().getUsername();
         //get username from main page
 
         chooseYet = false;
@@ -142,32 +144,64 @@ public class AddTaskActivity extends AppCompatActivity {
 
                     EditText descriptionText = (EditText) findViewById(R.id.editText);
                     String description = descriptionText.getText().toString();
-                    //Text input for task desciption
+                    if (description.equals("")) {
+                        openTaskDialog();
+                    } else {
+                        //Text input for task desciption
 
-                    RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
-                    String priorityName = priorityNumber.getText().toString();
-                    //Find which radio button clicked
+                        RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
+                        String priorityName = priorityNumber.getText().toString();
+                        //Find which radio button clicked
 
-                    int priority = converter.getPriorityInt(priorityName);
-
-
-                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
-                        //check date which user select, if date is not valid, user cannot proceed any further
-
-                        Date testDate = new Date(yearSelect+"/" + monthSelect + "/" + daySelect);
-                        Task testTask = new Task(description, userName, testDate, false, priority);
-                        taskListTest.insertTask(testTask);
-                        //create a new task and add it
-
-                        Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
-                        testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(testIntent);
+                        int priority = converter.getPriorityInt(priorityName);
 
 
+                        if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                            //check date which user select, if date is not valid, user cannot proceed any further
+
+                            Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
+                            Task testTask = new Task(description, userName, testDate, false, priority);
+                            taskListTest.insertTask(testTask);
+                            //create a new task and add it
+
+                            Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                            //testIntent.putExtra("user",userName);
+                            testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(testIntent);
+
+                            Toast infoTest = Toast.makeText(getBaseContext(), "Added successfully", Toast.LENGTH_LONG);
+                            infoTest.show();
+                        } else {
+                            openDialog();
+                        }
                     }
                 }
             }
         });
         //this button is used for inserting new task
+    }
+
+    /**
+     openDialog
+
+     Purpose: create DateErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openDialog() {
+        DateErrorDialog errorDialog = new DateErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"example dialog");
+    }
+
+    /**
+     openDialog
+
+     Purpose: create TitleErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openTaskDialog() {
+        TitleErrorDialog errorDialog = new TitleErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"test dialog");
     }
 }

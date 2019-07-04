@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateValidation;
 import bruteforce.business.StringConverter;
@@ -50,8 +51,10 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private TextView showDateChosen;
     private TextView description;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-
+    private String user;
     private static final String TAG = "UpdateTaskActivity";
+    private boolean test = false;
+    private boolean nStage = false;
 
     /**
      onCreate
@@ -68,7 +71,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
         converter = new StringConverter();
         Intent i = getIntent();
-        accessTask = new AccessTask("username1");
+        user = Services.getAccount().getUsername();
+        accessTask = new AccessTask(user);
         showTask = (Task) i.getSerializableExtra("key");
         //get username information from last activity
 
@@ -112,7 +116,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //these codes will be executed when Deadline is clicked
-
+                test = true;
                 Calendar cal = Calendar.getInstance();
                 yearSelect = cal.get(Calendar.YEAR);
                 monthSelect = cal.get(Calendar.MONTH);
@@ -174,18 +178,27 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
                 accessTask.updateName(descriptionStr);
                 accessTask.updatePriority(priority);
-                if (!validation.validateDate(yearSelect,monthSelect,daySelect)) {
-                    Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
-                    accessTask.updateDeadline(correctDate);
+                if (test) {
+                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                        Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
+                        accessTask.updateDeadline(correctDate);
+                        nStage = false;
+                    } else {
+                        nStage = true;
+                        openDialog();
+                    }
                 }
-                accessTask.updateTask();
-                //Do update all things here
 
-                Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
-                testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(testIntent);
-                //Return back to MainActivity
 
+                if (!nStage) {
+                    accessTask.updateTask();
+                    //Do update all things here
+                    Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
+                    //testIntent.putExtra("user",user);
+                    testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(testIntent);
+                    //Return back to MainActivity
+                }
             }
         });
     }
@@ -201,6 +214,18 @@ public class UpdateTaskActivity extends AppCompatActivity {
         Intent testIntent = new Intent(UpdateTaskActivity.this, MainActivity.class);
         testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(testIntent);
+    }
+
+    /**
+     openDialog
+
+     Purpose: create DateErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openDialog() {
+        DateErrorDialog errorDialog = new DateErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"example dialog");
     }
 
 }

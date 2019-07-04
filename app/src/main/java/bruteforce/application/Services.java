@@ -1,8 +1,14 @@
 package bruteforce.application;
+import bruteforce.application.Exceptions.ApplicationExceptions;
+import bruteforce.business.AccessAccount;
+import bruteforce.business.Exceptions.NotLoginException;
+import bruteforce.objects.Account;
 import bruteforce.persistence.AccountPersistence;
 import bruteforce.persistence.TaskPersistence;
 import bruteforce.persistence.stubs.AccountPersistenceStub;
 import bruteforce.persistence.stubs.TaskPersistenceStub;
+import bruteforce.persistence.hsqldb.AccountPersistenceHSQLDB;
+import bruteforce.persistence.hsqldb.TaskPersistenceHSQLDB;
 
 /**
  Class: Services
@@ -13,7 +19,7 @@ import bruteforce.persistence.stubs.TaskPersistenceStub;
 public class Services{
     private static AccountPersistence accountPersistence = null;
     private static TaskPersistence taskPersistence = null;
-
+    private static Account account = null;
     /**
     getAccountPersistence
 
@@ -23,7 +29,8 @@ public class Services{
     */
     public static synchronized AccountPersistence getAccountPersistence() {
         if(accountPersistence == null) {
-        	accountPersistence = new AccountPersistenceStub();
+        	//accountPersistence = new AccountPersistenceStub();
+            accountPersistence = new AccountPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return accountPersistence;
@@ -38,9 +45,54 @@ public class Services{
     */
     public static synchronized TaskPersistence getTaskPersistence() {
        if(taskPersistence == null) {
-    	   taskPersistence = new TaskPersistenceStub();
+    	   //taskPersistence = new TaskPersistenceStub();
+           taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+
        }
 
        return taskPersistence;
    }
+
+    /**
+     * getAccount
+
+     Purpose: return account that currently log in
+     Parameters: none
+     Returns: Account
+     */
+     public static Account getAccount() {
+        if (account == null) {
+            throw new NotLoginException();
+        }
+        return account;
+     }
+
+    /**
+     setAccount
+
+     Purpose: set this account to log in state
+     Parameters: Account newAccount
+     Returns: none
+     */
+     public static void setAccount(Account newAccount) {
+        if (newAccount == null) {
+            throw new ApplicationExceptions(
+                    "illegal access, setting global account to be null",
+                    new NullPointerException("Services.account"));
+        }
+        account = newAccount;
+     }
+
+    /**
+     reset
+
+     Purpose: reset application status
+     Parameters: none
+     Returns: none
+     */
+     public static void reset() {
+        account = null;
+        accountPersistence = null;
+        taskPersistence = null;
+     }
 }

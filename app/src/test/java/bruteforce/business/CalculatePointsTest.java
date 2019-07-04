@@ -1,5 +1,8 @@
 package bruteforce.business;
 import bruteforce.objects.Account;
+import bruteforce.persistence.stubs.AccountPersistenceStub;
+import bruteforce.persistence.stubs.TaskPersistenceStub;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -25,10 +28,11 @@ public class CalculatePointsTest {
         System.out.println("\nStarting testConstructor");
 
 
-        AccessTask currUser = new AccessTask("username1");
+        AccessTask currUser = new AccessTask(new TaskPersistenceStub(), "username1");
 
         // Create AccessAcount object..
-        AccessAccount currAccount = new AccessAccount("username1");
+        AccessAccount currAccount = new AccessAccount(new AccountPersistenceStub());
+        currAccount.getAccount("username1");
 
         currAccount.updatePoints(50);
 
@@ -59,11 +63,15 @@ public class CalculatePointsTest {
 
         System.out.println("\nStarting testAwardPoints");
 
-        // Create AccessAccount object.
-        AccessAccount currAccount = new AccessAccount("username1");
 
-        //Create AccessTask object
-        AccessTask currUser = new AccessTask("username1");
+        AccessTask currUser = new AccessTask(new TaskPersistenceStub(), "username1");
+
+        // Create AccessAcount object..
+        AccessAccount currAccount = new AccessAccount(new AccountPersistenceStub());
+        currAccount.getAccount("username1");
+
+        currAccount.updatePoints(50);
+
         currUser.getTask(1);
         currAccount.updatePoints(50);
 

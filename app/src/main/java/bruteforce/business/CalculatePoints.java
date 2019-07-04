@@ -1,6 +1,6 @@
 package bruteforce.business;
 import bruteforce.objects.Account;
-
+import bruteforce.objects.Task;
 
 
 /**
@@ -14,7 +14,7 @@ public class CalculatePoints {
     private AccessAccount currAccountPersistence;
     private AccessTask currTaskPersistence;
     private String userName;
-
+    private Task currTask;
 
     // Constructor.
     public CalculatePoints(AccessAccount currAccountPersistence, AccessTask currTaskPersistence, String userName) {
@@ -22,6 +22,13 @@ public class CalculatePoints {
         this.currAccountPersistence = currAccountPersistence;
         this.currTaskPersistence = currTaskPersistence;
         this.userName = userName;
+
+    }
+    public CalculatePoints(AccessAccount currAccountPersistence, AccessTask currTaskPersistence) {
+
+        this.currAccountPersistence = currAccountPersistence;
+        this.currTaskPersistence = currTaskPersistence;
+        this.currTask = currTask;
 
     }
 
@@ -34,11 +41,11 @@ public class CalculatePoints {
     public int awardPoints() {
 
         int [] points = {25, 50, 75, 100};
-        int currPoints = 0;
+        int currPoints;
 
 
         Account currAccount = currAccountPersistence.getCurrentAccount();
-        int currentPoints = currAccount.getPoints();
+         currPoints = currAccount.getPoints();
 
         // Get the priority.
         int priority = currTaskPersistence.completeTask();
@@ -49,10 +56,10 @@ public class CalculatePoints {
 
             int awarded = points[priority];
 
-            currentPoints = currPoints+awarded;
-            currAccountPersistence.updatePoints(currentPoints);
+            currPoints += awarded;
+            currAccountPersistence.updatePoints(currPoints);
         }
 
-        return currentPoints;
+        return currPoints;
     }
 }
