@@ -69,22 +69,7 @@ public class Plant {
         this.waterLevel = waterLevel;
     }
 
-    /**
-     addWaterLevel
-
-     Purpose: adds water to the waterlevel of the plant. will update the growth level evey 100
-                water points until the max level is hit.
-     Parameters: an integer
-     Returns: void
-     */
-    public void addWaterLevel(int waterAdded){
-        this.waterLevel += waterAdded;
-        if(this.waterLevel >= 100){
-            if(growthLevel<maxGrowthLevel) {
-                this.growthLevel++;
-                this.waterLevel = this.waterLevel - 100;
-            }
-        }
+    public int getMaxGrowthLevel() {
+        return maxGrowthLevel;
     }
-
 }

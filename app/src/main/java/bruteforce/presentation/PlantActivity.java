@@ -23,6 +23,7 @@ public class PlantActivity extends AppCompatActivity {
 
     AccessAccount myAccount;
     AccessPlant myPlant;
+
     ProgressBar myBar;
     ImageView plantImg;
     TypedArray plantArray;
@@ -82,7 +83,10 @@ public class PlantActivity extends AppCompatActivity {
      */
     public void waterButtonOnClick(View v){
         int currProgress = myBar.getProgress();
-        this.myPlant.getCurrentPlant().addWaterLevel(currProgress);
+        this.myPlant.addWaterLevel(currProgress);
+
+        myAccount.updatePlant(myPlant.getCurrentPlant().getWaterLevel(), myPlant.getCurrentPlant().getGrowthLevel());
+
         myAccount.getCurrentAccount().setPoints(0);
         setPlantImg();
         setWaterBar();

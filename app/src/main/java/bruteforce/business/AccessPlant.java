@@ -1,5 +1,4 @@
 package bruteforce.business;
-import bruteforce.application.Services;
 import bruteforce.objects.*;
 /** 
 Class: AccessPlant
@@ -25,5 +24,26 @@ public class AccessPlant {
     {
         return accessedPlant;
     }
+    /**
+     addWaterLevel
+
+     Purpose: adds water to the waterlevel of the plant. will update the growth level evey 100
+     water points until the max level is hit.
+     Parameters: an integer
+     Returns: void
+     */
+    public void addWaterLevel(int waterAdded){
+        accessedPlant.setWaterLevel(accessedPlant.getWaterLevel() + waterAdded);
+        if(accessedPlant.getWaterLevel() >= 100){
+
+            if(accessedPlant.getGrowthLevel() < accessedPlant.getMaxGrowthLevel()) {
+
+                accessedPlant.setGrowthLevel(accessedPlant.getGrowthLevel()+1);
+
+                accessedPlant.setWaterLevel( accessedPlant.getWaterLevel() - 100);
+            }
+        }
+    }
+
 
 }
