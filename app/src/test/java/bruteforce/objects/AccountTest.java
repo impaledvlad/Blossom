@@ -62,7 +62,7 @@ public class AccountTest {
     public void testAccountThirdConstructor() {
         System.out.println("\nStarting testAccountThirdConstructor");
 
-        Account user = new Account("John", "john987", 25);
+        Account user = new Account("John", "john987", 25, 0, 0);
         assertNotNull("Account object should not be null", user);
         assertEquals("getUserName() in account class is not correct", "John", user.getUsername());
         assertEquals("getPassword() in account class is not correct", "john987", user.getPassword());
