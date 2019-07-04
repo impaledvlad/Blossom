@@ -8,7 +8,7 @@ Purpose: An object for the Plant feature of our project.
 */
 
 public class Plant {
-    private int maxGrowthLevel = 1;
+    private int maxGrowthLevel = 5;
     private int growthLevel;
     private int waterLevel;
 
