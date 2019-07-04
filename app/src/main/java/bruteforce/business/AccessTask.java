@@ -29,9 +29,17 @@ public class AccessTask {
         currentTask = null;
     }
 
+    public AccessTask(final TaskPersistence taskPersistence, String userName) {
+        this();
+        this.taskPersistence = taskPersistence;
+        tasks = taskPersistence.getTasks(userName);
+        //System.out.println(tasks);
+    }
+
     public AccessTask(final TaskPersistence taskPersistence){
         this();
         this.taskPersistence = taskPersistence;
+
     }
     /**
      getTaskList
