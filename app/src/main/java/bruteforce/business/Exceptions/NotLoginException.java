@@ -8,6 +8,6 @@ package bruteforce.business.Exceptions;
 public class NotLoginException extends AccessingExceptions {
     public NotLoginException() {
         super("have not login yet");
-        setDetialInfo("have not login yet");
+        setDetailInfo("have not login yet");
     }
 }
