@@ -43,6 +43,8 @@ public class PlantActivity extends AppCompatActivity {
 
         myAccount = new AccessAccount(userNameLogIn);
         myPlant = new AccessPlant(myAccount.getCurrentAccount().getPlant());
+        System.out.println("waterlevel: "+myPlant.getCurrentPlant().getWaterLevel());
+        System.out.println("Growthlevel: " + myPlant.getCurrentPlant().getGrowthLevel());
         setPlantImg();
         setWaterBar();
     }
@@ -58,7 +60,6 @@ public class PlantActivity extends AppCompatActivity {
         plantArray = getResources().obtainTypedArray(R.array.plant_imgs);
         plantImg = findViewById(R.id.plant_img_view);
         int plantIndex = myPlant.getCurrentPlant().getGrowthLevel();
-        System.out.println(plantIndex);
         plantImg.setImageResource(plantArray.getResourceId(plantIndex, -1));
 
     }
@@ -88,6 +89,7 @@ public class PlantActivity extends AppCompatActivity {
         myAccount.updatePlant(myPlant.getCurrentPlant().getWaterLevel(), myPlant.getCurrentPlant().getGrowthLevel());
 
         myAccount.getCurrentAccount().setPoints(0);
+        myAccount.updatePoints(myAccount.getCurrentAccount().getPoints());
         setPlantImg();
         setWaterBar();
     }
