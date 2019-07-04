@@ -2,7 +2,7 @@
 
 ## Diagram
 
-![architecture](ArchitechtureFlowchart.png)
+![architecture](ArchitechtureDiagram.png)
 
 ## Presentation Layer
 [MainActivity](/app/src/main/java/bruteforce/presentation/MainActivity)
