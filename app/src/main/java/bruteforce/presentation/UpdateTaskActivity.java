@@ -25,7 +25,9 @@ import java.util.Locale;
 
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
+import bruteforce.business.DateInputValidation;
 import bruteforce.business.DateValidation;
+import bruteforce.business.Exceptions.DateException;
 import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
@@ -42,8 +44,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
-    private StringConverter converter;
-    private DateValidation validation;
+    private DateInputValidation validation;
     private AccessTask accessTask;
     private Task showTask;
     private Task taskInlist;
@@ -69,7 +70,6 @@ public class UpdateTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_task);
         //set this activity to handle activity_update_task.xml
 
-        converter = new StringConverter();
         Intent i = getIntent();
         user = Services.getAccount().getUsername();
         accessTask = new AccessTask(user);
@@ -79,7 +79,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         taskInlist = accessTask.getTask(showTask.getTaskID());
 
         selection = false;
-        validation = new DateValidation();
+        validation = new DateInputValidation();
 
 
 
@@ -103,14 +103,14 @@ public class UpdateTaskActivity extends AppCompatActivity {
             button3.setChecked(true);
         }
 
-        TextView dateShown = (TextView) findViewById(R.id.editText3);
+        TextView dateShown = (TextView) findViewById(R.id.textView12);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MMM/dd", Locale.CANADA);
         String dateStr = dateFormat.format(showTask.getDeadline());
         dateShown.setText(dateStr);
         //setup for showing deadline of Task object
 
         mDate =(TextView) findViewById(R.id.textView7);
-        showDateChosen = (TextView) findViewById(R.id.editText3);
+        showDateChosen = (TextView) findViewById(R.id.textView12);
 
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,18 +174,19 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 String priorityName = priorityNumber.getText().toString();
                 //Find which radio button clicked
 
-                int priority = converter.getPriorityInt(priorityName);
+                int priority = getPriorityInt(priorityName);
 
                 accessTask.updateName(descriptionStr);
                 accessTask.updatePriority(priority);
                 if (test) {
-                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                    try {
+                        validation.dateCheck(yearSelect, monthSelect, daySelect);
                         Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
                         accessTask.updateDeadline(correctDate);
                         nStage = false;
-                    } else {
+                    } catch (DateException e) {
                         nStage = true;
-                        openDialog();
+                        Messages.warning(UpdateTaskActivity.this,e.toString());
                     }
                 }
 
@@ -226,6 +227,28 @@ public class UpdateTaskActivity extends AppCompatActivity {
     public void openDialog() {
         DateErrorDialog errorDialog = new DateErrorDialog();
         errorDialog.show(getSupportFragmentManager(),"example dialog");
+    }
+
+    /**
+     getPriorityInt
+
+     Purpose: return a integer when user choose priority
+     Parameters: String str
+     Returns: int
+     */
+    public int getPriorityInt(String str) {
+        int value;
+        if (str.equals("Low")) {
+            //priority is low
+            value = 0;
+        } else if (str.equals("Medium")) {
+            //priority is medium
+            value = 1;
+        } else {
+            //priority is high
+            value = 2;
+        }
+        return value;
     }
 
 }
