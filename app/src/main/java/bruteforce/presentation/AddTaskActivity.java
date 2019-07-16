@@ -36,7 +36,9 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  Author: Triet Nguyen
  Purpose: To set up front-end stuff for Add Task page
  */
-
+enum Level{
+    LOW, MEDIUM, HIGH
+}
 public class AddTaskActivity extends AppCompatActivity {
     //fields
     private boolean chooseYet;
@@ -229,14 +231,14 @@ public class AddTaskActivity extends AppCompatActivity {
      Returns: int
      */
     public int getPriorityInt(String str) {
-        int value;
-        if (str.equals("Low")) {
+        int value = -1;
+        if (str.equalsIgnoreCase(Level.LOW.toString())) {
             //priority is low
             value = 0;
-        } else if (str.equals("Medium")) {
+        } else if (str.equalsIgnoreCase(Level.MEDIUM.toString())) {
             //priority is medium
             value = 1;
-        } else {
+        } else if (str.equalsIgnoreCase(Level.HIGH.toString())) {
             //priority is high
             value = 2;
         }
