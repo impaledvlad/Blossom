@@ -1,6 +1,23 @@
 # Purpose of the project
 
-Explain the purpose of the project and how to run it.
+ Blossom is a Task Management application that motivates it's users in their daily lives. Completing tasks in Blossom will reward the users with "water" that they can use to grow a digital plant. Enough water will cause the plant to grow taller and stronger!
+
+# Running Blossom
+
+To run Blossom, login using the credentials:
+- Username: `username1`  
+- Password: `password1`
+
+You can also create your own account by clicking "Sign Up".Once you have logged in, you will be presented with a list of tasks to complete. The tasks have different priorities and due dates. You can create a new task, or complete one that that already exists.
+
+Clicking on a task will bring you to a page where you can edit, delete, or complete the task.
+
+Completing a task awards "water" towards growing your plant. The amount of water gained depends on the priority of the task.
+
+To see your plant, you can click the "Plant" Button at the bottom of your screen. It will bring you to a plant that has a progress bar and a "Water Plant" Button. Watering the plant will empty the progress bar of water and transfer it to the plant! With enough water, the plant will grow larger!
+
+You can also change your account details in user settings.
+
 
 # Vision Statement
 
