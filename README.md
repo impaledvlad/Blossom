@@ -1,21 +1,31 @@
-# Blossom - Vision Statement
-  
-Blossom is an application designed to help users manage their busy lives. It is a fully functioning to-do-list application, that also provides motivation to the users with a built-in game that uses completed tasks as the resources that the user needs to grow their digital potted plant.
+# Purpose of the project
 
-The life of a young professional is filled with distractions and excitement. Some of these folks entering the workforce might be living away from their home city for the first time or may be working 2, 3 jobs to pay their rent. It’s not easy out there! With all these pressing concerns, finding time to do housework, and other menial chores can be difficult, and finding the motivation is even harder!
+ Blossom is a Task Management application that motivates it's users in their daily lives. Completing tasks in Blossom will reward the users with "water" that they can use to grow a digital plant. Enough water will cause the plant to grow taller and stronger!
 
-That’s where Blossom comes in.  Our users complete their tasks and receive points towards keeping a digital potted plant alive. It’s a Tamagotchi game for the modern age if Tamagotchi also helped you do the dishes the same day you used them. The emotional connection to the plant provides more reason to complete a task than just “because I have to.” – You also have a friend to take care of.
+# Running Blossom
 
-It’s not only young millennials trying to get their home lives together that can benefit from Blossom. Students who can’t seem to show up to class on time, or bodybuilders who really hate doing leg day. Blossom is an app for anyone, anywhere, who struggles to find the motivation to do that one thing every day.
+To run Blossom, login using the credentials:
+- Username: `username1`  
+- Password: `password1`
 
-Blossom will feature a task list, that users can add their own tasks to, and give their task a completion value. Whether it’s shaving every morning, doing the laundry on Saturdays or finishing that paper for English class, each task has a different value for each user. Once they complete the task, they cross it off their list and their digital plant gets a little bigger, a little healthier. If they fail to complete a task on time, however, the plant will wilt.
+You can also create your own account by clicking "Sign Up".Once you have logged in, you will be presented with a list of tasks to complete. The tasks have different priorities and due dates. You can create a new task, or complete one that that already exists.
 
- 
-We will consider the Blossom Project a success if the app allows the user to easily manage a detailed task list. We will also expect Blossom to provide the user with incentive via a digital potted plant that responds to their numerous successes and failures. 
+Clicking on a task will bring you to a page where you can edit, delete, or complete the task.
+
+Completing a task awards "water" towards growing your plant. The amount of water gained depends on the priority of the task.
+
+To see your plant, you can click the "Plant" Button at the bottom of your screen. It will bring you to a plant that has a progress bar and a "Water Plant" Button. Watering the plant will empty the progress bar of water and transfer it to the plant! With enough water, the plant will grow larger!
+
+You can also change your account details in user settings.
 
 
+# Vision Statement
 
+*  Find our [vision statment](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/project-3350/VISION.md) for the project.
 
+# Architecture
+
+*  Find our [architecture](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/project-3350/docs/ARCHITECHTURE.md) for the project.
 
 # Project Iterations
 
@@ -30,6 +40,3 @@ We will consider the Blossom Project a success if the app allows the user to eas
 # User Stories
 
 *  Find a list of user stories in our [user story list](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/issues?scope=all&utf8=%E2%9C%93&state=opened&label_name[]=User%20Story)
-
-*Note to markers- We split some of our features into numerous smaller user stories, and organized by them by a common theme. This is why we have fewer features, and more user stories. We did this because we felt that it would simplify the many similar, yet distinct project elements.*
-

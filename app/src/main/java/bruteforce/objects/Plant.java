@@ -11,6 +11,7 @@ public class Plant {
     private int maxGrowthLevel = 5;
     private int growthLevel;
     private int waterLevel;
+    private int maxWaterLevel = 100;
 
     public Plant() {
         this.growthLevel = 0;
@@ -26,6 +27,10 @@ public class Plant {
         this.growthLevel = growthLevel;
         this.waterLevel = waterLevel;
     }
+    public int getMaxWaterLevel(){
+        return  this.maxWaterLevel;
+    }
+
 
     /**
     getGrowthLevel
