@@ -13,12 +13,12 @@ public class TaskPersistenceStub implements TaskPersistence {
 	public TaskPersistenceStub() {
 		this.tasks = new ArrayList<>();
 		
-		tasks.add(new Task("Task1", "username1", new Date("2019/08/20"), false, 1));
-		tasks.add(new Task("Task2", "username1", new Date("2019/7/20"), true, 2));
-		tasks.add(new Task("Task3", "username2", new Date("2020/8/20"), false, 1));
-		tasks.add(new Task("Task4", "username2", new Date("2019/10/20"), false, 2));
-		tasks.add(new Task("Task5", "username3", new Date("2019/07/20"), false, 1));
-		tasks.add(new Task("Task6", "username3", new Date("2019/8/20"), false, 2));
+		tasks.add(new Task("Task1", "username1", new Date("2019/08/20"), false, 0,1));
+		tasks.add(new Task("Task2", "username1", new Date("2019/7/20"), true, 1,2));
+		tasks.add(new Task("Task3", "username2", new Date("2020/8/20"), false,2, 1));
+		tasks.add(new Task("Task4", "username2", new Date("2019/10/20"), false,3, 2));
+		tasks.add(new Task("Task5", "username3", new Date("2019/07/20"), false,4, 1));
+		tasks.add(new Task("Task6", "username3", new Date("2019/8/20"), false, 5,2));
 	}
 
 	/**
