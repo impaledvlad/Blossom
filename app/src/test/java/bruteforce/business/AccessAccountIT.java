@@ -1,17 +1,32 @@
 package bruteforce.business;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
+
 import bruteforce.objects.Account;
-import bruteforce.persistence.stubs.AccountPersistenceStub;
+import bruteforce.persistence.AccountPersistence;
+import bruteforce.persistence.hsqldb.AccountPersistenceHSQLDB;
+import bruteforce.utils.TestUtils;
 
-/**
- Class: AccessAccountTest
- Author: Yunpeng Zhong
- Purpose: Test the AccessAccount class
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-public class AccessAccountTest {
+public class AccessAccountIT {
+    private AccessAccount accessAccount;
+    private File tempDB;
+
+
+    @Before
+    public void setUp() throws IOException {
+        this.tempDB = TestUtils.copyDB();
+        final AccountPersistence persistence = new AccountPersistenceHSQLDB(this.tempDB.getAbsolutePath().replace(".script", ""));
+        this.accessAccount = new AccessAccount(persistence);
+    }
 
     /**
      * testGetCurrentAccount
@@ -23,16 +38,14 @@ public class AccessAccountTest {
     @Test
     public void testGetCurrentAccount() {
 
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
-        AccessAccount accessAccount1 = new AccessAccount(new AccountPersistenceStub());
-
         accessAccount.getAccount("username1");
         Account expectAccount = new Account("username1", "password1");
 
         System.out.println(expectAccount.getUsername());
 
         assertEquals("The Account should be equal", expectAccount.getUsername(), accessAccount.getCurrentAccount().getUsername());
-        assertNull("When the Account not in the database it should return null", accessAccount1.getCurrentAccount());
+        accessAccount.getAccount("username4");
+        assertNull("When the Account not in the database it should return null", accessAccount.getCurrentAccount());
 
         System.out.println("Finished testGetCurrentAccount");
 
@@ -47,7 +60,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testGetAccount() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username4");
         Account expectAccount = new Account("username1", "password1");
         System.out.println("\nStarting testGetAccount");
@@ -68,14 +80,13 @@ public class AccessAccountTest {
      */
     @Test
     public void testInsertAccount() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username1");
-        Account newAccount = new Account("username4", "password3");
+        Account newAccount = new Account("username5", "password5");
         accessAccount.insertAccount(newAccount);
-        accessAccount.getAccount("username4");
+        accessAccount.getAccount("username5");
         System.out.println("\nStarting testInsertAccount");
 
-        assertEquals("The current account should be the newAccount", newAccount, accessAccount.getCurrentAccount());
+        assertEquals("The current account should be the newAccount", newAccount.getUsername(), accessAccount.getCurrentAccount().getUsername());
 
         System.out.println("Finished testInsertAccount");
     }
@@ -89,7 +100,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testUpdatePoints() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username1");
         accessAccount.updatePoints(3);
         System.out.println("\nStarting testUpdatePoints");
@@ -108,7 +118,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testUpdatePassword() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username1");
         accessAccount.updatePassword("newPassword");
         System.out.println("\nStarting testUpdatePoints");
@@ -127,7 +136,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testUpdateAccount() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username1");
         accessAccount.updatePoints(4);
         accessAccount.updatePassword("newPassword1");
@@ -150,7 +158,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testLogOut() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         accessAccount.getAccount("username1");
         System.out.println("\nStarting testLogOut");
 
@@ -170,7 +177,6 @@ public class AccessAccountTest {
      */
     @Test
     public void testDeleteAccount() {
-        AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
 
         System.out.println("\nStarting testDeleteAccount");
 
@@ -182,5 +188,8 @@ public class AccessAccountTest {
 
         System.out.println("Finished testDeleteAccount");
     }
+    @After
+    public void tearDown() {
+        this.tempDB.delete();
+    }
 }
-
