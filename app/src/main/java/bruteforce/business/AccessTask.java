@@ -200,6 +200,25 @@ public class AccessTask {
     }
 
     /**
+     isExist
+
+     Purpose: check the taskId is exist in this user or not
+     Parameters: in taskID
+     Returns: boolean
+     */
+    public boolean isExist(int taskId){
+        Task task;
+        for(int current = 0; current < tasks.size(); current++) {
+            task = tasks.get(current);
+            if(task.getTaskID()==taskId)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
     tasksRenew
 
     Purpose: renew the current task list for that user

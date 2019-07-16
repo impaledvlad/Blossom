@@ -48,6 +48,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String userName;
+    private int MAX_TASK = 10000;
 
     private static final String TAG = "AddTaskActivity";
 
@@ -160,7 +161,12 @@ public class AddTaskActivity extends AppCompatActivity {
                             //check date which user select, if date is not valid, user cannot proceed any further
 
                             Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
-                            Task testTask = new Task(description, userName, testDate, false, priority);
+                            int taskId = (int)(Math.random()*MAX_TASK);
+                            while(taskListTest.isExist(taskId))
+                            {
+                                taskId = (int)(Math.random()*MAX_TASK);
+                            }
+                            Task testTask = new Task(description, userName, testDate, false, taskId, priority);
                             taskListTest.insertTask(testTask);
                             //create a new task and add it
 
