@@ -23,7 +23,9 @@ import java.util.Date;
 
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
+import bruteforce.business.DateInputValidation;
 import bruteforce.business.DateValidation;
+import bruteforce.business.Exceptions.DateException;
 import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
@@ -34,16 +36,17 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  Author: Triet Nguyen
  Purpose: To set up front-end stuff for Add Task page
  */
-
+enum Level{
+    LOW, MEDIUM, HIGH
+}
 public class AddTaskActivity extends AppCompatActivity {
     //fields
     private boolean chooseYet;
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
-    private StringConverter converter;
     private AccessTask taskListTest;
-    private DateValidation validation;
+    private DateInputValidation validation;
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -64,12 +67,11 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
         //set this Activity to handle activity_add_task.xml
 
-        converter = new StringConverter();
         userName = Services.getAccount().getUsername();
         //get username from main page
 
         chooseYet = false;
-        validation = new DateValidation();
+        validation = new DateInputValidation();
         //create new DateValidation object
 
         taskListTest = new AccessTask(userName);
@@ -146,21 +148,25 @@ public class AddTaskActivity extends AppCompatActivity {
                     String description = descriptionText.getText().toString();
                     if (description.equals("")) {
                         openTaskDialog();
-                    } else {
+                    } else if (selectedButton == -1) {
+                        openPriorityDialog();
+                    } else  {
                         //Text input for task desciption
 
                         RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
                         String priorityName = priorityNumber.getText().toString();
                         //Find which radio button clicked
 
-                        int priority = converter.getPriorityInt(priorityName);
+                        int priority = getPriorityInt(priorityName);
 
 
-                        if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                        try {
+                            validation.dateCheck(yearSelect, monthSelect, daySelect);
                             //check date which user select, if date is not valid, user cannot proceed any further
 
                             Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
                             Task testTask = new Task(description, userName, testDate, false, priority);
+
                             taskListTest.insertTask(testTask);
                             //create a new task and add it
 
@@ -171,8 +177,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
                             Toast infoTest = Toast.makeText(getBaseContext(), "Added successfully", Toast.LENGTH_LONG);
                             infoTest.show();
-                        } else {
-                            openDialog();
+                        } catch (DateException e) {
+                            Messages.warning(AddTaskActivity.this,e.toString());
                         }
                     }
                 }
@@ -203,5 +209,39 @@ public class AddTaskActivity extends AppCompatActivity {
     public void openTaskDialog() {
         TitleErrorDialog errorDialog = new TitleErrorDialog();
         errorDialog.show(getSupportFragmentManager(),"test dialog");
+    }
+
+    /**
+     openDialog
+
+     Purpose: create PriorityErrorDialog object to show
+     Parameters: none
+     Returns: none
+     */
+    public void openPriorityDialog() {
+        PriorityErrorDialog errorDialog = new PriorityErrorDialog();
+        errorDialog.show(getSupportFragmentManager(),"test2 dialog");
+    }
+
+    /**
+     getPriorityInt
+
+     Purpose: return a integer when user choose priority
+     Parameters: String str
+     Returns: int
+     */
+    public int getPriorityInt(String str) {
+        int value = -1;
+        if (str.equalsIgnoreCase(Level.LOW.toString())) {
+            //priority is low
+            value = 0;
+        } else if (str.equalsIgnoreCase(Level.MEDIUM.toString())) {
+            //priority is medium
+            value = 1;
+        } else if (str.equalsIgnoreCase(Level.HIGH.toString())) {
+            //priority is high
+            value = 2;
+        }
+        return value;
     }
 }
