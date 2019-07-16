@@ -2,6 +2,7 @@ package bruteforce.business;
 import java.util.Date;
 import java.util.List;
 
+import bruteforce.business.Exceptions.DateException;
 import bruteforce.objects.Task;
 import bruteforce.persistence.TaskPersistence;
 import bruteforce.application.Services;
@@ -81,7 +82,7 @@ public class AccessTask {
     Parameters: Task task
     Returns: void
     */
-    public void insertTask(Task task){
+    public void insertTask(Task task) {
         taskPersistence.insertTask(task);
         tasksRenew(task.getUsername());
     }
