@@ -34,9 +34,21 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  Author: Triet Nguyen
  Purpose: To set up front-end stuff for Add Task page
  */
-enum Level{
-    LOW, MEDIUM, HIGH
-}
+ enum Level{
+    Error(-1),
+    LOW(0),
+    MEDIUM(1),
+    HIGH(2);
+
+    private int levelInt;
+
+     Level(int level){
+        this.levelInt = level;
+    }
+
+    public int getLevelInt() {
+        return levelInt;
+    }}
 public class AddTaskActivity extends AppCompatActivity {
     //fields
     private boolean chooseYet;
@@ -121,10 +133,10 @@ public class AddTaskActivity extends AppCompatActivity {
            String description = descriptionText.getText().toString();
            if (description.equals("")) {
                openTaskDialog();
-           } else if (selectedButton == -1) {
+           } else if (selectedButton == Level.Error.getLevelInt()) {
                openPriorityDialog();
            } else  {
-               //Text input for task desciption
+               //Text input for task description
 
                RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
                String priorityName = priorityNumber.getText().toString();
@@ -245,16 +257,16 @@ public class AddTaskActivity extends AppCompatActivity {
      Returns: int
      */
     public int getPriorityInt(String str) {
-        int value = -1;
+        int value = Level.Error.getLevelInt();
         if (str.equalsIgnoreCase(Level.LOW.toString())) {
             //priority is low
-            value = 0;
+            value = Level.LOW.getLevelInt();
         } else if (str.equalsIgnoreCase(Level.MEDIUM.toString())) {
             //priority is medium
-            value = 1;
+            value = Level.MEDIUM.getLevelInt();
         } else if (str.equalsIgnoreCase(Level.HIGH.toString())) {
             //priority is high
-            value = 2;
+            value = Level.HIGH.getLevelInt();
         }
         return value;
     }
