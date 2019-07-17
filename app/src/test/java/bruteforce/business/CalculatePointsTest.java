@@ -70,13 +70,11 @@ public class CalculatePointsTest {
         AccessAccount currAccount = new AccessAccount(new AccountPersistenceStub());
         currAccount.getAccount("username1");
 
-        currAccount.updatePoints(50);
-
-        currUser.getTask(1);
+        currUser.getTask(0);
         currAccount.updatePoints(50);
 
         // Creates a CalculatePoints object.
-        CalculatePoints testConstructor1 = new CalculatePoints(currAccount, currUser, "username1");
+        CalculatePoints testConstructor1 = new CalculatePoints(currAccount, currUser);
 
         // get the value of points rewarded.
         int value = testConstructor1.awardPoints();

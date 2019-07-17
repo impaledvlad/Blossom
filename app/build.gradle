@@ -34,4 +34,5 @@ dependencies {
     }
 
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.+'
 }

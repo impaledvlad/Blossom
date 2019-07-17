@@ -22,14 +22,12 @@ public class AccessAccountTest {
      */
     @Test
     public void testGetCurrentAccount() {
-
+        System.out.println("\nStarting testGetCurrentAccount");
         AccessAccount accessAccount = new AccessAccount(new AccountPersistenceStub());
         AccessAccount accessAccount1 = new AccessAccount(new AccountPersistenceStub());
 
         accessAccount.getAccount("username1");
         Account expectAccount = new Account("username1", "password1");
-
-        System.out.println(expectAccount.getUsername());
 
         assertEquals("The Account should be equal", expectAccount.getUsername(), accessAccount.getCurrentAccount().getUsername());
         assertNull("When the Account not in the database it should return null", accessAccount1.getCurrentAccount());

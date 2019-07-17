@@ -127,12 +127,12 @@ public class AccessTaskTest {
     @Test
     public void testCompleteTask() {
         AccessTask accessTask = new AccessTask(new TaskPersistenceStub());
-        accessTask.getTask(0);
+        accessTask.getTask(1);
 
         System.out.println("\nStarting testCompleteTask");
        AccessTask expectedTask = new AccessTask(new TaskPersistenceStub());
 
-       expectedTask.getTask(0);
+       expectedTask.getTask(1);
 
        assertEquals("When complete the task it should return the proper priority every time",expectedTask.completeTask(),accessTask.completeTask());
 

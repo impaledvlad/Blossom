@@ -8,7 +8,7 @@ import bruteforce.business.AccessTaskIT;
 import bruteforce.business.CalculatePointsIT;
 
 /**
- Class: IntegrationTests
+ Class: AllIntegrationTests
  Author: Yunpeng Zhong
  Purpose: This class executes all itegration test class automatically.
  */
@@ -19,5 +19,5 @@ import bruteforce.business.CalculatePointsIT;
         AccessTaskIT.class,
         CalculatePointsIT.class
 })
-public class IntegrationTests {
+public class AllIntegrationTests {
 }

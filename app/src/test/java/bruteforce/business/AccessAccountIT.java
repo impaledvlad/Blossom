@@ -15,6 +15,8 @@ import bruteforce.utils.TestUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AccessAccountIT {
     private AccessAccount accessAccount;
@@ -187,6 +189,41 @@ public class AccessAccountIT {
         assertNull("When the account delete the current account should be null", accessAccount.getCurrentAccount());
 
         System.out.println("Finished testDeleteAccount");
+    }
+
+    /**
+     * testCheckLogin
+     * <p>
+     * Purpose: test checkLogin method in the AccessAccount class
+     * Parameters: none
+     * Returns: none, must print out finished to pass the test
+     */
+    @Test
+    public void testCheckLogin(){
+        System.out.println("\nStarting testCheckLogin");
+        accessAccount.getAccount("username1");
+        assertTrue("Login in with the right username and password should return true",accessAccount.checkLogin("username1","password1"));
+        assertFalse("Login in with the wrong username should return true",accessAccount.checkLogin("username5","password1"));
+        assertFalse("Login in with the wrong password should return true",accessAccount.checkLogin("username1","password2"));
+        System.out.println("Finished testCheckLogin");
+    }
+
+    /**
+     * testUpdatePlant
+     * <p>
+     * Purpose: test updatePlant method in the AccessAccount class
+     * Parameters: none
+     * Returns: none, must print out finished to pass the test
+     */
+    @Test
+    public void testUpdatePlant(){
+        System.out.println("\nStarting testUpdatePlant");
+        accessAccount.getAccount("username1");
+        accessAccount.updatePlant(50,3);
+        accessAccount.getAccount("username1");
+        assertEquals("The water level should be 50",50, accessAccount.getCurrentAccount().getPlant().getWaterLevel());
+        assertEquals("The growth level should be 50",3, accessAccount.getCurrentAccount().getPlant().getGrowthLevel());
+        System.out.println("Finished testUpdatePlant");
     }
     @After
     public void tearDown() {
