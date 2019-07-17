@@ -14,7 +14,10 @@ import org.junit.runners.Suite;
 @LargeTest
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AccountManagementTest.class
+        AccountManagementTest.class,
+        TaskManagementTest.class,
+        PointsSystemTest.class,
+        StatisticsTest.class
 })
 
 public class AllAcceptanceTest {
