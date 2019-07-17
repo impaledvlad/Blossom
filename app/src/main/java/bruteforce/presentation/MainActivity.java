@@ -276,6 +276,10 @@ public class MainActivity extends AppCompatActivity {
      Parameters: int num
      Returns: String
      */
+    public void summaryOnClick(View v){
+        Intent summary = new Intent(MainActivity.this,SummaryActivity.class);
+        startActivity(summary);
+    }
     public String getPriorityString(int num) {
         String checkPriority = "";
         if (num == 0) {
