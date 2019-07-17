@@ -119,8 +119,17 @@ public class AddTaskActivity extends AppCompatActivity {
         });
         //this button is used for inserting new task
     }
+
+
+    /**
+     onCreate
+
+     Purpose: this function will tell the create buttons needed for adding task
+     Parameters: None
+     Returns: none
+     */
    public void onCreateClick(){
-       //this function will control Create button what need to do
+       //
 
        RadioGroup rateGroup = (RadioGroup) findViewById(R.id.rateGroup);
        int selectedButton = rateGroup.getCheckedRadioButtonId();
@@ -173,7 +182,14 @@ public class AddTaskActivity extends AppCompatActivity {
        }
    }
 
-    public void onClickDeadline(){   //these codes will be executed when Deadline is clicked
+    /**
+     onCreate
+
+     Purpose: Display the calander when deadline is clicked
+     Parameters: None
+     Returns: none
+     */
+    public void onClickDeadline(){
 
         Calendar cal = Calendar.getInstance();
         yearSelect = cal.get(Calendar.YEAR);
@@ -196,6 +212,14 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     onCreate
+
+     Purpose: Display the chosen date
+     Parameters: None
+     Returns: none
+     */
     public void onDateSetClicked(DatePicker view, int year, int month, int dayOfMonth) {
 
         //display chosen date in blank TextView
@@ -215,7 +239,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
     /**
      openDialog
-
      Purpose: create DateErrorDialog object to show
      Parameters: none
      Returns: none
@@ -251,7 +274,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
     /**
      getPriorityInt
-
      Purpose: return a integer when user choose priority
      Parameters: String str
      Returns: int
