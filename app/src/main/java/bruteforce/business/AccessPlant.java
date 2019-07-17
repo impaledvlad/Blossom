@@ -34,13 +34,13 @@ public class AccessPlant {
      */
     public void addWaterLevel(int waterAdded){
         accessedPlant.setWaterLevel(accessedPlant.getWaterLevel() + waterAdded);
-        if(accessedPlant.getWaterLevel() >= accessedPlant.getMaxWaterLevel()){
+        if(accessedPlant.getWaterLevel() >= 100){
 
             if(accessedPlant.getGrowthLevel() < accessedPlant.getMaxGrowthLevel()) {
 
                 accessedPlant.setGrowthLevel(accessedPlant.getGrowthLevel()+1);
 
-                accessedPlant.setWaterLevel( accessedPlant.getWaterLevel() - accessedPlant.getMaxWaterLevel());
+                accessedPlant.setWaterLevel( accessedPlant.getWaterLevel() - 100);
             }
         }
     }

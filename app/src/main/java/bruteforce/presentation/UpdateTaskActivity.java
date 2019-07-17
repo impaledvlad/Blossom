@@ -25,8 +25,8 @@ import java.util.Locale;
 
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
-import bruteforce.business.DateInputValidation;
-import bruteforce.business.Exceptions.DateException;
+import bruteforce.business.DateValidation;
+import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -42,7 +42,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
-    private DateInputValidation validation;
+    private StringConverter converter;
+    private DateValidation validation;
     private AccessTask accessTask;
     private Task showTask;
     private Task taskInlist;
@@ -68,6 +69,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_task);
         //set this activity to handle activity_update_task.xml
 
+        converter = new StringConverter();
         Intent i = getIntent();
         user = Services.getAccount().getUsername();
         accessTask = new AccessTask(user);
@@ -77,7 +79,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         taskInlist = accessTask.getTask(showTask.getTaskID());
 
         selection = false;
-        validation = new DateInputValidation();
+        validation = new DateValidation();
 
 
 
@@ -101,14 +103,14 @@ public class UpdateTaskActivity extends AppCompatActivity {
             button3.setChecked(true);
         }
 
-        TextView dateShown = (TextView) findViewById(R.id.textView12);
+        TextView dateShown = (TextView) findViewById(R.id.editText3);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MMM/dd", Locale.CANADA);
         String dateStr = dateFormat.format(showTask.getDeadline());
         dateShown.setText(dateStr);
         //setup for showing deadline of Task object
 
         mDate =(TextView) findViewById(R.id.textView7);
-        showDateChosen = (TextView) findViewById(R.id.textView12);
+        showDateChosen = (TextView) findViewById(R.id.editText3);
 
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,19 +174,18 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 String priorityName = priorityNumber.getText().toString();
                 //Find which radio button clicked
 
-                int priority = getPriorityInt(priorityName);
+                int priority = converter.getPriorityInt(priorityName);
 
                 accessTask.updateName(descriptionStr);
                 accessTask.updatePriority(priority);
                 if (test) {
-                    try {
-                        validation.dateCheck(yearSelect, monthSelect, daySelect);
+                    if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
                         Date correctDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
                         accessTask.updateDeadline(correctDate);
                         nStage = false;
-                    } catch (DateException e) {
+                    } else {
                         nStage = true;
-                        Messages.warning(UpdateTaskActivity.this,e.toString());
+                        openDialog();
                     }
                 }
 
@@ -225,28 +226,6 @@ public class UpdateTaskActivity extends AppCompatActivity {
     public void openDialog() {
         DateErrorDialog errorDialog = new DateErrorDialog();
         errorDialog.show(getSupportFragmentManager(),"example dialog");
-    }
-
-    /**
-     getPriorityInt
-
-     Purpose: return a integer when user choose priority
-     Parameters: String str
-     Returns: int
-     */
-    public int getPriorityInt(String str) {
-        int value = -1;
-        if (str.equalsIgnoreCase(Level.LOW.toString())) {
-            //priority is low
-            value = 0;
-        } else if (str.equalsIgnoreCase(Level.MEDIUM.toString())) {
-            //priority is medium
-            value = 1;
-        } else if (str.equalsIgnoreCase(Level.HIGH.toString())){
-            //priority is high
-            value = 2;
-        }
-        return value;
     }
 
 }

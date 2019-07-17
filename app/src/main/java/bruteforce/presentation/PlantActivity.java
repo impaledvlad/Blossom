@@ -71,9 +71,7 @@ public class PlantActivity extends AppCompatActivity {
      Returns: void
      */
     private  void setWaterBar(){
-
         myBar = findViewById(R.id.water_bar);
-        myBar.setMax(myPlant.getCurrentPlant().getMaxWaterLevel());
         myBar.setProgress(myAccount.getCurrentAccount().getPoints());
     }
     /**

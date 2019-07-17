@@ -145,6 +145,11 @@ public class AccessAccount {
         updateAccount();
     }
 
+    public void updateUsername(String newUsername){
+        currentAccount.setUsername(newUsername);
+        updateAccount();
+    }
+
     /**
      logOut
 

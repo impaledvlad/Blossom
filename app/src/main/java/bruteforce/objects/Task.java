@@ -16,6 +16,7 @@ Purpose: To model a task object. includes getters, setters, deadline, etc.
 */
 
 public class Task implements Serializable {
+    private static int taskIDIterator = 6;
     private String username;
     private String name;
     private Date deadline;
@@ -28,7 +29,7 @@ public class Task implements Serializable {
     	this.name = "";
     	this.username = "";
     	this.completed = false;
-    	this.taskID = -1;
+    	this.taskID = taskIDIterator++;
     	this.priority = -1;
     }
     
@@ -36,7 +37,7 @@ public class Task implements Serializable {
         this.name = name;
         this.username = "";
         this.completed = false;
-        this.taskID = -1;
+        this.taskID = taskIDIterator++;
         this.priority = -1;
 
     }
@@ -46,8 +47,17 @@ public class Task implements Serializable {
         this.username = "";
         this.deadline = deadline;
         this.completed = false;
-        this.taskID = -1;
+        this.taskID = taskIDIterator++;
         this.priority = -1;
+    }
+    
+    public Task(String name, String username, Date deadline, boolean completed, int priority) {
+        this.name = name;
+        this.username = username; 
+        this.deadline = deadline;
+        this.completed = completed;
+        this.taskID = taskIDIterator++;
+        this.priority = priority;
     }
 
     public Task(String name, String username, Date deadline, boolean completed, int taskID, int priority) {

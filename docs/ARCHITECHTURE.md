@@ -5,122 +5,121 @@
 ![architecture](ArchitechtureDiagram.png)
 
 ## Presentation Layer
-[MainActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/MainActivity.java)
+[MainActivity](/app/src/main/java/bruteforce/presentation/MainActivity)
 - This file is responsible for the view of the application starting screen.
 
-[AddTaskActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/AddTaskActivity.java)
+[AddTaskActivity](/app/src/main/java/bruteforce/presentation/AddTaskActivity)
 - This file creates the adding a new task view.
 
-[ShowCompletedTaskActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/ShowCompletedTaskActivity.java)
+[ShowCompleastedTaskActivity](/app/src/main/java/bruteforce/presentation/ShowCompletedTaskActivity)
 - This file creates the showing completed tasks view.
 
-[ShowTaskActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/ShowTaskActivity.java)
+[ShowTaskActivity](/app/src/main/java/bruteforce/presentation/ShowTaskActivity)
 - This file creates the list of tasks view
 
-[UpdateTaskActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/UpdateTaskActivity.java)
+[UpdateTaskActivty](/app/src/main/java/bruteforce/presentation/UpdateTaskActivity)
 - This files creates the updating or modifying an existing task view.
 
-[AccountInfoActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/AccountInfoActivity.java)
+[AccountInfoActivity](/app/src/main/java/bruteforce/presentation/AccountInfoActivity)
 - Implements the logic for our account info feature, which allows the user to update their account information.
 
-[DateErrorDialog](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/DateErrorDialog.java)
+[DateErrorDialog](/app/src/main/java/bruteforce/presentation/DateErrorDialog)
 - A dialog that informs the user when there is an invalid date during task creation.
 
-[LoginActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/LoginActivity.java)
+[LoginActivity](/app/src/main/java/bruteforce/presentation/LoginActivity)
 - Implements logic for the login page.
 
-[Messages](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Presentation/Messages.java)
+[Messages](/app/src/main/java/bruteforce/Presentation/Messages)
 - Contains details for error messages.
 
-[PlantActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/PlantActivity.java)
+[PlantActivity](/app/src/main/java/bruteforce/presentation/PlantActivity)
 - Implements the logic for the digital plant.
 
-[RegisterActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/presentation/RegisterActivity.java)
+[RegisterActivity](/app/src/main/java/bruteforce/presentation/RegisterActivity)
 - Implements the logic for creating a new account.
 
-[TitleErrorDialog](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Presentation/TitleErrorDialog.java)
+[TitleErrorDialog](/app/src/main/java/bruteforce/Presentation/TitleErrorDialog)
 - Implements a dialog that informs the user they are missing a name for their new task
 
-[SummaryActivity](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Presentation/SummaryActivity.java)
-- Implements the Summary Feature that displays a summary of tasks completed, incomplete tasks, and total tasks
 
 ## Application Layer
-[Main](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/application/Main.java)
+[Main](/app/src/main/java/bruteforce/application/Main)
 -  Main Method. Runs the initial setup of the application
 
-[Services](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/application/Services.java)
+[Services](/app/src/main/java/bruteforce/application/Services)
 - Sets up the databases AccountPersistence and TaskPersistence.
 
-#### [Exceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/application/Exceptions)
+#### [Exceptions](](/app/src/main/java/bruteforce/application/Exceptions)
 ---
-- [ApplicationExceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/application/Exceptions/ApplicationExceptions.java)
+- [ApplicationExceptions](/app/src/main/java/bruteforce/application/Exceptions/ApplicationExceptions)
      - General application Exceptions file. Sets up the required Exceptions.
 
 ## Business/Logic Layer
-[AccessAccount](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/AccessAccount.java)
+[AccessAccount](/app/src/main/java/bruteforce/business/AccessAccount)
 - Business layer logic to access an account in the AccountPersistence. Used to Manipulate an Account object.
 
-[AccessTask](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/AccessTask.java)
+[AccessTask](/app/src/main/java/bruteforce/business/AccessTask)
 - Business layer logic to access an account in the TaskPersistence. Used to manipulate Task objects.
 
-[CalculatePoints](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/CalculatePoints.java)
+[CalculatePoints](/app/src/main/java/bruteforce/business/CalculatePoints)
 - Business layer logic intended to calculate points when user completes a task.
 
-[DateInputValidation](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/DataInputValidation.java)
+[DateValidation](/app/src/main/java/bruteforce/business/DataValidation)
 - Business layer logic to check for valid date when inserting new task. AddTaskActivity cannot proceed further if it does not pass this test.
 
-[AccessPlant](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/AccessPlant.java)
+[StringConverter](/app/src/main/java/bruteforce/business/StringConverter)
+- Business layer logic to convert information received from Task object into astring for display purposes.
+
+[AccessPlant](/app/src/main/java/bruteforce/business/AcessPlant)
 - Provides logic for accessing a plant object.
 
-#### [Exceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/Exceptions/)
+#### [Exceptions](/app/src/main/java/bruteforce/business/Exceptions/)
 ---
-- [AccessingExceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/Exceptions/AccessingExceptions.java)
-    - General Business Layer Exceptions.
-- [NotLoginExceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/Exceptions/NotLoginExceptions.java)
+- [AccessingExceptions](/app/src/main/java/bruteforce/business/Exceptions/AccessingExceptions)
+    - Genral Business Layer Exceptions.
+- [NotLoginExceptions](/app/src/main/java/bruteforce/business/Exceptions/NotLoginExceptions)
     - Exceptions for when there are login errors.
-- [NotLoginExceptions](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/business/Exceptions/DateException.java)
-    - Exceptions for when there are errors choosing a deadline.
 
 ## Persistence Layer
-[AccountPersistence](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/AccountPersistence.java):
+[AccountPersistence](/app/src/main/java/bruteforce/Persistence/AccountPersistence):
 - The interface for the accounts in the database
 
-[TaskPersistence](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/TaskPersistence.java):
+[TaskPersistence](/app/src/main/java/bruteforce/Persistence/TaskPersistence):
 - The interface for the list of tasks in the database
 
-#### [HSQLDB](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/hsqldb)
+#### [HSQLDB]]()
 ---
-- [AccountPersistenceHSQLDB](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/hsqldb/AccountPersistenceHSQLDB.java)
+- [AccountPersistenceHSQLDB](/app/src/main/java/bruteforce/Persistence/hsqldb/AccountPersistenceHSQLDB)
     - Implements AccountPersistence and connects the app to the Account Database
 
-- [PersistenceException](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/hsqldb/PersistenceException.java)
+- [PersistenceException](/app/src/main/java/bruteforce/Persistence/hsqldb/PersistenceException)
     - A class that contains the exceptions relating to Database errors.
 
-- [TaskPersistenceHSQLDB](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/hsqldb/TaskPersistenceHSQLDB.java)
+- [TaskPersistenceHSQLDB](/app/src/main/java/bruteforce/Persistence/hsqldb/TaskPersistenceHSQLDB)
     - Implements AccountPersistence and connects the app to the Task Database
 
 
-#### [Stubs](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/stubs/)
+#### [Stubs]()
 ---
-- [AccountPersistenceStub](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/stubs/AccountPersistenceStub.java)
+- [AccountPersistenceStub](/app/src/main/java/bruteforce/Persistence/stubs/AccountPersistenceStub)
     - AccountPersistenceStub implements AccountPersistence and acts as temporary database for the application 
 
-- [TaskPersistenceStub](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/Persistence/stubs/TaskPersistenceStub.java)
+- [TaskPersistenceStub](/app/src/main/java/bruteforce/Persistence/stubs/TaskPersistenceStub)
      - TaskPersistenceStub implements TaskPersistence and acts as temporary database for the application
 
 ## Domain Specific Objects
-[Account](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/objects/Account.java)
+[Account](/app/src/main/java/bruteforce/objects/Account)
 -  This class represents a single user account
 
-[Task](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/app/src/main/java/bruteforce/objects/Task.java)
+[Task](/app/src/main/java/bruteforce/objects/Task)
 - The object for the task of an account
 
-[Plant](/https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/masterapp/src/main/java/bruteforce/objects/Plant.java)
+[Plant](app/src/main/java/bruteforce/objects/Plant)
 - The object for the Plant feature of our application
 
 
 ## Docs 
 
-[View other docs](https://code.cs.umanitoba.ca/comp3350-summer2019/brute-force---11-/blob/master/docs)
+[View other docs](/docs)
 
 

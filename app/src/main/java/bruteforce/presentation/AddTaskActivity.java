@@ -23,8 +23,8 @@ import java.util.Date;
 
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
-import bruteforce.business.DateInputValidation;
-import bruteforce.business.Exceptions.DateException;
+import bruteforce.business.DateValidation;
+import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -34,34 +34,20 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  Author: Triet Nguyen
  Purpose: To set up front-end stuff for Add Task page
  */
- enum Level{
-    Error(-1),
-    LOW(0),
-    MEDIUM(1),
-    HIGH(2);
 
-    private int levelInt;
-
-     Level(int level){
-        this.levelInt = level;
-    }
-
-    public int getLevelInt() {
-        return levelInt;
-    }}
 public class AddTaskActivity extends AppCompatActivity {
     //fields
     private boolean chooseYet;
     private int daySelect;
     private int monthSelect;
     private int yearSelect;
+    private StringConverter converter;
     private AccessTask taskListTest;
-    private DateInputValidation validation;
+    private DateValidation validation;
     private TextView mDate;
     private TextView showDateChosen;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String userName;
-    private int MAX_TASK = 10000;
 
     private static final String TAG = "AddTaskActivity";
 
@@ -78,11 +64,13 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
         //set this Activity to handle activity_add_task.xml
 
+        converter = new StringConverter();
         userName = Services.getAccount().getUsername();
         //get username from main page
 
         chooseYet = false;
-        validation = new DateInputValidation();
+        validation = new DateValidation();
+        //create new DateValidation object
 
         taskListTest = new AccessTask(userName);
         //create new AccessTask object from received userName
@@ -95,14 +83,45 @@ public class AddTaskActivity extends AppCompatActivity {
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               onClickDeadline();
+                //these codes will be executed when Deadline is clicked
+
+                Calendar cal = Calendar.getInstance();
+                yearSelect = cal.get(Calendar.YEAR);
+                monthSelect = cal.get(Calendar.MONTH);
+                daySelect = cal.get(Calendar.DAY_OF_MONTH);
+                //get current date
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        AddTaskActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        yearSelect,monthSelect,daySelect);
+                //setup calendar structure
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                //show calendar dialog into activity_add_task
+
+                chooseYet = true;
+
             }
         });
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-              onDateSetClicked(view,year,month,dayOfMonth);
+                //display chosen date in blank TextView
+                month = month + 1;
+                Log.d(TAG,"date has been set");
+
+                yearSelect = year;
+                monthSelect = month;
+                daySelect = dayOfMonth;
+                String selectDate = year + "/" + month + "/" + dayOfMonth;
+                //create a format string for displaying date
+
+                showDateChosen.setText(selectDate);
+                //set blank TextView to show date
             }
         };
 
@@ -114,131 +133,57 @@ public class AddTaskActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                onCreateClick();
+                //this function will control Create button what need to do
+
+                RadioGroup rateGroup = (RadioGroup) findViewById(R.id.rateGroup);
+                int selectedButton = rateGroup.getCheckedRadioButtonId();
+                //RadioGroup is used to select priority
+
+                if (chooseYet) {
+                    //check to one of three radio button is clicked or not
+
+                    EditText descriptionText = (EditText) findViewById(R.id.editText);
+                    String description = descriptionText.getText().toString();
+                    if (description.equals("")) {
+                        openTaskDialog();
+                    } else {
+                        //Text input for task desciption
+
+                        RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
+                        String priorityName = priorityNumber.getText().toString();
+                        //Find which radio button clicked
+
+                        int priority = converter.getPriorityInt(priorityName);
+
+
+                        if (!validation.validateDate(yearSelect, monthSelect, daySelect)) {
+                            //check date which user select, if date is not valid, user cannot proceed any further
+
+                            Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
+                            Task testTask = new Task(description, userName, testDate, false, priority);
+                            taskListTest.insertTask(testTask);
+                            //create a new task and add it
+
+                            Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
+                            //testIntent.putExtra("user",userName);
+                            testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(testIntent);
+
+                            Toast infoTest = Toast.makeText(getBaseContext(), "Added successfully", Toast.LENGTH_LONG);
+                            infoTest.show();
+                        } else {
+                            openDialog();
+                        }
+                    }
+                }
             }
         });
         //this button is used for inserting new task
     }
 
-
-    /**
-     onCreate
-
-     Purpose: this function will tell the create buttons needed for adding task
-     Parameters: None
-     Returns: none
-     */
-   public void onCreateClick(){
-       //
-
-       RadioGroup rateGroup = (RadioGroup) findViewById(R.id.rateGroup);
-       int selectedButton = rateGroup.getCheckedRadioButtonId();
-       //RadioGroup is used to select priority
-
-       if (chooseYet) {
-           //check to one of three radio button is clicked or not
-
-           EditText descriptionText = (EditText) findViewById(R.id.editText);
-           String description = descriptionText.getText().toString();
-           if (description.equals("")) {
-               openTaskDialog();
-           } else if (selectedButton == Level.Error.getLevelInt()) {
-               openPriorityDialog();
-           } else  {
-               //Text input for task description
-
-               RadioButton priorityNumber = (RadioButton) findViewById(selectedButton);
-               String priorityName = priorityNumber.getText().toString();
-               //Find which radio button clicked
-
-               int priority = getPriorityInt(priorityName);
-
-
-               try {
-                   validation.dateCheck(yearSelect, monthSelect, daySelect);
-                   //check date which user select, if date is not valid, user cannot proceed any further
-
-                   Date testDate = new Date(yearSelect + "/" + monthSelect + "/" + daySelect);
-                   int taskId = (int)(Math.random()*MAX_TASK);
-                   while(taskListTest.isExist(taskId))
-                   {
-                       taskId = (int)(Math.random()*MAX_TASK);
-                   }
-                   Task testTask = new Task(description, userName, testDate, false, taskId, priority);
-                   taskListTest.insertTask(testTask);
-                   //create a new task and add it
-
-                   Intent testIntent = new Intent(AddTaskActivity.this, MainActivity.class);
-                   //testIntent.putExtra("user",userName);
-                   testIntent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                   startActivity(testIntent);
-
-                   Toast infoTest = Toast.makeText(getBaseContext(), "Added successfully", Toast.LENGTH_LONG);
-                   infoTest.show();
-               } catch (DateException e) {
-                   Messages.warning(AddTaskActivity.this,e.toString());
-               }
-           }
-       }
-   }
-
-    /**
-     onCreate
-
-     Purpose: Display the calander when deadline is clicked
-     Parameters: None
-     Returns: none
-     */
-    public void onClickDeadline(){
-
-        Calendar cal = Calendar.getInstance();
-        yearSelect = cal.get(Calendar.YEAR);
-        monthSelect = cal.get(Calendar.MONTH);
-        daySelect = cal.get(Calendar.DAY_OF_MONTH);
-        //get current date
-
-        DatePickerDialog dialog = new DatePickerDialog(
-                AddTaskActivity.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                mDateSetListener,
-                yearSelect,monthSelect,daySelect);
-        //setup calendar structure
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-        //show calendar dialog into activity_add_task
-
-        chooseYet = true;
-
-
-    }
-
-    /**
-     onCreate
-
-     Purpose: Display the chosen date
-     Parameters: None
-     Returns: none
-     */
-    public void onDateSetClicked(DatePicker view, int year, int month, int dayOfMonth) {
-
-        //display chosen date in blank TextView
-        month = month + 1;
-        Log.d(TAG,"date has been set");
-
-        yearSelect = year;
-        monthSelect = month;
-        daySelect = dayOfMonth;
-        String selectDate = year + "/" + month + "/" + dayOfMonth;
-        //create a format string for displaying date
-
-        showDateChosen.setText(selectDate);
-        //set blank TextView to show date
-    }
-
-
     /**
      openDialog
+
      Purpose: create DateErrorDialog object to show
      Parameters: none
      Returns: none
@@ -258,38 +203,5 @@ public class AddTaskActivity extends AppCompatActivity {
     public void openTaskDialog() {
         TitleErrorDialog errorDialog = new TitleErrorDialog();
         errorDialog.show(getSupportFragmentManager(),"test dialog");
-    }
-
-    /**
-     openDialog
-
-     Purpose: create PriorityErrorDialog object to show
-     Parameters: none
-     Returns: none
-     */
-    public void openPriorityDialog() {
-        PriorityErrorDialog errorDialog = new PriorityErrorDialog();
-        errorDialog.show(getSupportFragmentManager(),"test2 dialog");
-    }
-
-    /**
-     getPriorityInt
-     Purpose: return a integer when user choose priority
-     Parameters: String str
-     Returns: int
-     */
-    public int getPriorityInt(String str) {
-        int value = Level.Error.getLevelInt();
-        if (str.equalsIgnoreCase(Level.LOW.toString())) {
-            //priority is low
-            value = Level.LOW.getLevelInt();
-        } else if (str.equalsIgnoreCase(Level.MEDIUM.toString())) {
-            //priority is medium
-            value = Level.MEDIUM.getLevelInt();
-        } else if (str.equalsIgnoreCase(Level.HIGH.toString())) {
-            //priority is high
-            value = Level.HIGH.getLevelInt();
-        }
-        return value;
     }
 }

@@ -27,6 +27,7 @@ public class AccessAccountTest {
         AccessAccount accessAccount1 = new AccessAccount(new AccountPersistenceStub());
 
         accessAccount.getAccount("username1");
+        System.out.println("\nStarting testGetCurrentAccount");
         Account expectAccount = new Account("username1", "password1");
 
         System.out.println(expectAccount.getUsername());
