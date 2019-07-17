@@ -239,6 +239,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     /**
      openDialog
+
      Purpose: create DateErrorDialog object to show
      Parameters: none
      Returns: none
@@ -274,6 +275,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     /**
      getPriorityInt
+
      Purpose: return a integer when user choose priority
      Parameters: String str
      Returns: int
