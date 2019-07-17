@@ -26,7 +26,6 @@ import java.util.Locale;
 
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
-import bruteforce.business.StringConverter;
 import bruteforce.objects.Account;
 import bruteforce.objects.Task;
 

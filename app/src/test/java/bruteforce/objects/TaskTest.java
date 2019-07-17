@@ -99,7 +99,7 @@ public class TaskTest {
         System.out.println("\nStarting testTaskFourthConstructor");
 
         date = new Date(2019, 8, 20);
-        task = new Task("Vacation time", "John", date, true, 2,3);
+        task = new Task("Vacation time", "John", date, true,9, 3);
 
         assertNotNull("Task object should not be null", task);
         assertEquals("Task name is not correct", "Vacation time", task.getName());

@@ -26,9 +26,7 @@ import java.util.Locale;
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateInputValidation;
-import bruteforce.business.DateValidation;
 import bruteforce.business.Exceptions.DateException;
-import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;

@@ -24,9 +24,7 @@ import java.util.Date;
 import bruteforce.application.Services;
 import bruteforce.business.AccessTask;
 import bruteforce.business.DateInputValidation;
-import bruteforce.business.DateValidation;
 import bruteforce.business.Exceptions.DateException;
-import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -73,7 +71,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
         chooseYet = false;
         validation = new DateInputValidation();
-        //create new DateValidation object
 
         taskListTest = new AccessTask(userName);
         //create new AccessTask object from received userName
