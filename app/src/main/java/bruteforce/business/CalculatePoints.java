@@ -14,7 +14,6 @@ public class CalculatePoints {
     private AccessAccount currAccountPersistence;
     private AccessTask currTaskPersistence;
     private String userName;
-    private Task currTask;
 
     // Constructor.
     public CalculatePoints(AccessAccount currAccountPersistence, AccessTask currTaskPersistence, String userName) {
@@ -28,8 +27,6 @@ public class CalculatePoints {
 
         this.currAccountPersistence = currAccountPersistence;
         this.currTaskPersistence = currTaskPersistence;
-        this.currTask = currTask;
-
     }
 
     /**

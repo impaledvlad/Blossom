@@ -81,14 +81,11 @@ public class CalculatePointsIT {
 
         // Create AccessAcount object..
         accessAccount.getAccount("username1");
-
-        accessAccount.updatePoints(50);
-
-        accessTask.getTask(1);
+        accessTask.getTask(0);
         accessAccount.updatePoints(50);
 
         // Creates a CalculatePoints object.
-        CalculatePoints testConstructor1 = new CalculatePoints(accessAccount, accessTask, "username1");
+        CalculatePoints testConstructor1 = new CalculatePoints(accessAccount, accessTask);
 
         // get the value of points rewarded.
         int value = testConstructor1.awardPoints();

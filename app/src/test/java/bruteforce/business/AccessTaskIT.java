@@ -17,6 +17,8 @@ import bruteforce.utils.TestUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class AccessTaskIT {
     private AccessTask accessTask;
@@ -174,6 +176,20 @@ public class AccessTaskIT {
         assertEquals("After remove all task the task list should have 0 element",0,accessTask.getTaskList().size());
 
         System.out.println("Finished testRemoveAllTask");
+    }
+    /**
+     * testIsExist
+     * <p>
+     * Purpose: test isExist method in the AccessTask Class
+     * Parameters: none
+     * Returns: none, must print out finished to pass the test
+     */
+    @Test
+    public void testIsExist(){
+        System.out.println("\nStarting testIsExist");
+        assertFalse("If the task is not exist, should return false",accessTask.isExist(90));
+        assertTrue("If the task is exist, should return false",accessTask.isExist(1));
+        System.out.println("Finished testIsExist");
     }
     @After
     public void tearDown() {

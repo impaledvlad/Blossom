@@ -3,8 +3,10 @@ package bruteforce;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import bruteforce.business.AccessAccountMockTest;
 import bruteforce.business.AccessAccountTest;
 import bruteforce.business.AccessPlantTest;
+import bruteforce.business.AccessTaskMockTest;
 import bruteforce.business.AccessTaskTest;
 import bruteforce.business.CalculatePointsTest;
 import bruteforce.objects.AccountTest;
@@ -13,7 +15,7 @@ import bruteforce.objects.TaskTest;
 
 
 /**
- Class: AllTests
+ Class: AllUnitTests
  Author: Triet Nguyen
  Purpose: This class executes all object test class automatically.
  */
@@ -26,11 +28,13 @@ import bruteforce.objects.TaskTest;
         AccountTest.class,
         PlantTest.class,
         TaskTest.class,
-        AccessPlantTest.class
+        AccessPlantTest.class,
+        AccessAccountMockTest.class,
+        AccessTaskMockTest.class
 })
 
 
-public class AllTests {
+public class AllUnitTests {
 
 }
 
