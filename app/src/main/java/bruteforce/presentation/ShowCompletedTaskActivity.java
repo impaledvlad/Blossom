@@ -21,7 +21,6 @@ import java.util.Locale;
 import bruteforce.application.Services;
 import bruteforce.business.AccessAccount;
 import bruteforce.business.AccessTask;
-import bruteforce.business.StringConverter;
 import bruteforce.objects.Task;
 
 /**
@@ -36,7 +35,6 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
     private AccessTask tasks;
     private Task testTask;
     private String userName;
-    private StringConverter converter;
 
     /**
      onCreate
@@ -51,7 +49,6 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_completed_task);
         //set this MainActivity to work activity_main.xml
 
-        converter = new StringConverter();
         Intent i = getIntent();
         userName = Services.getAccount().getUsername();
         tasks = new AccessTask(userName);
@@ -82,10 +79,9 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
                 text2.setClickable(false);
                 //create TextView for text2 in simple_list_item
 
-                String checkCompletion = converter.getCompletionString(taskDetails.get(position).getCompleted());
+                String checkCompletion = getCompletionString(taskDetails.get(position).getCompleted());
 
-
-                String checkPriority = converter.getPriorityString(taskDetails.get(position).getPriority());
+                String checkPriority = getPriorityString(taskDetails.get(position).getPriority());
 
                 String text1Str = String.format("%s - %s - %s", taskDetails.get(position).getName(), checkPriority, checkCompletion);
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd", Locale.CANADA);
@@ -117,5 +113,44 @@ public class ShowCompletedTaskActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.list2);
         listView.setAdapter(taskArrayAdapter);
         //Implement above adapter into ListView in activity_main.xml
+    }
+
+    /**
+     getCompletionString
+
+     Purpose: return a string when user check the box
+     Parameters: boolean done
+     Returns: String
+     */
+    public String getCompletionString(boolean done) {
+        String checkCompletion = "";
+        if (done) {
+            checkCompletion = "Done";
+        } else {
+            checkCompletion = "Ongoing";
+        }
+        return checkCompletion;
+    }
+
+    /**
+     getPriorityString
+
+     Purpose: return a string when user choose priority
+     Parameters: int num
+     Returns: String
+     */
+    public String getPriorityString(int num) {
+        String checkPriority = "";
+        if (num == 0) {
+            //if priority in Task object is 0, return Low
+            checkPriority = "Low";
+        } else if (num == 1) {
+            //if priority in Task object is 1, return Medium
+            checkPriority = "Medium";
+        } else {
+            //if priority in Task object is 2, return High
+            checkPriority = "High";
+        }
+        return checkPriority;
     }
 }

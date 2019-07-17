@@ -2,6 +2,7 @@ package bruteforce.business;
 import java.util.Date;
 import java.util.List;
 
+import bruteforce.business.Exceptions.DateException;
 import bruteforce.objects.Task;
 import bruteforce.persistence.TaskPersistence;
 import bruteforce.application.Services;
@@ -81,7 +82,7 @@ public class AccessTask {
     Parameters: Task task
     Returns: void
     */
-    public void insertTask(Task task){
+    public void insertTask(Task task) {
         taskPersistence.insertTask(task);
         tasksRenew(task.getUsername());
     }
@@ -197,6 +198,25 @@ public class AccessTask {
             currentTask = tasks.get(0);
             deleteTask();
         }
+    }
+
+    /**
+     isExist
+
+     Purpose: check the taskId is exist in this user or not
+     Parameters: in taskID
+     Returns: boolean
+     */
+    public boolean isExist(int taskId){
+        Task task;
+        for(int current = 0; current < tasks.size(); current++) {
+            task = tasks.get(current);
+            if(task.getTaskID()==taskId)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -78,7 +78,7 @@ public class AccessTaskTest {
     @Test
     public void testInsertTask() {
         AccessTask accessTask = new AccessTask(new TaskPersistenceStub(), "username1");
-        Task newTask = new Task("Task3", "username1", new Date(2019, 9, 20), false, 0);
+        Task newTask = new Task("Task3", "username1", new Date(2019, 9, 20),false,7,0);
         accessTask.insertTask(newTask);
         System.out.println("\nStarting testInsertTask");
 

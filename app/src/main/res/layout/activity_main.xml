@@ -35,8 +35,8 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
         android:layout_marginStart="300dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="700dp"
@@ -46,13 +46,15 @@
         android:text="@string/completed_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953" />
 
     <Button
         android:id="@+id/plant_view_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="700dp"
@@ -63,7 +65,28 @@
         android:text="Plant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
+
+    <Button
+        android:id="@+id/summary_btn"
+        android:layout_width= "170dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="summaryOnClick"
+        android:text="Summary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/plant_view_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994" />
 
 </android.support.constraint.ConstraintLayout>
